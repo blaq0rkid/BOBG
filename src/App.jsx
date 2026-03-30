@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Menu, X, BookOpen, Building2, TrendingUp, Shield } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Menu, X, BookOpen, Building2, TrendingUp, Shield, Sun, Moon } from 'lucide-react';
 
 // Article data - easily add new articles here
 const articles = [
@@ -75,7 +75,7 @@ const articles = [
   }
 ];
 
-const IntakeForm = ({ segment, onClose }) => {
+const IntakeForm = ({ segment, onClose, isDark }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
 
@@ -213,13 +213,13 @@ const IntakeForm = ({ segment, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
-      <div className="bg-zinc-900 border border-amber-500 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-zinc-900 border-b border-amber-500 p-6 flex items-center justify-between">
+      <div className={`${isDark ? 'bg-[#020B13]' : 'bg-white'} border-2 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto`} style={{ borderColor: '#D4AF37' }}>
+        <div className={`sticky top-0 ${isDark ? 'bg-[#020B13]' : 'bg-white'} border-b-2 p-6 flex items-center justify-between`} style={{ borderColor: '#D4AF37' }}>
           <div>
-            <h3 className="text-2xl font-serif text-amber-500">{config.title}</h3>
-            <p className="text-zinc-400 text-sm mt-1">{config.description}</p>
+            <h3 className="text-2xl font-serif" style={{ color: '#D4AF37' }}>{config.title}</h3>
+            <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mt-1`}>{config.description}</p>
           </div>
-          <button onClick={onClose} className="text-zinc-400 hover:text-amber-500 transition-colors">
+          <button onClick={onClose} className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors`} style={{ hover: { color: '#D4AF37' } }}>
             <X size={24} />
           </button>
         </div>
@@ -230,13 +230,15 @@ const IntakeForm = ({ segment, onClose }) => {
               {Array.from({ length: totalSteps }).map((_, idx) => (
                 <div
                   key={idx}
-                  className={`h-2 rounded-full transition-all ${
-                    idx === currentStep ? 'w-12 bg-amber-500' : idx < currentStep ? 'w-8 bg-amber-600' : 'w-8 bg-zinc-700'
-                  }`}
+                  className={`h-2 rounded-full transition-all`}
+                  style={{
+                    width: idx === currentStep ? '3rem' : '2rem',
+                    backgroundColor: idx <= currentStep ? '#D4AF37' : (isDark ? '#3f3f46' : '#d4d4d8')
+                  }}
                 />
               ))}
             </div>
-            <span className="text-zinc-400 text-sm">
+            <span className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm`}>
               Step {currentStep + 1} of {totalSteps}
             </span>
           </div>
@@ -245,7 +247,7 @@ const IntakeForm = ({ segment, onClose }) => {
             <div className="flex flex-col gap-6">
               {currentStepData.fields.map((field) => (
                 <div key={field.name}>
-                  <label className="block text-amber-500 mb-2 font-medium">
+                  <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>
                     {field.label} {field.required && <span className="text-red-500">*</span>}
                   </label>
                   {field.type === 'textarea' ? (
@@ -254,14 +256,16 @@ const IntakeForm = ({ segment, onClose }) => {
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                       required={field.required}
                       rows={4}
-                      className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-3 text-zinc-100 focus:border-amber-500 focus:outline-none"
+                      className={`w-full ${isDark ? 'bg-[#262626] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none`}
+                      style={{ focusBorderColor: '#D4AF37' }}
                     />
                   ) : field.type === 'select' ? (
                     <select
                       value={formData[field.name] || ''}
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                       required={field.required}
-                      className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-3 text-zinc-100 focus:border-amber-500 focus:outline-none"
+                      className={`w-full ${isDark ? 'bg-[#262626] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none`}
+                      style={{ focusBorderColor: '#D4AF37' }}
                     >
                       <option value="">Select an option</option>
                       {field.options.map((option) => (
@@ -274,19 +278,21 @@ const IntakeForm = ({ segment, onClose }) => {
                       value={formData[field.name] || ''}
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                       required={field.required}
-                      className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-3 text-zinc-100 focus:border-amber-500 focus:outline-none"
+                      className={`w-full ${isDark ? 'bg-[#262626] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none`}
+                      style={{ focusBorderColor: '#D4AF37' }}
                     />
                   )}
                 </div>
               ))}
             </div>
 
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-zinc-800">
+            <div className={`flex items-center justify-between mt-8 pt-6 border-t ${isDark ? 'border-[#262626]' : 'border-zinc-200'}`}>
               <button
                 type="button"
                 onClick={handlePrevious}
                 disabled={currentStep === 0}
-                className="flex items-center gap-2 px-6 py-3 text-zinc-400 hover:text-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className={`flex items-center gap-2 px-6 py-3 ${isDark ? 'text-zinc-400' : 'text-zinc-600'} disabled:opacity-50 disabled:cursor-not-allowed transition-colors hover:opacity-80`}
+                style={{ color: currentStep > 0 ? '#D4AF37' : undefined }}
               >
                 <ChevronLeft size={20} />
                 Previous
@@ -296,7 +302,8 @@ const IntakeForm = ({ segment, onClose }) => {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="flex items-center gap-2 px-6 py-3 bg-amber-500 text-zinc-900 font-semibold rounded hover:bg-amber-400 transition-colors"
+                  className="flex items-center gap-2 px-6 py-3 font-semibold rounded transition-colors"
+                  style={{ backgroundColor: '#D4AF37', color: isDark ? '#020B13' : '#ffffff' }}
                 >
                   Next
                   <ChevronRight size={20} />
@@ -304,7 +311,8 @@ const IntakeForm = ({ segment, onClose }) => {
               ) : (
                 <button
                   type="submit"
-                  className="px-8 py-3 bg-amber-500 text-zinc-900 font-semibold rounded hover:bg-amber-400 transition-colors"
+                  className="px-8 py-3 font-semibold rounded transition-colors"
+                  style={{ backgroundColor: '#D4AF37', color: isDark ? '#020B13' : '#ffffff' }}
                 >
                   Submit Application
                 </button>
@@ -317,18 +325,18 @@ const IntakeForm = ({ segment, onClose }) => {
   );
 };
 
-const ArticleView = ({ article, onClose }) => {
+const ArticleView = ({ article, onClose, isDark }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 p-4 overflow-y-auto">
-      <div className="bg-zinc-900 border border-amber-500 rounded-lg max-w-4xl w-full my-8">
-        <div className="sticky top-0 bg-zinc-900 border-b border-amber-500 p-6 flex items-center justify-between">
+      <div className={`${isDark ? 'bg-[#020B13]' : 'bg-white'} border-2 rounded-lg max-w-4xl w-full my-8`} style={{ borderColor: '#D4AF37' }}>
+        <div className={`sticky top-0 ${isDark ? 'bg-[#020B13]' : 'bg-white'} border-b-2 p-6 flex items-center justify-between`} style={{ borderColor: '#D4AF37' }}>
           <div className="flex items-center gap-3">
-            <BookOpen className="text-amber-500" size={24} />
+            <BookOpen style={{ color: '#D4AF37' }} size={24} />
             <div>
-              <div className="text-sm text-zinc-400">{article.date} · {article.readTime}</div>
+              <div className={`text-sm ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>{article.date} · {article.readTime}</div>
             </div>
           </div>
-          <button onClick={onClose} className="text-zinc-400 hover:text-amber-500 transition-colors">
+          <button onClick={onClose} className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors hover:opacity-80`}>
             <X size={24} />
           </button>
         </div>
@@ -340,10 +348,10 @@ const ArticleView = ({ article, onClose }) => {
         />
 
         <div className="p-8">
-          <h1 className="text-4xl font-serif text-amber-500 mb-4">{article.title}</h1>
-          <p className="text-xl text-zinc-300 mb-8 italic">{article.excerpt}</p>
+          <h1 className="text-4xl font-serif mb-4" style={{ color: '#D4AF37' }}>{article.title}</h1>
+          <p className={`text-xl ${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-8 italic`}>{article.excerpt}</p>
           <div 
-            className="prose prose-invert prose-amber max-w-none text-zinc-300 leading-relaxed"
+            className={`prose ${isDark ? 'prose-invert' : 'prose-zinc'} max-w-none ${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed`}
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
         </div>
@@ -356,6 +364,20 @@ export default function BlackOrchidWebsite() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeIntake, setActiveIntake] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved !== null) {
+      setIsDark(saved === 'dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+  };
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -366,58 +388,100 @@ export default function BlackOrchidWebsite() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className={`min-h-screen ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'}`}>
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-zinc-950 bg-opacity-95 border-b border-zinc-800 z-40">
+      <nav className={`fixed top-0 left-0 right-0 bg-opacity-95 border-b z-40 ${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'}`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img src="/logo.png" alt="Black Orchid Business Group" className="h-12" />
               <div>
-                <div className="text-xl font-serif text-amber-500">Black Orchid Business Group</div>
-                <div className="text-xs text-zinc-400">Intelligence. Strategy. Access.</div>
+                <div className="text-xl font-serif" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+                <div className={`text-xs ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Intelligence. Strategy. Access.</div>
               </div>
             </div>
 
             <div className="hidden md:flex items-center gap-8">
-              <button onClick={() => scrollToSection('home')} className="text-zinc-300 hover:text-amber-500 transition-colors">Home</button>
-              <button onClick={() => scrollToSection('about')} className="text-zinc-300 hover:text-amber-500 transition-colors">About</button>
-              <button onClick={() => scrollToSection('services')} className="text-zinc-300 hover:text-amber-500 transition-colors">Services</button>
-              <button onClick={() => scrollToSection('intelligence')} className="text-zinc-300 hover:text-amber-500 transition-colors">Intelligence</button>
-              <button onClick={() => scrollToSection('contact')} className="px-6 py-2 bg-amber-500 text-zinc-900 font-semibold rounded hover:bg-amber-400 transition-colors">Contact</button>
+              <button onClick={() => scrollToSection('home')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`} style={{ hover: { color: '#D4AF37' } }}>Home</button>
+              <button onClick={() => scrollToSection('about')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>About</button>
+              <button onClick={() => scrollToSection('services')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Services</button>
+              <button onClick={() => scrollToSection('intelligence')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Intelligence</button>
+              <button 
+                onClick={toggleTheme}
+                className={`p-2 ${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors hover:opacity-80`}
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')} 
+                className="px-6 py-2 font-semibold rounded transition-colors hover:opacity-90"
+                style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+              >
+                Contact
+              </button>
             </div>
 
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden text-zinc-300">
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <div className="md:hidden flex items-center gap-4">
+              <button 
+                onClick={toggleTheme}
+                className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors`}
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className={isDark ? 'text-zinc-300' : 'text-zinc-700'}>
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
 
           {mobileMenuOpen && (
             <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
-              <button onClick={() => scrollToSection('home')} className="text-zinc-300 hover:text-amber-500 transition-colors text-left">Home</button>
-              <button onClick={() => scrollToSection('about')} className="text-zinc-300 hover:text-amber-500 transition-colors text-left">About</button>
-              <button onClick={() => scrollToSection('services')} className="text-zinc-300 hover:text-amber-500 transition-colors text-left">Services</button>
-              <button onClick={() => scrollToSection('intelligence')} className="text-zinc-300 hover:text-amber-500 transition-colors text-left">Intelligence</button>
-              <button onClick={() => scrollToSection('contact')} className="px-6 py-2 bg-amber-500 text-zinc-900 font-semibold rounded hover:bg-amber-400 transition-colors">Contact</button>
+              <button onClick={() => scrollToSection('home')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors text-left hover:opacity-80`}>Home</button>
+              <button onClick={() => scrollToSection('about')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors text-left hover:opacity-80`}>About</button>
+              <button onClick={() => scrollToSection('services')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors text-left hover:opacity-80`}>Services</button>
+              <button onClick={() => scrollToSection('intelligence')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors text-left hover:opacity-80`}>Intelligence</button>
+              <button 
+                onClick={() => scrollToSection('contact')} 
+                className="px-6 py-2 font-semibold rounded transition-colors"
+                style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+              >
+                Contact
+              </button>
             </div>
           )}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section 
+        id="home" 
+        className="pt-32 pb-20 px-6 relative"
+        style={{
+          backgroundImage: 'url(/public/hero-patriotic.webp.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className={`absolute inset-0 ${isDark ? 'bg-black bg-opacity-70' : 'bg-white bg-opacity-60'}`}></div>
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-serif text-amber-500 mb-6">
+            <h1 className="text-5xl md:text-7xl font-serif mb-6" style={{ color: '#D4AF37' }}>
               Intelligence. Strategy. Access.
             </h1>
-            <p className="text-2xl md:text-3xl text-zinc-300 mb-4">
+            <p className={`text-2xl md:text-3xl ${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-4`}>
               Boutique Scale. Sovereign Results.
             </p>
-            <p className="text-xl text-zinc-400 max-w-3xl mx-auto mb-12">
+            <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'} max-w-3xl mx-auto mb-12`}>
               Empowering small to mid-sized firms to compete and win in the government sector with the precision of a global firm and the exclusive attention your mission requires.
             </p>
-            <button onClick={() => scrollToSection('contact')} className="px-8 py-4 bg-amber-500 text-zinc-900 font-semibold text-lg rounded hover:bg-amber-400 transition-colors">
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className="px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90"
+              style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+            >
               Start Your Journey
             </button>
           </div>
@@ -425,10 +489,10 @@ export default function BlackOrchidWebsite() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-zinc-900">
+      <section id="about" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-serif text-amber-500 mb-8 text-center">About Black Orchid Business Group</h2>
-          <div className="max-w-4xl mx-auto text-lg text-zinc-300 leading-relaxed flex flex-col gap-6">
+          <h2 className="text-4xl font-serif mb-8 text-center" style={{ color: '#D4AF37' }}>About Black Orchid Business Group</h2>
+          <div className={`max-w-4xl mx-auto text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed flex flex-col gap-6`}>
             <p>
               Black Orchid Business Group is the authority for firms that refuse to be "just another vendor." We offer the technical precision of a global firm with the exclusive, boutique attention your mission requires.
             </p>
@@ -438,7 +502,7 @@ export default function BlackOrchidWebsite() {
             <p>
               Whether you're an established company with proven capabilities seeking to penetrate the public sector, or an emerging firm preparing for your first government contract, we bridge the gap between small business agility and large-scale government requirements.
             </p>
-            <p className="text-amber-500 font-semibold text-xl italic text-center mt-4">
+            <p className="font-semibold text-xl italic text-center mt-4" style={{ color: '#D4AF37' }}>
               "We don't consult. We architect dominance."
             </p>
           </div>
@@ -448,77 +512,77 @@ export default function BlackOrchidWebsite() {
       {/* Services Section */}
       <section id="services" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-serif text-amber-500 mb-12 text-center">Our Services</h2>
+          <h2 className="text-4xl font-serif mb-12 text-center" style={{ color: '#D4AF37' }}>Our Services</h2>
           
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-8 hover:border-amber-500 transition-all">
+            <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7', hover: { borderColor: '#D4AF37' } }}>
               <div className="flex items-start gap-4 mb-4">
-                <div className="bg-amber-500 bg-opacity-20 p-3 rounded">
-                  <TrendingUp className="text-amber-500" size={32} />
+                <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
+                  <TrendingUp style={{ color: '#D4AF37' }} size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif text-amber-500 mb-2">The Agency Alignment Map</h3>
-                  <p className="text-zinc-400 text-sm mb-4">Our definitive blueprint for federal market dominance</p>
+                  <h3 className="text-2xl font-serif mb-2" style={{ color: '#D4AF37' }}>The Agency Alignment Map</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Our definitive blueprint for federal market dominance</p>
                 </div>
               </div>
-              <p className="text-zinc-300 mb-6">
+              <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
                 A high-touch, proprietary consulting engagement designed to move your firm from the sidelines to the center of the mission. We deliver a tactical, 12-month execution plan tailored to your specific past performance and growth goals.
               </p>
-              <button onClick={() => scrollToSection('contact')} className="text-amber-500 hover:text-amber-400 font-semibold">
+              <button onClick={() => scrollToSection('contact')} className="font-semibold hover:opacity-80" style={{ color: '#D4AF37' }}>
                 Learn More →
               </button>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-8 hover:border-amber-500 transition-all">
+            <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}>
               <div className="flex items-start gap-4 mb-4">
-                <div className="bg-amber-500 bg-opacity-20 p-3 rounded">
-                  <Shield className="text-amber-500" size={32} />
+                <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
+                  <Shield style={{ color: '#D4AF37' }} size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif text-amber-500 mb-2">Federal Diagnostic</h3>
-                  <p className="text-zinc-400 text-sm mb-4">Comprehensive readiness assessment</p>
+                  <h3 className="text-2xl font-serif mb-2" style={{ color: '#D4AF37' }}>Federal Diagnostic</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Comprehensive readiness assessment</p>
                 </div>
               </div>
-              <p className="text-zinc-300 mb-6">
+              <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
                 Evaluate your governance structure, financial resilience, operational maturity, and technical architecture to identify vulnerabilities and opportunities others miss. Comprehensive readiness assessment for federal contracting infrastructure.
               </p>
-              <button onClick={() => scrollToSection('contact')} className="text-amber-500 hover:text-amber-400 font-semibold">
+              <button onClick={() => scrollToSection('contact')} className="font-semibold hover:opacity-80" style={{ color: '#D4AF37' }}>
                 Learn More →
               </button>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-8 hover:border-amber-500 transition-all">
+            <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}>
               <div className="flex items-start gap-4 mb-4">
-                <div className="bg-amber-500 bg-opacity-20 p-3 rounded">
-                  <Building2 className="text-amber-500" size={32} />
+                <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
+                  <Building2 style={{ color: '#D4AF37' }} size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif text-amber-500 mb-2">Sub-to-Prime Transition</h3>
-                  <p className="text-zinc-400 text-sm mb-4">Structured pathway to prime contractor authority</p>
+                  <h3 className="text-2xl font-serif mb-2" style={{ color: '#D4AF37' }}>Sub-to-Prime Transition</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Structured pathway to prime contractor authority</p>
                 </div>
               </div>
-              <p className="text-zinc-300 mb-6">
+              <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
                 Evaluate your infrastructure, relationships, and financial capacity to determine your readiness for prime contractor status. We provide a structured pathway from subcontracting dependency to prime contractor authority.
               </p>
-              <button onClick={() => scrollToSection('contact')} className="text-amber-500 hover:text-amber-400 font-semibold">
+              <button onClick={() => scrollToSection('contact')} className="font-semibold hover:opacity-80" style={{ color: '#D4AF37' }}>
                 Learn More →
               </button>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-8 hover:border-amber-500 transition-all">
+            <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}>
               <div className="flex items-start gap-4 mb-4">
-                <div className="bg-amber-500 bg-opacity-20 p-3 rounded">
-                  <BookOpen className="text-amber-500" size={32} />
+                <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
+                  <BookOpen style={{ color: '#D4AF37' }} size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif text-amber-500 mb-2">Federal Intelligence</h3>
-                  <p className="text-zinc-400 text-sm mb-4">Continuous market intelligence and strategic insights</p>
+                  <h3 className="text-2xl font-serif mb-2" style={{ color: '#D4AF37' }}>Federal Intelligence</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Continuous market intelligence and strategic insights</p>
                 </div>
               </div>
-              <p className="text-zinc-300 mb-6">
+              <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
                 Stay ahead of market shifts, policy changes, and emerging opportunities with strategic recommendations tailored to your federal objectives. Continuous market intelligence for the federal marketplace.
               </p>
-              <button onClick={() => scrollToSection('intelligence')} className="text-amber-500 hover:text-amber-400 font-semibold">
+              <button onClick={() => scrollToSection('intelligence')} className="font-semibold hover:opacity-80" style={{ color: '#D4AF37' }}>
                 Read Intelligence →
               </button>
             </div>
@@ -526,33 +590,36 @@ export default function BlackOrchidWebsite() {
 
           {/* Intake Cards */}
           <div className="mt-16">
-            <h3 className="text-3xl font-serif text-amber-500 mb-8 text-center">Where Are You in Your Journey?</h3>
+            <h3 className="text-3xl font-serif mb-8 text-center" style={{ color: '#D4AF37' }}>Where Are You in Your Journey?</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div 
                 onClick={() => setActiveIntake('prebidding')}
-                className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 hover:border-amber-500 cursor-pointer transition-all hover:scale-105"
+                className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 cursor-pointer transition-all hover:scale-105`}
+                style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
               >
-                <h4 className="text-xl font-semibold text-amber-500 mb-3">Pre-Bidding Phase</h4>
-                <p className="text-zinc-400 mb-4">Preparing to enter the federal marketplace</p>
-                <div className="text-amber-500 font-semibold">Start Assessment →</div>
+                <h4 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>Pre-Bidding Phase</h4>
+                <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Preparing to enter the federal marketplace</p>
+                <div className="font-semibold" style={{ color: '#D4AF37' }}>Start Assessment →</div>
               </div>
 
               <div 
                 onClick={() => setActiveIntake('samRegistered')}
-                className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 hover:border-amber-500 cursor-pointer transition-all hover:scale-105"
+                className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 cursor-pointer transition-all hover:scale-105`}
+                style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
               >
-                <h4 className="text-xl font-semibold text-amber-500 mb-3">SAM.gov Registered</h4>
-                <p className="text-zinc-400 mb-4">Registered but need strategic direction</p>
-                <div className="text-amber-500 font-semibold">Start Assessment →</div>
+                <h4 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>SAM.gov Registered</h4>
+                <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Registered but need strategic direction</p>
+                <div className="font-semibold" style={{ color: '#D4AF37' }}>Start Assessment →</div>
               </div>
 
               <div 
                 onClick={() => setActiveIntake('subToPrime')}
-                className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 hover:border-amber-500 cursor-pointer transition-all hover:scale-105"
+                className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 cursor-pointer transition-all hover:scale-105`}
+                style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
               >
-                <h4 className="text-xl font-semibold text-amber-500 mb-3">Sub to Prime</h4>
-                <p className="text-zinc-400 mb-4">Ready to transition to prime contractor</p>
-                <div className="text-amber-500 font-semibold">Start Assessment →</div>
+                <h4 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>Sub to Prime</h4>
+                <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Ready to transition to prime contractor</p>
+                <div className="font-semibold" style={{ color: '#D4AF37' }}>Start Assessment →</div>
               </div>
             </div>
           </div>
@@ -560,11 +627,11 @@ export default function BlackOrchidWebsite() {
       </section>
 
       {/* Intelligence (Blog) Section */}
-      <section id="intelligence" className="py-20 px-6 bg-zinc-900">
+      <section id="intelligence" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif text-amber-500 mb-4">Federal Intelligence</h2>
-            <p className="text-xl text-zinc-400">Strategic updates, thought leadership, and tactical insights for the federal marketplace</p>
+            <h2 className="text-4xl font-serif mb-4" style={{ color: '#D4AF37' }}>Federal Intelligence</h2>
+            <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Strategic updates, thought leadership, and tactical insights for the federal marketplace</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -572,7 +639,8 @@ export default function BlackOrchidWebsite() {
               <div 
                 key={article.id}
                 onClick={() => setSelectedArticle(article)}
-                className="bg-zinc-950 border border-zinc-800 rounded-lg overflow-hidden hover:border-amber-500 cursor-pointer transition-all hover:scale-105"
+                className={`${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'} border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:scale-105`}
+                style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
               >
                 <img 
                   src={article.thumbnail} 
@@ -580,14 +648,14 @@ export default function BlackOrchidWebsite() {
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
-                  <div className="flex items-center gap-2 text-sm text-zinc-500 mb-3">
+                  <div className={`flex items-center gap-2 text-sm ${isDark ? 'text-zinc-500' : 'text-zinc-400'} mb-3`}>
                     <span>{article.date}</span>
                     <span>·</span>
                     <span>{article.readTime}</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-amber-500 mb-3">{article.title}</h3>
-                  <p className="text-zinc-400 mb-4">{article.excerpt}</p>
-                  <div className="text-amber-500 font-semibold">Read Article →</div>
+                  <h3 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>{article.title}</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>{article.excerpt}</p>
+                  <div className="font-semibold" style={{ color: '#D4AF37' }}>Read Article →</div>
                 </div>
               </div>
             ))}
@@ -599,36 +667,36 @@ export default function BlackOrchidWebsite() {
       <section id="contact" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif text-amber-500 mb-4">Ready to Dominate Your Market?</h2>
-            <p className="text-xl text-zinc-400">Connect with a Black Orchid strategist for a discovery consultation</p>
+            <h2 className="text-4xl font-serif mb-4" style={{ color: '#D4AF37' }}>Ready to Dominate Your Market?</h2>
+            <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Connect with a Black Orchid strategist for a discovery consultation</p>
           </div>
 
-          <form className="bg-zinc-900 border border-zinc-800 rounded-lg p-8">
+          <form className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}>
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label className="block text-amber-500 mb-2 font-medium">Company Name *</label>
-                <input type="text" required className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-3 text-zinc-100 focus:border-amber-500 focus:outline-none" />
+                <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Company Name *</label>
+                <input type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none`} style={{ focusBorderColor: '#D4AF37' }} />
               </div>
               <div>
-                <label className="block text-amber-500 mb-2 font-medium">Industry *</label>
-                <input type="text" required className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-3 text-zinc-100 focus:border-amber-500 focus:outline-none" />
+                <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Industry *</label>
+                <input type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none`} style={{ focusBorderColor: '#D4AF37' }} />
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label className="block text-amber-500 mb-2 font-medium">Email Address *</label>
-                <input type="email" required className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-3 text-zinc-100 focus:border-amber-500 focus:outline-none" />
+                <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Email Address *</label>
+                <input type="email" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none`} style={{ focusBorderColor: '#D4AF37' }} />
               </div>
               <div>
-                <label className="block text-amber-500 mb-2 font-medium">Phone Number</label>
-                <input type="tel" className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-3 text-zinc-100 focus:border-amber-500 focus:outline-none" />
+                <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Phone Number</label>
+                <input type="tel" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none`} style={{ focusBorderColor: '#D4AF37' }} />
               </div>
             </div>
 
             <div className="mb-6">
-              <label className="block text-amber-500 mb-2 font-medium">Current Revenue Tier</label>
-              <select className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-3 text-zinc-100 focus:border-amber-500 focus:outline-none">
+              <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Current Revenue Tier</label>
+              <select className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none`} style={{ focusBorderColor: '#D4AF37' }}>
                 <option value="">Select a range</option>
                 <option value="under-1m">Under $1M</option>
                 <option value="1m-5m">$1M - $5M</option>
@@ -639,11 +707,11 @@ export default function BlackOrchidWebsite() {
             </div>
 
             <div className="mb-6">
-              <label className="block text-amber-500 mb-2 font-medium">Specific Contracting Challenges *</label>
-              <textarea required rows={5} className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-3 text-zinc-100 focus:border-amber-500 focus:outline-none"></textarea>
+              <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Specific Contracting Challenges *</label>
+              <textarea required rows={5} className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none`} style={{ focusBorderColor: '#D4AF37' }}></textarea>
             </div>
 
-            <button type="submit" className="w-full px-8 py-4 bg-amber-500 text-zinc-900 font-semibold text-lg rounded hover:bg-amber-400 transition-colors">
+            <button type="submit" className="w-full px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90" style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}>
               Request Discovery Consultation
             </button>
           </form>
@@ -651,24 +719,24 @@ export default function BlackOrchidWebsite() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-zinc-950 border-t border-zinc-800 py-12 px-6">
+      <footer className={`${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'} border-t py-12 px-6`}>
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <img src="/logo.png" alt="Black Orchid Business Group" className="h-10" />
-            <div className="text-xl font-serif text-amber-500">Black Orchid Business Group</div>
+            <div className="text-xl font-serif" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
           </div>
-          <p className="text-zinc-400 mb-4">Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.</p>
-          <p className="text-zinc-500 text-sm">© 2026 Black Orchid Business Group LLC. All rights reserved.</p>
+          <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.</p>
+          <p className={`${isDark ? 'text-zinc-500' : 'text-zinc-400'} text-sm`}>© 2026 Black Orchid Business Group LLC. All rights reserved.</p>
         </div>
       </footer>
 
       {/* Modals */}
       {activeIntake && (
-        <IntakeForm segment={activeIntake} onClose={() => setActiveIntake(null)} />
+        <IntakeForm segment={activeIntake} onClose={() => setActiveIntake(null)} isDark={isDark} />
       )}
 
       {selectedArticle && (
-        <ArticleView article={selectedArticle} onClose={() => setSelectedArticle(null)} />
+        <ArticleView article={selectedArticle} onClose={() => setSelectedArticle(null)} isDark={isDark} />
       )}
     </div>
   );
