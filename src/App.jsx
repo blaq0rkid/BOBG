@@ -212,11 +212,11 @@ const IntakeForm = ({ segment, onClose, isDark }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4" style={{ fontFamily: 'Arial, sans-serif' }}>
       <div className={`${isDark ? 'bg-[#020B13]' : 'bg-white'} border-2 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto`} style={{ borderColor: '#D4AF37' }}>
         <div className={`sticky top-0 ${isDark ? 'bg-[#020B13]' : 'bg-white'} border-b-2 p-6 flex items-center justify-between`} style={{ borderColor: '#D4AF37' }}>
           <div>
-            <h3 className="text-2xl font-serif" style={{ color: '#D4AF37' }}>{config.title}</h3>
+            <h3 className="text-2xl" style={{ color: '#D4AF37' }}>{config.title}</h3>
             <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mt-1`}>{config.description}</p>
           </div>
           <button onClick={onClose} className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors`} style={{ hover: { color: '#D4AF37' } }}>
@@ -327,7 +327,7 @@ const IntakeForm = ({ segment, onClose, isDark }) => {
 
 const ArticleView = ({ article, onClose, isDark }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 p-4 overflow-y-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 p-4 overflow-y-auto" style={{ fontFamily: 'Arial, sans-serif' }}>
       <div className={`${isDark ? 'bg-[#020B13]' : 'bg-white'} border-2 rounded-lg max-w-4xl w-full my-8`} style={{ borderColor: '#D4AF37' }}>
         <div className={`sticky top-0 ${isDark ? 'bg-[#020B13]' : 'bg-white'} border-b-2 p-6 flex items-center justify-between`} style={{ borderColor: '#D4AF37' }}>
           <div className="flex items-center gap-3">
@@ -348,7 +348,7 @@ const ArticleView = ({ article, onClose, isDark }) => {
         />
 
         <div className="p-8">
-          <h1 className="text-4xl font-serif mb-4" style={{ color: '#D4AF37' }}>{article.title}</h1>
+          <h1 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>{article.title}</h1>
           <p className={`text-xl ${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-8 italic`}>{article.excerpt}</p>
           <div 
             className={`prose ${isDark ? 'prose-invert' : 'prose-zinc'} max-w-none ${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed`}
@@ -388,7 +388,7 @@ export default function BlackOrchidWebsite() {
   };
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'}`}>
+    <div className={`min-h-screen ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'}`} style={{ fontFamily: 'Arial, sans-serif' }}>
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 bg-opacity-95 border-b z-40 ${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'}`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -396,7 +396,7 @@ export default function BlackOrchidWebsite() {
             <div className="flex items-center gap-3">
               <img src="/logo.png" alt="Black Orchid Business Group" className="h-12" />
               <div>
-                <div className="text-xl font-serif" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+                <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
                 <div className={`text-xs ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Intelligence. Strategy. Access.</div>
               </div>
             </div>
@@ -468,7 +468,7 @@ export default function BlackOrchidWebsite() {
         <div className={`absolute inset-0 ${isDark ? 'bg-black bg-opacity-70' : 'bg-white bg-opacity-60'}`}></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-serif mb-6" style={{ color: '#D4AF37' }}>
+            <h1 className="text-5xl md:text-7xl mb-6" style={{ color: '#D4AF37' }}>
               Intelligence. Strategy. Access.
             </h1>
             <p className={`text-2xl md:text-3xl ${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-4`}>
@@ -491,7 +491,7 @@ export default function BlackOrchidWebsite() {
       {/* About Section */}
       <section id="about" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-serif mb-8 text-center" style={{ color: '#D4AF37' }}>About Black Orchid Business Group</h2>
+          <h2 className="text-4xl mb-8 text-center" style={{ color: '#D4AF37' }}>About Black Orchid Business Group</h2>
           <div className={`max-w-4xl mx-auto text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed flex flex-col gap-6`}>
             <p>
               Black Orchid Business Group is the authority for firms that refuse to be "just another vendor." We offer the technical precision of a global firm with the exclusive, boutique attention your mission requires.
@@ -512,7 +512,7 @@ export default function BlackOrchidWebsite() {
       {/* Services Section */}
       <section id="services" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-serif mb-12 text-center" style={{ color: '#D4AF37' }}>Our Services</h2>
+          <h2 className="text-4xl mb-12 text-center" style={{ color: '#D4AF37' }}>Our Services</h2>
           
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7', hover: { borderColor: '#D4AF37' } }}>
@@ -521,7 +521,7 @@ export default function BlackOrchidWebsite() {
                   <TrendingUp style={{ color: '#D4AF37' }} size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif mb-2" style={{ color: '#D4AF37' }}>The Agency Alignment Map</h3>
+                  <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>The Agency Alignment Map</h3>
                   <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Our definitive blueprint for federal market dominance</p>
                 </div>
               </div>
@@ -539,7 +539,7 @@ export default function BlackOrchidWebsite() {
                   <Shield style={{ color: '#D4AF37' }} size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif mb-2" style={{ color: '#D4AF37' }}>Federal Diagnostic</h3>
+                  <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>Federal Diagnostic</h3>
                   <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Comprehensive readiness assessment</p>
                 </div>
               </div>
@@ -557,7 +557,7 @@ export default function BlackOrchidWebsite() {
                   <Building2 style={{ color: '#D4AF37' }} size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif mb-2" style={{ color: '#D4AF37' }}>Sub-to-Prime Transition</h3>
+                  <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>Sub-to-Prime Transition</h3>
                   <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Structured pathway to prime contractor authority</p>
                 </div>
               </div>
@@ -575,7 +575,7 @@ export default function BlackOrchidWebsite() {
                   <BookOpen style={{ color: '#D4AF37' }} size={32} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif mb-2" style={{ color: '#D4AF37' }}>Federal Intelligence</h3>
+                  <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>Federal Intelligence</h3>
                   <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Continuous market intelligence and strategic insights</p>
                 </div>
               </div>
@@ -590,7 +590,7 @@ export default function BlackOrchidWebsite() {
 
           {/* Intake Cards */}
           <div className="mt-16">
-            <h3 className="text-3xl font-serif mb-8 text-center" style={{ color: '#D4AF37' }}>Where Are You in Your Journey?</h3>
+            <h3 className="text-3xl mb-8 text-center" style={{ color: '#D4AF37' }}>Where Are You in Your Journey?</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div 
                 onClick={() => setActiveIntake('prebidding')}
@@ -630,7 +630,7 @@ export default function BlackOrchidWebsite() {
       <section id="intelligence" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif mb-4" style={{ color: '#D4AF37' }}>Federal Intelligence</h2>
+            <h2 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Federal Intelligence</h2>
             <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Strategic updates, thought leadership, and tactical insights for the federal marketplace</p>
           </div>
 
@@ -667,7 +667,7 @@ export default function BlackOrchidWebsite() {
       <section id="contact" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif mb-4" style={{ color: '#D4AF37' }}>Ready to Dominate Your Market?</h2>
+            <h2 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Ready to Dominate Your Market?</h2>
             <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Connect with a Black Orchid strategist for a discovery consultation</p>
           </div>
 
@@ -723,7 +723,7 @@ export default function BlackOrchidWebsite() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <img src="/logo.png" alt="Black Orchid Business Group" className="h-10" />
-            <div className="text-xl font-serif" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+            <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
           </div>
           <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.</p>
           <p className={`${isDark ? 'text-zinc-500' : 'text-zinc-400'} text-sm`}>© 2026 Black Orchid Business Group LLC. All rights reserved.</p>
