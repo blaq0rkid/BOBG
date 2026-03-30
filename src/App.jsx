@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Menu, X, BookOpen, Building2, TrendingUp, Shield, Sun, Moon, CheckCircle } from 'lucide-react';
 import { articles } from './data/articles';
@@ -8,73 +9,6 @@ const encode = (data) => {
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
 };
-
-// Hidden Netlify form components for form detection
-const NetlifyForms = () => (
-  <div style={{ display: 'none' }}>
-    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="contact" />
-      <input type="text" name="companyName" />
-      <input type="text" name="industry" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <select name="revenueTier"><option value=""></option></select>
-      <textarea name="challenges"></textarea>
-    </form>
-    
-    <form name="pre-bidding-assessment" data-netlify="true" data-netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="pre-bidding-assessment" />
-      <input type="text" name="samStatus" />
-      <input type="text" name="cageStatus" />
-      <input type="text" name="cybersecurity" />
-      <input type="text" name="accountingSystem" />
-      <input type="text" name="bondingCapacity" />
-      <input type="text" name="pastPerformance" />
-      <textarea name="industry"></textarea>
-      <textarea name="mainChallenge"></textarea>
-    </form>
-    
-    <form name="agency-alignment-assessment" data-netlify="true" data-netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="agency-alignment-assessment" />
-      <textarea name="naicsCodes"></textarea>
-      <textarea name="primaryCapabilities"></textarea>
-      <textarea name="federalPastPerformance"></textarea>
-      <textarea name="targetAgencies"></textarea>
-      <input type="text" name="annualRevenue" />
-      <input type="text" name="geographicFocus" />
-      <input type="text" name="bidHistory" />
-      <textarea name="desiredResult"></textarea>
-    </form>
-    
-    <form name="sub-to-prime-assessment" data-netlify="true" data-netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="sub-to-prime-assessment" />
-      <input type="text" name="yearsAsSubcontractor" />
-      <input type="text" name="subcontractingRevenue" />
-      <input type="text" name="primeRelationships" />
-      <input type="text" name="cparsHistory" />
-      <input type="text" name="govRelationships" />
-      <input type="text" name="workingCapital" />
-      <input type="text" name="proposalCapability" />
-      <textarea name="strategicIntent"></textarea>
-    </form>
-    
-    <form name="federal-diagnostic-assessment" data-netlify="true" data-netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="federal-diagnostic-assessment" />
-      <input type="text" name="companyName" />
-      <input type="number" name="yearsInBusiness" />
-      <input type="text" name="annualRevenue" />
-      <input type="text" name="federalExperience" />
-      <input type="text" name="contractValue" />
-      <textarea name="targetAgencies"></textarea>
-      <input type="text" name="accountingSystem" />
-      <input type="text" name="cybersecurity" />
-      <input type="text" name="qualitySystem" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <textarea name="goals"></textarea>
-    </form>
-  </div>
-);
 
 const ThankYouPage = ({ onClose, isDark }) => {
   return (
@@ -1339,10 +1273,56 @@ export default function BlackOrchidWebsite() {
     }
   };
 
+  if (showPrivacyPolicy) {
+    return <PrivacyPolicy onClose={() => setShowPrivacyPolicy(false)} isDark={isDark} />;
+  }
+
+  if (showTermsOfService) {
+    return <TermsOfService onClose={() => setShowTermsOfService(false)} isDark={isDark} />;
+  }
+
+  if (activeIntake) {
+    return (
+      <IntakeForm 
+        segment={activeIntake} 
+        onClose={() => setActiveIntake(null)} 
+        onSubmit={handleFormSubmit}
+        isDark={isDark}
+        scrollToSection={scrollToSection}
+        toggleTheme={toggleTheme}
+      />
+    );
+  }
+
+  if (selectedArticle) {
+    return (
+      <ArticleView 
+        article={selectedArticle} 
+        onClose={handleArticleClose} 
+        isDark={isDark}
+        fromLibrary={articleSource === 'library'}
+      />
+    );
+  }
+
+  if (showLibrary) {
+    return (
+      <IntelligenceLibrary 
+        onArticleSelect={handleArticleSelectFromLibrary}
+        onClose={() => setShowLibrary(false)}
+        isDark={isDark}
+        toggleTheme={toggleTheme}
+        scrollToSection={scrollToSection}
+      />
+    );
+  }
+
   return (
     <div className={`min-h-screen ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'}`} style={{ fontFamily: 'Arial, sans-serif' }}>
-      <NetlifyForms />
-      
+      {showThankYou && (
+        <ThankYouPage onClose={handleThankYouClose} isDark={isDark} />
+      )}
+
       <nav className={`fixed top-0 left-0 right-0 bg-opacity-95 border-b z-40 ${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'}`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -1412,362 +1392,326 @@ export default function BlackOrchidWebsite() {
         </div>
       </nav>
 
-      {showPrivacyPolicy ? (
-        <PrivacyPolicy onClose={() => setShowPrivacyPolicy(false)} isDark={isDark} />
-      ) : showTermsOfService ? (
-        <TermsOfService onClose={() => setShowTermsOfService(false)} isDark={isDark} />
-      ) : activeIntake ? (
-        <IntakeForm 
-          segment={activeIntake} 
-          onClose={() => setActiveIntake(null)} 
-          onSubmit={handleFormSubmit}
-          isDark={isDark}
-          scrollToSection={scrollToSection}
-          toggleTheme={toggleTheme}
+      <section 
+        id="home" 
+        className="pt-32 pb-20 px-6 relative overflow-hidden"
+      >
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/hero-patriotic.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            transform: `translateY(${scrollY * 0.5}px)`,
+            willChange: 'transform'
+          }}
         />
-      ) : selectedArticle ? (
-        <ArticleView 
-          article={selectedArticle} 
-          onClose={handleArticleClose} 
-          isDark={isDark}
-          fromLibrary={articleSource === 'library'}
-        />
-      ) : showLibrary ? (
-        <IntelligenceLibrary 
-          onArticleSelect={handleArticleSelectFromLibrary}
-          onClose={() => setShowLibrary(false)}
-          isDark={isDark}
-          toggleTheme={toggleTheme}
-          scrollToSection={scrollToSection}
-        />
-      ) : (
-        <>
-          <section 
-            id="home" 
-            className="pt-32 pb-20 px-6 relative overflow-hidden"
-          >
+        <div className={`absolute inset-0 ${isDark ? 'bg-black bg-opacity-70' : 'bg-white bg-opacity-60'}`}></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center">
+            <h1 className="text-5xl md:text-7xl mb-6" style={{ color: '#D4AF37' }}>
+              Intelligence. Strategy. Access.
+            </h1>
+            <p className={`text-2xl md:text-3xl ${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-4`}>
+              Boutique Scale. Sovereign Results.
+            </p>
+            <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'} max-w-3xl mx-auto mb-12`}>
+              Empowering small to mid-sized firms to compete and win in the government sector with the precision of a global firm and the exclusive attention your mission requires.
+            </p>
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className="px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90"
+              style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+            >
+              Start Your Journey
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl mb-8 text-center" style={{ color: '#D4AF37' }}>About Black Orchid Business Group</h2>
+          <div className={`max-w-4xl mx-auto text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed flex flex-col gap-6`}>
+            <p>
+              Black Orchid Business Group is the authority for firms that refuse to be "just another vendor." We offer the technical precision of a global firm with the exclusive, boutique attention your mission requires.
+            </p>
+            <p>
+              We operate at the intersection of intelligence, influence, and execution in the federal marketplace. Our clients don't need another consultant telling them what they already know. They need strategic partners who architect pathways to federal contract success.
+            </p>
+            <p>
+              Whether you're an established company with proven capabilities seeking to penetrate the public sector, or an emerging firm preparing for your first government contract, we bridge the gap between small business agility and large-scale government requirements.
+            </p>
+            <p className="font-semibold text-xl italic text-center mt-4" style={{ color: '#D4AF37' }}>
+              "We don't consult. We architect dominance."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl mb-8 text-center" style={{ color: '#D4AF37' }}>Our Services</h2>
+          
+          <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 mb-12 max-w-3xl mx-auto text-center`} style={{ borderColor: '#D4AF37' }}>
+            <p className={`text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>
+              <strong style={{ color: '#D4AF37' }}>Note:</strong> Detailed results and written reports from any of the Diagnostic Assessments are available starting at $2,500 as a paid service. Consultancy services include the price, and results, of the diagnostic.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
             <div 
-              className="absolute inset-0"
-              style={{
-                backgroundImage: 'url(/hero-patriotic.png)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                transform: `translateY(${scrollY * 0.5}px)`,
-                willChange: 'transform'
-              }}
-            />
-            <div className={`absolute inset-0 ${isDark ? 'bg-black bg-opacity-70' : 'bg-white bg-opacity-60'}`}></div>
-            <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center">
-                <h1 className="text-5xl md:text-7xl mb-6" style={{ color: '#D4AF37' }}>
-                  Intelligence. Strategy. Access.
-                </h1>
-                <p className={`text-2xl md:text-3xl ${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-4`}>
-                  Boutique Scale. Sovereign Results.
-                </p>
-                <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'} max-w-3xl mx-auto mb-12`}>
-                  Empowering small to mid-sized firms to compete and win in the government sector with the precision of a global firm and the exclusive attention your mission requires.
-                </p>
-                <button 
-                  onClick={() => scrollToSection('contact')} 
-                  className="px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90"
-                  style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
-                >
-                  Start Your Journey
-                </button>
-              </div>
-            </div>
-          </section>
-
-          <section id="about" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
-            <div className="max-w-7xl mx-auto">
-              <h2 className="text-4xl mb-8 text-center" style={{ color: '#D4AF37' }}>About Black Orchid Business Group</h2>
-              <div className={`max-w-4xl mx-auto text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed flex flex-col gap-6`}>
-                <p>
-                  Black Orchid Business Group is the authority for firms that refuse to be "just another vendor." We offer the technical precision of a global firm with the exclusive, boutique attention your mission requires.
-                </p>
-                <p>
-                  We operate at the intersection of intelligence, influence, and execution in the federal marketplace. Our clients don't need another consultant telling them what they already know. They need strategic partners who architect pathways to federal contract success.
-                </p>
-                <p>
-                  Whether you're an established company with proven capabilities seeking to penetrate the public sector, or an emerging firm preparing for your first government contract, we bridge the gap between small business agility and large-scale government requirements.
-                </p>
-                <p className="font-semibold text-xl italic text-center mt-4" style={{ color: '#D4AF37' }}>
-                  "We don't consult. We architect dominance."
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section id="services" className="py-20 px-6">
-            <div className="max-w-7xl mx-auto">
-              <h2 className="text-4xl mb-8 text-center" style={{ color: '#D4AF37' }}>Our Services</h2>
-              
-              <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 mb-12 max-w-3xl mx-auto text-center`} style={{ borderColor: '#D4AF37' }}>
-                <p className={`text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>
-                  <strong style={{ color: '#D4AF37' }}>Note:</strong> Detailed results and written reports from any of the Diagnostic Assessments are available starting at $2,500 as a paid service. Consultancy services include the price, and results, of the diagnostic.
-                </p>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                <div 
-                  onClick={() => setActiveIntake('agencyAlignment')}
-                  className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
-                  style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
-                      <TrendingUp style={{ color: '#D4AF37' }} size={32} />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>The Agency Alignment Map</h3>
-                      <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Our definitive blueprint for federal market dominance</p>
-                    </div>
-                  </div>
-                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
-                    A high-touch, proprietary consulting engagement designed to move your firm from the sidelines to the center of the mission. We deliver a tactical, 12-month execution plan tailored to your specific past performance and growth goals.
-                  </p>
-                  <div className="font-semibold" style={{ color: '#D4AF37' }}>
-                    Start Assessment →
-                  </div>
+              onClick={() => setActiveIntake('agencyAlignment')}
+              className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
+              style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
+                  <TrendingUp style={{ color: '#D4AF37' }} size={32} />
                 </div>
-
-                <div 
-                  onClick={() => setActiveIntake('federalDiagnostic')}
-                  className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
-                  style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
-                      <Shield style={{ color: '#D4AF37' }} size={32} />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>Federal Diagnostic</h3>
-                      <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Comprehensive readiness assessment</p>
-                    </div>
-                  </div>
-                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
-                    Evaluate your governance structure, financial resilience, operational maturity, and technical architecture to identify vulnerabilities and opportunities others miss. Comprehensive readiness assessment for federal contracting infrastructure.
-                  </p>
-                  <div className="font-semibold" style={{ color: '#D4AF37' }}>
-                    Start Assessment →
-                  </div>
-                </div>
-
-                <div 
-                  onClick={() => setActiveIntake('subToPrime')}
-                  className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
-                  style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
-                      <Building2 style={{ color: '#D4AF37' }} size={32} />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>Sub-to-Prime Transition</h3>
-                      <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Structured pathway to prime contractor authority</p>
-                    </div>
-                  </div>
-                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
-                    Evaluate your infrastructure, relationships, and financial capacity to determine your readiness for prime contractor status. We provide a structured pathway from subcontracting dependency to prime contractor authority.
-                  </p>
-                  <div className="font-semibold" style={{ color: '#D4AF37' }}>
-                    Start Assessment →
-                  </div>
-                </div>
-
-                <div 
-                  onClick={handleIntelligenceClick}
-                  className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
-                  style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
-                      <BookOpen style={{ color: '#D4AF37' }} size={32} />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>Federal Intelligence</h3>
-                      <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Continuous market intelligence and strategic insights</p>
-                    </div>
-                  </div>
-                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
-                    Stay ahead of market shifts, policy changes, and emerging opportunities with strategic recommendations tailored to your federal objectives. Continuous market intelligence for the federal marketplace.
-                  </p>
-                  <div className="font-semibold" style={{ color: '#D4AF37' }}>
-                    View Intelligence Library →
-                  </div>
+                <div>
+                  <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>The Agency Alignment Map</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Our definitive blueprint for federal market dominance</p>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <section id="featured-intelligence" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Featured Intelligence</h2>
-                <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Latest strategic insights from the federal marketplace</p>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-8">
-                {articles.slice(0, 3).map((article) => (
-                  <div 
-                    key={article.id}
-                    onClick={() => handleArticleSelectFromHome(article)}
-                    className={`${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'} border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:scale-105`}
-                    style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
-                  >
-                    <img 
-                      src={article.thumbnail} 
-                      alt={article.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-6">
-                      <div className={`flex items-center gap-2 text-sm ${isDark ? 'text-zinc-500' : 'text-zinc-400'} mb-3`}>
-                        <span>{article.date}</span>
-                        <span>·</span>
-                        <span>{article.readTime}</span>
-                      </div>
-                      <h3 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>{article.title}</h3>
-                      <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>{article.excerpt}</p>
-                      <div className="font-semibold" style={{ color: '#D4AF37' }}>Read Article →</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="text-center mt-12">
-                <button 
-                  onClick={handleIntelligenceClick}
-                  className="px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90"
-                  style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
-                >
-                  View Full Intelligence Library
-                </button>
+              <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
+                A high-touch, proprietary consulting engagement designed to move your firm from the sidelines to the center of the mission. We deliver a tactical, 12-month execution plan tailored to your specific past performance and growth goals.
+              </p>
+              <div className="font-semibold" style={{ color: '#D4AF37' }}>
+                Start Assessment →
               </div>
             </div>
-          </section>
 
-          <section id="contact" className="py-20 px-6">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Ready to Dominate Your Market?</h2>
-                <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Connect with a Black Orchid strategist for a discovery consultation</p>
+            <div 
+              onClick={() => setActiveIntake('federalDiagnostic')}
+              className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
+              style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
+                  <Shield style={{ color: '#D4AF37' }} size={32} />
+                </div>
+                <div>
+                  <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>Federal Diagnostic</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Comprehensive readiness assessment</p>
+                </div>
               </div>
+              <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
+                Evaluate your governance structure, financial resilience, operational maturity, and technical architecture to identify vulnerabilities and opportunities others miss. Comprehensive readiness assessment for federal contracting infrastructure.
+              </p>
+              <div className="font-semibold" style={{ color: '#D4AF37' }}>
+                Start Assessment →
+              </div>
+            </div>
 
-              <form 
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const formData = new FormData(e.target);
-                  
-                  fetch("/", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: encode({
-                      "form-name": "contact",
-                      ...Object.fromEntries(formData)
-                    })
-                  })
-                    .then(() => {
-                      setShowThankYou(true);
-                      e.target.reset();
-                    })
-                    .catch(error => {
-                      console.error("Form submission error:", error);
-                      alert("There was an error submitting the form. Please try again.");
-                    });
-                }}
-                className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} 
+            <div 
+              onClick={() => setActiveIntake('subToPrime')}
+              className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
+              style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
+                  <Building2 style={{ color: '#D4AF37' }} size={32} />
+                </div>
+                <div>
+                  <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>Sub-to-Prime Transition</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Structured pathway to prime contractor authority</p>
+                </div>
+              </div>
+              <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
+                Evaluate your infrastructure, relationships, and financial capacity to determine your readiness for prime contractor status. We provide a structured pathway from subcontracting dependency to prime contractor authority.
+              </p>
+              <div className="font-semibold" style={{ color: '#D4AF37' }}>
+                Start Assessment →
+              </div>
+            </div>
+
+            <div 
+              onClick={handleIntelligenceClick}
+              className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
+              style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
+                  <BookOpen style={{ color: '#D4AF37' }} size={32} />
+                </div>
+                <div>
+                  <h3 className="text-2xl mb-2" style={{ color: '#D4AF37' }}>Federal Intelligence</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Continuous market intelligence and strategic insights</p>
+                </div>
+              </div>
+              <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
+                Stay ahead of market shifts, policy changes, and emerging opportunities with strategic recommendations tailored to your federal objectives. Continuous market intelligence for the federal marketplace.
+              </p>
+              <div className="font-semibold" style={{ color: '#D4AF37' }}>
+                View Intelligence Library →
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="featured-intelligence" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Featured Intelligence</h2>
+            <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Latest strategic insights from the federal marketplace</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {articles.slice(0, 3).map((article) => (
+              <div 
+                key={article.id}
+                onClick={() => handleArticleSelectFromHome(article)}
+                className={`${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'} border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:scale-105`}
                 style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
               >
-                <input type="hidden" name="form-name" value="contact" />
-                
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Company Name *</label>
-                    <input name="companyName" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+                <img 
+                  src={article.thumbnail} 
+                  alt={article.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <div className={`flex items-center gap-2 text-sm ${isDark ? 'text-zinc-500' : 'text-zinc-400'} mb-3`}>
+                    <span>{article.date}</span>
+                    <span>·</span>
+                    <span>{article.readTime}</span>
                   </div>
-                  <div>
-                    <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Industry *</label>
-                    <input name="industry" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
-                  </div>
+                  <h3 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>{article.title}</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>{article.excerpt}</p>
+                  <div className="font-semibold" style={{ color: '#D4AF37' }}>Read Article →</div>
                 </div>
-
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Email Address *</label>
-                    <input name="email" type="email" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
-                  </div>
-                  <div>
-                    <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Phone Number</label>
-                    <input name="phone" type="tel" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Current Revenue Tier</label>
-                  <select name="revenueTier" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}>
-                    <option value="">Select a range</option>
-                    <option value="under-1m">Under $1M</option>
-                    <option value="1m-5m">$1M - $5M</option>
-                    <option value="5m-10m">$5M - $10M</option>
-                    <option value="10m-25m">$10M - $25M</option>
-                    <option value="over-25m">Over $25M</option>
-                  </select>
-                </div>
-
-                <div className="mb-6">
-                  <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Specific Contracting Challenges *</label>
-                  <textarea name="challenges" required rows={5} className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}></textarea>
-                </div>
-
-                <button type="submit" className="w-full px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90" style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}>
-                  Request Discovery Consultation
-                </button>
-              </form>
-            </div>
-          </section>
-
-          <footer className={`${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'} border-t py-12 px-6`}>
-            <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col items-center mb-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <img 
-                    src="/logo.png" 
-                    alt="Black Orchid Business Group" 
-                    className="h-10"
-                    style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
-                  />
-                  <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
-                </div>
-                <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4 text-center`}>Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.</p>
               </div>
-              
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
-                <button 
-                  onClick={() => setShowPrivacyPolicy(true)}
-                  className={`${isDark ? 'text-zinc-400 hover:text-zinc-300' : 'text-zinc-600 hover:text-zinc-700'} transition-colors underline`}
-                >
-                  Privacy Policy
-                </button>
-                <span className={`hidden md:inline ${isDark ? 'text-zinc-600' : 'text-zinc-400'}`}>|</span>
-                <button 
-                  onClick={() => setShowTermsOfService(true)}
-                  className={`${isDark ? 'text-zinc-400 hover:text-zinc-300' : 'text-zinc-600 hover:text-zinc-700'} transition-colors underline`}
-                >
-                  Terms of Service
-                </button>
-              </div>
-              
-              <p className={`${isDark ? 'text-zinc-500' : 'text-zinc-400'} text-sm text-center`}>© 2026 Black Orchid Business Group LLC. All rights reserved.</p>
-            </div>
-          </footer>
-        </>
-      )}
+            ))}
+          </div>
 
-      {showThankYou && (
-        <ThankYouPage onClose={handleThankYouClose} isDark={isDark} />
-      )}
+          <div className="text-center mt-12">
+            <button 
+              onClick={handleIntelligenceClick}
+              className="px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90"
+              style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+            >
+              View Full Intelligence Library
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Ready to Dominate Your Market?</h2>
+            <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Connect with a Black Orchid strategist for a discovery consultation</p>
+          </div>
+
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target);
+              
+              fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: encode({
+                  "form-name": "contact",
+                  ...Object.fromEntries(formData)
+                })
+              })
+                .then(() => {
+                  setShowThankYou(true);
+                  e.target.reset();
+                })
+                .catch(error => {
+                  console.error("Form submission error:", error);
+                  alert("There was an error submitting the form. Please try again.");
+                });
+            }}
+            className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} 
+            style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Company Name *</label>
+                <input name="companyName" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+              </div>
+              <div>
+                <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Industry *</label>
+                <input name="industry" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Email Address *</label>
+                <input name="email" type="email" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+              </div>
+              <div>
+                <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Phone Number</label>
+                <input name="phone" type="tel" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Current Revenue Tier</label>
+              <select name="revenueTier" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}>
+                <option value="">Select a range</option>
+                <option value="under-1m">Under $1M</option>
+                <option value="1m-5m">$1M - $5M</option>
+                <option value="5m-10m">$5M - $10M</option>
+                <option value="10m-25m">$10M - $25M</option>
+                <option value="over-25m">Over $25M</option>
+              </select>
+            </div>
+
+            <div className="mb-6">
+              <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Specific Contracting Challenges *</label>
+              <textarea name="challenges" required rows={5} className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}></textarea>
+            </div>
+
+            <button type="submit" className="w-full px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90" style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}>
+              Request Discovery Consultation
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <footer className={`${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'} border-t py-12 px-6`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col items-center mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <img 
+                src="/logo.png" 
+                alt="Black Orchid Business Group" 
+                className="h-10"
+                style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
+              />
+              <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+            </div>
+            <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4 text-center`}>Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.</p>
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
+            <button 
+              onClick={() => setShowPrivacyPolicy(true)}
+              className={`${isDark ? 'text-zinc-400 hover:text-zinc-300' : 'text-zinc-600 hover:text-zinc-700'} transition-colors underline`}
+            >
+              Privacy Policy
+            </button>
+            <span className={`hidden md:inline ${isDark ? 'text-zinc-600' : 'text-zinc-400'}`}>|</span>
+            <button 
+              onClick={() => setShowTermsOfService(true)}
+              className={`${isDark ? 'text-zinc-400 hover:text-zinc-300' : 'text-zinc-600 hover:text-zinc-700'} transition-colors underline`}
+            >
+              Terms of Service
+            </button>
+          </div>
+          
+          <p className={`${isDark ? 'text-zinc-500' : 'text-zinc-400'} text-sm text-center`}>© 2026 Black Orchid Business Group LLC. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
