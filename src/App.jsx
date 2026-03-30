@@ -27,7 +27,7 @@ const ThankYouPage = ({ onClose, isDark }) => {
   );
 };
 
-const IntakeForm = ({ segment, onClose, onSubmit, isDark }) => {
+const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggleTheme }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
 
@@ -35,6 +35,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark }) => {
     prebidding: {
       title: "Pre-Bidding / New to Federal",
       description: "Assess basic readiness for companies that haven't started yet",
+      blurb: "This assessment helps us understand where you are in your federal contracting journey. By mapping your current capabilities, compliance status, and readiness factors, we can provide targeted recommendations for building the foundation you need to compete successfully. Understanding your starting point is critical—it prevents costly missteps and ensures you're investing time and resources in the right infrastructure from day one.",
       steps: [
         {
           title: "Registration Status",
@@ -115,6 +116,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark }) => {
     agencyAlignment: {
       title: "The Agency Alignment Map",
       description: "Strategic mapping for companies that are registered but lack a focused capture plan",
+      blurb: "The Agency Alignment Map is our proprietary methodology for identifying where your capabilities create genuine competitive advantage in the federal marketplace. This assessment helps us reverse-engineer the specific agencies, contract vehicles, and decision-makers where you're most likely to win. Understanding your alignment isn't about casting a wide net—it's about precision targeting that converts your past performance into pipeline leverage.",
       steps: [
         {
           title: "Core Capabilities",
@@ -192,6 +194,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark }) => {
     subToPrime: {
       title: "Sub-to-Prime Transition",
       description: "Readiness check for established subs ready to 'Stop Sharing Margin'",
+      blurb: "Transitioning from subcontractor to prime isn't just about capability—it's about infrastructure. This assessment evaluates whether you have the financial resilience, operational maturity, and relationship capital to successfully own the customer relationship. Understanding your readiness prevents the common trap of winning a prime contract you can't deliver, which destroys your reputation faster than staying a sub ever could.",
       steps: [
         {
           title: "Subcontracting Experience",
@@ -269,6 +272,112 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark }) => {
           ]
         }
       ]
+    },
+    federalDiagnostic: {
+      title: "Federal Diagnostic",
+      description: "Comprehensive readiness assessment ($2,500 paid service)",
+      blurb: "The Federal Diagnostic is our most comprehensive evaluation—a deep-dive analysis of your governance structure, financial resilience, operational maturity, and competitive positioning. This is a $2,500 paid service that delivers a written report identifying critical vulnerabilities and high-leverage opportunities most consultants miss. Understanding your diagnostic results gives you a roadmap for building genuine competitive advantage, not just compliance checkboxes.",
+      isPaid: true,
+      steps: [
+        {
+          title: "Company Profile",
+          fields: [
+            { 
+              name: "companyName", 
+              label: "Company Name", 
+              type: "text", 
+              required: true 
+            },
+            { 
+              name: "yearsInBusiness", 
+              label: "Years in Business", 
+              type: "number", 
+              required: true 
+            },
+            { 
+              name: "annualRevenue", 
+              label: "Annual Revenue", 
+              type: "select", 
+              required: true, 
+              options: ["Under $1M", "$1M - $5M", "$5M - $10M", "$10M - $25M", "$25M+"] 
+            }
+          ]
+        },
+        {
+          title: "Federal Experience",
+          fields: [
+            { 
+              name: "federalExperience", 
+              label: "Federal Contracting Experience", 
+              type: "select", 
+              required: true, 
+              options: ["None", "Subcontractor Only", "Prime Contractor", "Both"] 
+            },
+            { 
+              name: "contractValue", 
+              label: "Largest Contract Value Managed", 
+              type: "select", 
+              required: true, 
+              options: ["Under $100K", "$100K - $500K", "$500K - $2M", "$2M - $5M", "Over $5M"] 
+            },
+            { 
+              name: "targetAgencies", 
+              label: "Target Federal Agencies", 
+              type: "textarea", 
+              required: true 
+            }
+          ]
+        },
+        {
+          title: "Infrastructure & Compliance",
+          fields: [
+            { 
+              name: "accountingSystem", 
+              label: "Accounting System Status", 
+              type: "select", 
+              required: true, 
+              options: ["DCAA Approved", "Compliant—not approved", "Needs Work", "Not Compliant"] 
+            },
+            { 
+              name: "cybersecurity", 
+              label: "Cybersecurity Compliance", 
+              type: "select", 
+              required: true, 
+              options: ["CMMC Certified", "NIST 800-171 Compliant", "FISMA Compliant", "None"] 
+            },
+            { 
+              name: "qualitySystem", 
+              label: "Quality Management System", 
+              type: "select", 
+              required: true, 
+              options: ["ISO 9001 Certified", "Documented System", "Informal Process", "None"] 
+            }
+          ]
+        },
+        {
+          title: "Contact & Goals",
+          fields: [
+            { 
+              name: "email", 
+              label: "Email Address", 
+              type: "email", 
+              required: true 
+            },
+            { 
+              name: "phone", 
+              label: "Phone Number", 
+              type: "tel", 
+              required: true 
+            },
+            { 
+              name: "goals", 
+              label: "What are your primary federal contracting goals?", 
+              type: "textarea", 
+              required: true 
+            }
+          ]
+        }
+      ]
     }
   };
 
@@ -299,123 +408,193 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4" style={{ fontFamily: 'Arial, sans-serif' }}>
-      <div className={`${isDark ? 'bg-[#020B13]' : 'bg-white'} border-2 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto`} style={{ borderColor: '#D4AF37' }}>
-        <div className={`sticky top-0 ${isDark ? 'bg-[#020B13]' : 'bg-white'} border-b-2 p-6 flex items-center justify-between z-10`} style={{ borderColor: '#D4AF37' }}>
-          <div>
-            <h3 className="text-2xl mb-1" style={{ color: '#D4AF37' }}>{config.title}</h3>
-            <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm`}>{config.description}</p>
+    <div className={`min-h-screen ${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'}`} style={{ fontFamily: 'Arial, sans-serif' }}>
+      {/* Navigation */}
+      <nav className={`fixed top-0 left-0 right-0 bg-opacity-95 border-b z-40 ${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'}`}>
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img 
+                src="/logo.png" 
+                alt="Black Orchid Business Group" 
+                className="h-12"
+                style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
+              />
+              <div>
+                <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+                <div className={`text-xs ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Intelligence. Strategy. Access.</div>
+              </div>
+            </div>
+
+            <div className="hidden md:flex items-center gap-8">
+              <button onClick={() => { onClose(); scrollToSection('home'); }} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Home</button>
+              <button onClick={() => { onClose(); scrollToSection('about'); }} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>About</button>
+              <button onClick={() => { onClose(); scrollToSection('services'); }} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Services</button>
+              <button onClick={() => { onClose(); scrollToSection('intelligence'); }} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Intelligence</button>
+              <button 
+                onClick={toggleTheme}
+                className={`p-2 ${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors hover:opacity-80`}
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <button onClick={() => { onClose(); scrollToSection('contact'); }} className="px-6 py-2 font-semibold rounded transition-colors hover:opacity-90" style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}>
+                Contact
+              </button>
+            </div>
+
+            <div className="md:hidden">
+              <button 
+                onClick={toggleTheme}
+                className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors`}
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+            </div>
           </div>
-          <button onClick={onClose} className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors hover:opacity-70`}>
-            <X size={24} />
-          </button>
         </div>
+      </nav>
 
-        <div className="p-6">
-          {/* Progress indicator */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <h4 className="text-lg font-semibold" style={{ color: '#D4AF37' }}>
-                {currentStepData.title}
-              </h4>
-              <span className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm`}>
-                Step {currentStep + 1} of {totalSteps}
-              </span>
+      {/* Form Content */}
+      <div className="pt-32 pb-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} style={{ borderColor: '#D4AF37' }}>
+            <div className="mb-8">
+              <h1 className="text-3xl mb-2" style={{ color: '#D4AF37' }}>{config.title}</h1>
+              <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-6`}>{config.description}</p>
+              {config.isPaid && (
+                <div className={`${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'} border-2 p-4 rounded mb-6`} style={{ borderColor: '#D4AF37' }}>
+                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} font-semibold`}>
+                    Please note: This is a comprehensive $2,500 paid service that includes a detailed written diagnostic report.
+                  </p>
+                </div>
+              )}
+              <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed`}>{config.blurb}</p>
             </div>
-            <div className="flex gap-2">
-              {Array.from({ length: totalSteps }).map((_, idx) => (
-                <div
-                  key={idx}
-                  className="flex-1 h-2 rounded-full transition-all"
-                  style={{
-                    backgroundColor: idx <= currentStep ? '#D4AF37' : (isDark ? '#3f3f46' : '#d4d4d8')
-                  }}
-                />
-              ))}
-            </div>
-          </div>
 
-          {/* Form fields with slide animation */}
-          <form onSubmit={handleSubmit}>
-            <div className="min-h-[300px]">
-              <div className="flex flex-col gap-6">
-                {currentStepData.fields.map((field) => (
-                  <div key={field.name}>
-                    <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>
-                      {field.label} {field.required && <span className="text-red-500">*</span>}
-                    </label>
-                    {field.type === 'textarea' ? (
-                      <textarea
-                        value={formData[field.name] || ''}
-                        onChange={(e) => handleInputChange(field.name, e.target.value)}
-                        required={field.required}
-                        rows={4}
-                        className={`w-full ${isDark ? 'bg-[#262626] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
-                        style={{ focusBorderColor: '#D4AF37' }}
-                      />
-                    ) : field.type === 'select' ? (
-                      <select
-                        value={formData[field.name] || ''}
-                        onChange={(e) => handleInputChange(field.name, e.target.value)}
-                        required={field.required}
-                        className={`w-full ${isDark ? 'bg-[#262626] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
-                        style={{ focusBorderColor: '#D4AF37' }}
-                      >
-                        <option value="">Select an option</option>
-                        {field.options.map((option) => (
-                          <option key={option} value={option}>{option}</option>
-                        ))}
-                      </select>
-                    ) : (
-                      <input
-                        type={field.type}
-                        value={formData[field.name] || ''}
-                        onChange={(e) => handleInputChange(field.name, e.target.value)}
-                        required={field.required}
-                        className={`w-full ${isDark ? 'bg-[#262626] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
-                        style={{ focusBorderColor: '#D4AF37' }}
-                      />
-                    )}
-                  </div>
+            {/* Progress indicator */}
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-lg font-semibold" style={{ color: '#D4AF37' }}>
+                  {currentStepData.title}
+                </h4>
+                <span className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm`}>
+                  Step {currentStep + 1} of {totalSteps}
+                </span>
+              </div>
+              <div className="flex gap-2">
+                {Array.from({ length: totalSteps }).map((_, idx) => (
+                  <div
+                    key={idx}
+                    className="flex-1 h-2 rounded-full transition-all"
+                    style={{
+                      backgroundColor: idx <= currentStep ? '#D4AF37' : (isDark ? '#3f3f46' : '#d4d4d8')
+                    }}
+                  />
                 ))}
               </div>
             </div>
 
-            <div className={`flex items-center justify-between mt-8 pt-6 border-t ${isDark ? 'border-[#262626]' : 'border-zinc-200'}`}>
-              <button
-                type="button"
-                onClick={handlePrevious}
-                disabled={currentStep === 0}
-                className={`flex items-center gap-2 px-6 py-3 ${currentStep === 0 ? (isDark ? 'text-zinc-600' : 'text-zinc-400') : ''} disabled:opacity-50 disabled:cursor-not-allowed transition-colors hover:opacity-80`}
-                style={{ color: currentStep > 0 ? '#D4AF37' : undefined }}
-              >
-                <ChevronLeft size={20} />
-                Previous
-              </button>
-              
-              {currentStep < totalSteps - 1 ? (
+            {/* Form fields */}
+            <form onSubmit={handleSubmit}>
+              <div className="min-h-[300px]">
+                <div className="flex flex-col gap-6">
+                  {currentStepData.fields.map((field) => (
+                    <div key={field.name}>
+                      <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>
+                        {field.label} {field.required && <span className="text-red-500">*</span>}
+                      </label>
+                      {field.type === 'textarea' ? (
+                        <textarea
+                          value={formData[field.name] || ''}
+                          onChange={(e) => handleInputChange(field.name, e.target.value)}
+                          required={field.required}
+                          rows={4}
+                          className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
+                          style={{ focusBorderColor: '#D4AF37' }}
+                        />
+                      ) : field.type === 'select' ? (
+                        <select
+                          value={formData[field.name] || ''}
+                          onChange={(e) => handleInputChange(field.name, e.target.value)}
+                          required={field.required}
+                          className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
+                          style={{ focusBorderColor: '#D4AF37' }}
+                        >
+                          <option value="">Select an option</option>
+                          {field.options.map((option) => (
+                            <option key={option} value={option}>{option}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        <input
+                          type={field.type}
+                          value={formData[field.name] || ''}
+                          onChange={(e) => handleInputChange(field.name, e.target.value)}
+                          required={field.required}
+                          className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
+                          style={{ focusBorderColor: '#D4AF37' }}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className={`flex items-center justify-between mt-8 pt-6 border-t ${isDark ? 'border-[#262626]' : 'border-zinc-200'}`}>
                 <button
                   type="button"
-                  onClick={handleNext}
-                  className="flex items-center gap-2 px-6 py-3 font-semibold rounded transition-colors hover:opacity-90"
-                  style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+                  onClick={handlePrevious}
+                  disabled={currentStep === 0}
+                  className={`flex items-center gap-2 px-6 py-3 ${currentStep === 0 ? (isDark ? 'text-zinc-600' : 'text-zinc-400') : ''} disabled:opacity-50 disabled:cursor-not-allowed transition-colors hover:opacity-80`}
+                  style={{ color: currentStep > 0 ? '#D4AF37' : undefined }}
                 >
-                  Next
-                  <ChevronRight size={20} />
+                  <ChevronLeft size={20} />
+                  Previous
                 </button>
-              ) : (
-                <button
-                  type="submit"
-                  className="px-8 py-3 font-semibold rounded transition-colors hover:opacity-90"
-                  style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
-                >
-                  Submit Application
-                </button>
-              )}
-            </div>
-          </form>
+                
+                {currentStep < totalSteps - 1 ? (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className="flex items-center gap-2 px-6 py-3 font-semibold rounded transition-colors hover:opacity-90"
+                    style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+                  >
+                    Next
+                    <ChevronRight size={20} />
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    className="px-8 py-3 font-semibold rounded transition-colors hover:opacity-90"
+                    style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+                  >
+                    Submit Assessment
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className={`${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'} border-t py-12 px-6`}>
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <img 
+              src="/logo.png" 
+              alt="Black Orchid Business Group" 
+              className="h-10"
+              style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
+            />
+            <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+          </div>
+          <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.</p>
+          <p className={`${isDark ? 'text-zinc-500' : 'text-zinc-400'} text-sm`}>© 2026 Black Orchid Business Group LLC. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };
@@ -496,11 +675,15 @@ export default function BlackOrchidWebsite() {
   };
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setMobileMenuOpen(false);
-    }
+    setSelectedArticle(null);
+    setActiveIntake(null);
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setMobileMenuOpen(false);
+      }
+    }, 100);
   };
 
   const handleFormSubmit = () => {
@@ -585,8 +768,17 @@ export default function BlackOrchidWebsite() {
         </div>
       </nav>
 
-      {/* Conditional rendering: show article view or main content */}
-      {selectedArticle ? (
+      {/* Conditional rendering: show article view, intake form, or main content */}
+      {activeIntake ? (
+        <IntakeForm 
+          segment={activeIntake} 
+          onClose={() => setActiveIntake(null)} 
+          onSubmit={handleFormSubmit}
+          isDark={isDark}
+          scrollToSection={scrollToSection}
+          toggleTheme={toggleTheme}
+        />
+      ) : selectedArticle ? (
         <ArticleView article={selectedArticle} onClose={() => setSelectedArticle(null)} isDark={isDark} />
       ) : (
         <>
@@ -655,8 +847,13 @@ export default function BlackOrchidWebsite() {
             <div className="max-w-7xl mx-auto">
               <h2 className="text-4xl mb-12 text-center" style={{ color: '#D4AF37' }}>Our Services</h2>
               
-              <div className="grid md:grid-cols-2 gap-8 mb-16">
-                <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}>
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Agency Alignment Map Card */}
+                <div 
+                  onClick={() => setActiveIntake('agencyAlignment')}
+                  className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
+                  style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+                >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
                       <TrendingUp style={{ color: '#D4AF37' }} size={32} />
@@ -669,12 +866,17 @@ export default function BlackOrchidWebsite() {
                   <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
                     A high-touch, proprietary consulting engagement designed to move your firm from the sidelines to the center of the mission. We deliver a tactical, 12-month execution plan tailored to your specific past performance and growth goals.
                   </p>
-                  <button onClick={() => scrollToSection('contact')} className="font-semibold hover:opacity-80" style={{ color: '#D4AF37' }}>
-                    Learn More →
-                  </button>
+                  <div className="font-semibold" style={{ color: '#D4AF37' }}>
+                    Start Assessment →
+                  </div>
                 </div>
 
-                <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}>
+                {/* Federal Diagnostic Card */}
+                <div 
+                  onClick={() => setActiveIntake('federalDiagnostic')}
+                  className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
+                  style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+                >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
                       <Shield style={{ color: '#D4AF37' }} size={32} />
@@ -684,15 +886,23 @@ export default function BlackOrchidWebsite() {
                       <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Comprehensive readiness assessment</p>
                     </div>
                   </div>
-                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
-                    Evaluate your governance structure, financial resilience, operational maturity, and technical architecture to identify vulnerabilities and opportunities others miss. Comprehensive readiness assessment for federal contracting infrastructure.
+                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-4`}>
+                    Evaluate your governance structure, financial resilience, operational maturity, and technical architecture to identify vulnerabilities and opportunities others miss.
                   </p>
-                  <button onClick={() => scrollToSection('contact')} className="font-semibold hover:opacity-80" style={{ color: '#D4AF37' }}>
-                    Learn More →
-                  </button>
+                  <div className={`${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'} border p-3 rounded mb-4`} style={{ borderColor: '#D4AF37' }}>
+                    <p className={`text-sm ${isDark ? 'text-zinc-300' : 'text-zinc-700'} font-semibold`}>$2,500 Paid Service</p>
+                  </div>
+                  <div className="font-semibold" style={{ color: '#D4AF37' }}>
+                    Start Assessment →
+                  </div>
                 </div>
 
-                <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}>
+                {/* Sub-to-Prime Card */}
+                <div 
+                  onClick={() => setActiveIntake('subToPrime')}
+                  className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
+                  style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+                >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
                       <Building2 style={{ color: '#D4AF37' }} size={32} />
@@ -705,12 +915,17 @@ export default function BlackOrchidWebsite() {
                   <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
                     Evaluate your infrastructure, relationships, and financial capacity to determine your readiness for prime contractor status. We provide a structured pathway from subcontracting dependency to prime contractor authority.
                   </p>
-                  <button onClick={() => scrollToSection('contact')} className="font-semibold hover:opacity-80" style={{ color: '#D4AF37' }}>
-                    Learn More →
-                  </button>
+                  <div className="font-semibold" style={{ color: '#D4AF37' }}>
+                    Start Assessment →
+                  </div>
                 </div>
 
-                <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}>
+                {/* Federal Intelligence Card */}
+                <div 
+                  onClick={() => scrollToSection('intelligence')}
+                  className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
+                  style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+                >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 rounded" style={{ backgroundColor: isDark ? 'rgba(212, 175, 55, 0.2)' : 'rgba(212, 175, 55, 0.1)' }}>
                       <BookOpen style={{ color: '#D4AF37' }} size={32} />
@@ -723,44 +938,8 @@ export default function BlackOrchidWebsite() {
                   <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
                     Stay ahead of market shifts, policy changes, and emerging opportunities with strategic recommendations tailored to your federal objectives. Continuous market intelligence for the federal marketplace.
                   </p>
-                  <button onClick={() => scrollToSection('intelligence')} className="font-semibold hover:opacity-80" style={{ color: '#D4AF37' }}>
+                  <div className="font-semibold" style={{ color: '#D4AF37' }}>
                     Read Intelligence →
-                  </button>
-                </div>
-              </div>
-
-              {/* Intake Cards */}
-              <div className="mt-16">
-                <h3 className="text-3xl mb-8 text-center" style={{ color: '#D4AF37' }}>Where Are You in Your Journey?</h3>
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div 
-                    onClick={() => setActiveIntake('prebidding')}
-                    className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 cursor-pointer transition-all hover:scale-105`}
-                    style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
-                  >
-                    <h4 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>Pre-Bidding / New to Federal</h4>
-                    <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Preparing to enter the federal marketplace</p>
-                    <div className="font-semibold" style={{ color: '#D4AF37' }}>Start Assessment →</div>
-                  </div>
-
-                  <div 
-                    onClick={() => setActiveIntake('agencyAlignment')}
-                    className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 cursor-pointer transition-all hover:scale-105`}
-                    style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
-                  >
-                    <h4 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>Agency Alignment Map</h4>
-                    <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Registered but need strategic direction</p>
-                    <div className="font-semibold" style={{ color: '#D4AF37' }}>Start Assessment →</div>
-                  </div>
-
-                  <div 
-                    onClick={() => setActiveIntake('subToPrime')}
-                    className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 cursor-pointer transition-all hover:scale-105`}
-                    style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
-                  >
-                    <h4 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>Sub to Prime</h4>
-                    <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Ready to transition to prime contractor</p>
-                    <div className="font-semibold" style={{ color: '#D4AF37' }}>Start Assessment →</div>
                   </div>
                 </div>
               </div>
@@ -878,16 +1057,7 @@ export default function BlackOrchidWebsite() {
         </>
       )}
 
-      {/* Modals */}
-      {activeIntake && (
-        <IntakeForm 
-          segment={activeIntake} 
-          onClose={() => setActiveIntake(null)} 
-          onSubmit={handleFormSubmit}
-          isDark={isDark} 
-        />
-      )}
-
+      {/* Thank You Modal */}
       {showThankYou && (
         <ThankYouPage onClose={handleThankYouClose} isDark={isDark} />
       )}
