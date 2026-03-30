@@ -3,6 +3,80 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Menu, X, BookOpen, Building2, TrendingUp, Shield, Sun, Moon, CheckCircle } from 'lucide-react';
 import { articles } from './data/articles';
 
+// Helper function to encode form data
+const encode = (data) => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
+// Hidden Netlify form components for form detection
+const NetlifyForms = () => (
+  <div style={{ display: 'none' }}>
+    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="companyName" />
+      <input type="text" name="industry" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <select name="revenueTier"><option value=""></option></select>
+      <textarea name="challenges"></textarea>
+    </form>
+    
+    <form name="pre-bidding-assessment" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="pre-bidding-assessment" />
+      <input type="text" name="samStatus" />
+      <input type="text" name="cageStatus" />
+      <input type="text" name="cybersecurity" />
+      <input type="text" name="accountingSystem" />
+      <input type="text" name="bondingCapacity" />
+      <input type="text" name="pastPerformance" />
+      <textarea name="industry"></textarea>
+      <textarea name="mainChallenge"></textarea>
+    </form>
+    
+    <form name="agency-alignment-assessment" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="agency-alignment-assessment" />
+      <textarea name="naicsCodes"></textarea>
+      <textarea name="primaryCapabilities"></textarea>
+      <textarea name="federalPastPerformance"></textarea>
+      <textarea name="targetAgencies"></textarea>
+      <input type="text" name="annualRevenue" />
+      <input type="text" name="geographicFocus" />
+      <input type="text" name="bidHistory" />
+      <textarea name="desiredResult"></textarea>
+    </form>
+    
+    <form name="sub-to-prime-assessment" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="sub-to-prime-assessment" />
+      <input type="text" name="yearsAsSubcontractor" />
+      <input type="text" name="subcontractingRevenue" />
+      <input type="text" name="primeRelationships" />
+      <input type="text" name="cparsHistory" />
+      <input type="text" name="govRelationships" />
+      <input type="text" name="workingCapital" />
+      <input type="text" name="proposalCapability" />
+      <textarea name="strategicIntent"></textarea>
+    </form>
+    
+    <form name="federal-diagnostic-assessment" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="federal-diagnostic-assessment" />
+      <input type="text" name="companyName" />
+      <input type="number" name="yearsInBusiness" />
+      <input type="text" name="annualRevenue" />
+      <input type="text" name="federalExperience" />
+      <input type="text" name="contractValue" />
+      <textarea name="targetAgencies"></textarea>
+      <input type="text" name="accountingSystem" />
+      <input type="text" name="cybersecurity" />
+      <input type="text" name="qualitySystem" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <textarea name="goals"></textarea>
+    </form>
+  </div>
+);
+
 const ThankYouPage = ({ onClose, isDark }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4" style={{ fontFamily: 'Arial, sans-serif' }}>
@@ -825,13 +899,26 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", { segment, data: formData });
-    onSubmit();
+    
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": config.formName,
+        ...formData
+      })
+    })
+      .then(() => {
+        onSubmit();
+      })
+      .catch(error => {
+        console.error("Form submission error:", error);
+        alert("There was an error submitting the form. Please try again.");
+      });
   };
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'}`} style={{ fontFamily: 'Arial, sans-serif' }}>
-      {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 bg-opacity-95 border-b z-40 ${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'}`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -878,7 +965,6 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
         </div>
       </nav>
 
-      {/* Form Content */}
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
           <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} style={{ borderColor: '#D4AF37' }}>
@@ -888,7 +974,6 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
               <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed`}>{config.blurb}</p>
             </div>
 
-            {/* Progress indicator */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-lg font-semibold" style={{ color: '#D4AF37' }}>
@@ -911,16 +996,8 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
               </div>
             </div>
 
-            {/* Form fields */}
-            <form 
-              name={config.formName}
-              method="POST" 
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              onSubmit={handleSubmit}
-            >
+            <form onSubmit={handleSubmit}>
               <input type="hidden" name="form-name" value={config.formName} />
-              <input type="hidden" name="bot-field" />
               
               <div className="min-h-[300px]">
                 <div className="flex flex-col gap-6">
@@ -1006,7 +1083,6 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
         </div>
       </div>
 
-      {/* Footer */}
       <footer className={`${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'} border-t py-12 px-6`}>
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -1078,7 +1154,6 @@ const IntelligenceLibrary = ({ onArticleSelect, onClose, isDark, toggleTheme, sc
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'}`} style={{ fontFamily: 'Arial, sans-serif' }}>
-      {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 bg-opacity-95 border-b z-40 ${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'}`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -1125,7 +1200,6 @@ const IntelligenceLibrary = ({ onArticleSelect, onClose, isDark, toggleTheme, sc
         </div>
       </nav>
 
-      {/* Intelligence Library Content */}
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -1162,7 +1236,6 @@ const IntelligenceLibrary = ({ onArticleSelect, onClose, isDark, toggleTheme, sc
         </div>
       </div>
 
-      {/* Footer */}
       <footer className={`${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'} border-t py-12 px-6`}>
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -1269,7 +1342,8 @@ export default function BlackOrchidWebsite() {
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'}`} style={{ fontFamily: 'Arial, sans-serif' }}>
-      {/* Navigation */}
+      <NetlifyForms />
+      
       <nav className={`fixed top-0 left-0 right-0 bg-opacity-95 border-b z-40 ${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'}`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -1339,7 +1413,6 @@ export default function BlackOrchidWebsite() {
         </div>
       </nav>
 
-      {/* Conditional rendering */}
       {showPrivacyPolicy ? (
         <PrivacyPolicy onClose={() => setShowPrivacyPolicy(false)} isDark={isDark} />
       ) : showTermsOfService ? (
@@ -1370,7 +1443,6 @@ export default function BlackOrchidWebsite() {
         />
       ) : (
         <>
-          {/* Hero Section with Parallax */}
           <section 
             id="home" 
             className="pt-32 pb-20 px-6 relative overflow-hidden"
@@ -1409,7 +1481,6 @@ export default function BlackOrchidWebsite() {
             </div>
           </section>
 
-          {/* About Section */}
           <section id="about" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
             <div className="max-w-7xl mx-auto">
               <h2 className="text-4xl mb-8 text-center" style={{ color: '#D4AF37' }}>About Black Orchid Business Group</h2>
@@ -1430,12 +1501,10 @@ export default function BlackOrchidWebsite() {
             </div>
           </section>
 
-          {/* Services Section */}
           <section id="services" className="py-20 px-6">
             <div className="max-w-7xl mx-auto">
               <h2 className="text-4xl mb-8 text-center" style={{ color: '#D4AF37' }}>Our Services</h2>
               
-              {/* Paid Service Notice */}
               <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 mb-12 max-w-3xl mx-auto text-center`} style={{ borderColor: '#D4AF37' }}>
                 <p className={`text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>
                   <strong style={{ color: '#D4AF37' }}>Note:</strong> Detailed results and written reports from any of the Diagnostic Assessments are available starting at $2,500 as a paid service. Consultancy services include the price, and results, of the diagnostic.
@@ -1443,7 +1512,6 @@ export default function BlackOrchidWebsite() {
               </div>
               
               <div className="grid md:grid-cols-2 gap-8">
-                {/* Agency Alignment Map Card */}
                 <div 
                   onClick={() => setActiveIntake('agencyAlignment')}
                   className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
@@ -1466,7 +1534,6 @@ export default function BlackOrchidWebsite() {
                   </div>
                 </div>
 
-                {/* Federal Diagnostic Card */}
                 <div 
                   onClick={() => setActiveIntake('federalDiagnostic')}
                   className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
@@ -1489,7 +1556,6 @@ export default function BlackOrchidWebsite() {
                   </div>
                 </div>
 
-                {/* Sub-to-Prime Card */}
                 <div 
                   onClick={() => setActiveIntake('subToPrime')}
                   className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
@@ -1512,7 +1578,6 @@ export default function BlackOrchidWebsite() {
                   </div>
                 </div>
 
-                {/* Federal Intelligence Card */}
                 <div 
                   onClick={handleIntelligenceClick}
                   className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
@@ -1538,7 +1603,6 @@ export default function BlackOrchidWebsite() {
             </div>
           </section>
 
-          {/* Featured Intelligence Section (3 articles) */}
           <section id="featured-intelligence" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-12">
@@ -1585,7 +1649,6 @@ export default function BlackOrchidWebsite() {
             </div>
           </section>
 
-          {/* Contact Section */}
           <section id="contact" className="py-20 px-6">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -1594,15 +1657,31 @@ export default function BlackOrchidWebsite() {
               </div>
 
               <form 
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.target);
+                  
+                  fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: encode({
+                      "form-name": "contact",
+                      ...Object.fromEntries(formData)
+                    })
+                  })
+                    .then(() => {
+                      setShowThankYou(true);
+                      e.target.reset();
+                    })
+                    .catch(error => {
+                      console.error("Form submission error:", error);
+                      alert("There was an error submitting the form. Please try again.");
+                    });
+                }}
                 className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} 
                 style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
               >
                 <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="bot-field" />
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
@@ -1650,7 +1729,6 @@ export default function BlackOrchidWebsite() {
             </div>
           </section>
 
-          {/* Footer */}
           <footer className={`${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'} border-t py-12 px-6`}>
             <div className="max-w-7xl mx-auto">
               <div className="flex flex-col items-center mb-8">
@@ -1688,7 +1766,6 @@ export default function BlackOrchidWebsite() {
         </>
       )}
 
-      {/* Thank You Modal */}
       {showThankYou && (
         <ThankYouPage onClose={handleThankYouClose} isDark={isDark} />
       )}
