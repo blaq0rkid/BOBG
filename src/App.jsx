@@ -27,6 +27,421 @@ const ThankYouPage = ({ onClose, isDark }) => {
   );
 };
 
+const PrivacyPolicy = ({ onClose, isDark }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className={`min-h-screen ${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'}`} style={{ fontFamily: 'Arial, sans-serif' }}>
+      <div className="pt-32 pb-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <button 
+            onClick={onClose}
+            className={`flex items-center gap-2 mb-6 ${isDark ? 'text-zinc-400' : 'text-zinc-600'} hover:opacity-70 transition-colors`}
+          >
+            <ChevronLeft size={20} />
+            Back to Home
+          </button>
+          
+          <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} style={{ borderColor: '#D4AF37' }}>
+            <h1 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Privacy Policy</h1>
+            <p className={`text-sm ${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-8`}>Black Orchid Business Group - Effective Date: January 26, 2024</p>
+            
+            <div className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed space-y-6`}>
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>1. Introduction</h2>
+                <p>Black Orchid Business Group ("Company," "we," "us," or "our") is committed to protecting the privacy of individuals who visit our website at bobgllc.com (the "Site") and who use our business consulting services. This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you visit our Site or engage our services.</p>
+                <p className="mt-4">By accessing or using our Site, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not access the Site or use our services.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>2. Information We Collect</h2>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>2.1 Personal Information</h3>
+                <p>We may collect personally identifiable information that you voluntarily provide to us when you:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>Complete contact forms or inquiry submissions on our Site</li>
+                  <li>Request information about our government contracting services</li>
+                  <li>Subscribe to our newsletter or marketing communications</li>
+                  <li>Engage our services for market research, proposal writing, or bid management</li>
+                  <li>Communicate with us via email, phone, or other means</li>
+                </ul>
+                
+                <p className="mt-4">This information may include:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>Full name</li>
+                  <li>Business name and title</li>
+                  <li>Email address</li>
+                  <li>Phone number</li>
+                  <li>Mailing address</li>
+                  <li>Business industry and size</li>
+                  <li>Government contracting goals and history</li>
+                  <li>Payment and billing information</li>
+                </ul>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>2.2 Non-Personal Information</h3>
+                <p>When you visit our Site, we may automatically collect certain non-personally identifiable information, including:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>Browser type and version</li>
+                  <li>Operating system</li>
+                  <li>IP address</li>
+                  <li>Pages visited and time spent on pages</li>
+                  <li>Referring website addresses</li>
+                  <li>Date and time of access</li>
+                  <li>Device identifiers</li>
+                </ul>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>2.3 Cookies and Tracking Technologies</h3>
+                <p>We may use cookies, web beacons, pixels, and similar tracking technologies to collect information about your browsing activities on our Site. For more information, please see Section 6 of this Privacy Policy.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>3. How We Use Your Information</h2>
+                <p>We may use the information we collect for various purposes, including to:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>Provide, operate, and maintain our Site and services</li>
+                  <li>Respond to your inquiries and fulfill your requests for information</li>
+                  <li>Deliver market research, proposal writing, and bid management services</li>
+                  <li>Process transactions and send related information, including confirmations and invoices</li>
+                  <li>Send administrative information, such as updates to our terms, conditions, and policies</li>
+                  <li>Communicate with you about services, promotions, and events that may be of interest to you</li>
+                  <li>Analyze usage patterns to improve our Site, services, and user experience</li>
+                  <li>Protect against fraudulent, unauthorized, or illegal activity</li>
+                  <li>Comply with legal obligations and enforce our agreements</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>4. How We Share Your Information</h2>
+                <p>We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:</p>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>4.1 Service Providers</h3>
+                <p>We may share your information with third-party vendors, contractors, and service providers who perform services on our behalf, such as payment processing, data analysis, email delivery, hosting services, and customer service. These parties are obligated to maintain the confidentiality of your information.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>4.2 Legal Requirements</h3>
+                <p>We may disclose your information if required to do so by law or in response to valid requests by public authorities, including to meet national security or law enforcement requirements.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>4.3 Business Transfers</h3>
+                <p>In the event of a merger, acquisition, reorganization, bankruptcy, or sale of all or a portion of our assets, your information may be transferred as part of that transaction.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>4.4 With Your Consent</h3>
+                <p>We may share your information for other purposes with your express consent.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>5. Data Security</h2>
+                <p>We implement reasonable administrative, technical, and physical security measures designed to protect the personal information we collect from unauthorized access, use, alteration, and disclosure. However, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+                <p className="mt-4">You are responsible for maintaining the confidentiality of any account credentials and for restricting access to your devices. Please notify us immediately if you believe your information has been compromised.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>6. Cookies and Tracking Technologies</h2>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>6.1 What Are Cookies?</h3>
+                <p>Cookies are small data files placed on your device when you visit a website. They help us recognize your browser, remember your preferences, and understand how you use our Site.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>6.2 Types of Cookies We Use</h3>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li><strong>Essential Cookies:</strong> Necessary for the Site to function properly.</li>
+                  <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our Site by collecting and reporting information anonymously.</li>
+                  <li><strong>Functional Cookies:</strong> Enable enhanced functionality and personalization.</li>
+                  <li><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements and track campaign performance.</li>
+                </ul>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>6.3 Your Cookie Choices</h3>
+                <p>Most web browsers are set to accept cookies by default. You can modify your browser settings to decline cookies or alert you when cookies are being sent. Please note that disabling cookies may affect the functionality of our Site.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>7. Third-Party Links</h2>
+                <p>Our Site may contain links to third-party websites, applications, or services that are not operated by us. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>8. Children's Privacy</h2>
+                <p>Our Site and services are not directed to individuals under the age of eighteen (18). We do not knowingly collect personal information from children under 18. If we become aware that we have inadvertently collected personal information from a child under 18, we will take steps to delete such information promptly. If you believe we have collected information from a child under 18, please contact us immediately.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>9. Your Privacy Rights</h2>
+                <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li><strong>Access:</strong> The right to request copies of your personal information.</li>
+                  <li><strong>Correction:</strong> The right to request correction of inaccurate or incomplete information.</li>
+                  <li><strong>Deletion:</strong> The right to request deletion of your personal information, subject to certain exceptions.</li>
+                  <li><strong>Opt-Out:</strong> The right to opt out of receiving marketing communications from us.</li>
+                </ul>
+                <p className="mt-4">To exercise any of these rights, please contact us using the information provided in Section 11 below. We will respond to your request in accordance with applicable law.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>10. Changes to This Privacy Policy</h2>
+                <p>We reserve the right to update or modify this Privacy Policy at any time. When we make changes, we will revise the "Effective Date" at the top of this page. We encourage you to review this Privacy Policy periodically to stay informed about how we are protecting your information. Your continued use of the Site following the posting of changes constitutes your acceptance of such changes.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>11. Contact Us</h2>
+                <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, or if you would like to submit a request to access, correct, delete, or otherwise inquire about your personal information, please contact us at:</p>
+                <p className="mt-4">
+                  <strong>Black Orchid Business Group</strong><br />
+                  Website: bobgllc.com<br />
+                  Email: privacy@bobgllc.com
+                </p>
+                <p className="mt-4">This Privacy Policy was last updated on January 26, 2026.</p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const TermsOfService = ({ onClose, isDark }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className={`min-h-screen ${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'}`} style={{ fontFamily: 'Arial, sans-serif' }}>
+      <div className="pt-32 pb-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <button 
+            onClick={onClose}
+            className={`flex items-center gap-2 mb-6 ${isDark ? 'text-zinc-400' : 'text-zinc-600'} hover:opacity-70 transition-colors`}
+          >
+            <ChevronLeft size={20} />
+            Back to Home
+          </button>
+          
+          <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} style={{ borderColor: '#D4AF37' }}>
+            <h1 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Terms of Service</h1>
+            <p className={`text-sm ${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-8`}>Black Orchid Business Group - Effective Date: January 26, 2024</p>
+            
+            <div className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed space-y-6`}>
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>1. Agreement to Terms</h2>
+                <p>Welcome to Black Orchid Business Group ("Company," "we," "us," or "our"). These Terms of Service ("Terms") govern your access to and use of our website located at bobgllc.com (the "Website") and any services, content, or information provided through the Website or directly by the Company (collectively, the "Services").</p>
+                <p className="mt-4">By accessing or using the Website or Services, you ("User," "Client," or "you") acknowledge that you have read, understood, and agree to be bound by these Terms. If you do not agree to these Terms, you must discontinue use of the Website and Services immediately.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>2. Description of Services</h2>
+                <p>Black Orchid Business Group provides business consulting services specializing in government contracting assistance for small to mid-sized businesses. Our Services include, but are not limited to:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-2">
+                  <li><strong>Consulting Services (Government Contracting Advisory):</strong> Strategic guidance related to government contracting readiness, compliance considerations, process navigation, and competitive positioning for federal, state, county, and city opportunities.</li>
+                  <li><strong>Market Research and Analysis:</strong> Identification and evaluation of relevant government contracting opportunities at federal, state, county, and city levels.</li>
+                  <li><strong>Proposal Writing Assistance:</strong> Expert support drafting, editing, and organizing proposal content to help meet solicitation requirements with a focus on clarity and compliance.</li>
+                  <li><strong>Bid Management Services:</strong> Comprehensive support throughout the bidding process, from preparation to submission, including timeline planning, document coordination, deadline management, and compliance verification.</li>
+                </ul>
+                <p className="mt-4">The scope of any specific engagement shall be governed by a separate written agreement or statement of work executed between the Company and Client.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>3. Eligibility</h2>
+                <p>By using the Website or Services, you represent and warrant that:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>You are at least eighteen (18) years of age;</li>
+                  <li>You have the legal authority to enter into these Terms;</li>
+                  <li>If you are acting on behalf of a business entity, you have the authority to bind such entity to these Terms;</li>
+                  <li>You will comply with all applicable local, state, national, and international laws and regulations in connection with your use of the Website and Services.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>4. User Accounts</h2>
+                <p>Certain features of our Website or Services may require you to create an account. You agree to:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>Provide accurate, current, and complete information during registration;</li>
+                  <li>Maintain and promptly update your account information;</li>
+                  <li>Maintain the security and confidentiality of your login credentials;</li>
+                  <li>Accept responsibility for all activities that occur under your account;</li>
+                  <li>Notify us immediately of any unauthorized use of your account.</li>
+                </ul>
+                <p className="mt-4">You further agree to provide accurate, current, and complete information and documentation reasonably requested by the Company in connection with the Services, including without limitation information required for market research, proposal development, bid submissions, and communications with government agencies. You are solely responsible for the completeness and accuracy of all information you provide, and you acknowledge that inaccurate, incomplete, or late information may impact the quality, compliance, or timeliness of deliverables.</p>
+                <p className="mt-4">We reserve the right to suspend or terminate your account at our sole discretion if we suspect any breach of these Terms.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>5. Intellectual Property Rights</h2>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>5.1 Company Intellectual Property</h3>
+                <p>All content, materials, features, and functionality on the Website, including but not limited to text, graphics, logos, icons, images, audio clips, software, and the compilation thereof, are the exclusive property of Black Orchid Business Group or its licensors and are protected by United States and international copyright, trademark, and other intellectual property laws.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>5.2 Limited License</h3>
+                <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, and revocable license to access and use the Website for your personal or internal business purposes. This license does not include the right to:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>Modify, copy, or distribute any content from the Website;</li>
+                  <li>Use any data mining, robots, or similar data gathering methods;</li>
+                  <li>Reverse engineer any portion of the Website;</li>
+                  <li>Remove any copyright or proprietary notices from any content.</li>
+                </ul>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>5.3 Client Materials</h3>
+                <p>You retain ownership of any materials, data, or information you provide to us in connection with the Services ("Client Materials"). By providing Client Materials, you grant us a non-exclusive license to use such materials solely for the purpose of performing the Services.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>5.4 Work Product and Deliverables</h3>
+                <p>Unless otherwise agreed in a separate written agreement, the Company retains all right, title, and interest in and to any templates, frameworks, methodologies, processes, know-how, tools, and pre-existing materials used to perform the Services, and any generalized learnings (collectively, "Company Materials").</p>
+                <p className="mt-4">Subject to your payment of all applicable fees, you are granted a non-exclusive, non-transferable license to use the specific deliverables created for you as part of the Services (such as written proposal drafts, compliance matrices, schedules, or bid tracking artifacts) for your internal business purposes in connection with pursuing the applicable opportunities (the "Work Product"). This license does not permit resale, public distribution, or use to provide services to third parties.</p>
+                <p className="mt-4">To the extent any Work Product incorporates Company Materials, the Company Materials remain the Company's property and are licensed (not sold) to you solely as part of the Work Product.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>6. Acceptable Use Policy</h2>
+                <p>You agree not to use the Website or Services to:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>Violate any applicable law, regulation, or third-party rights;</li>
+                  <li>Transmit any unlawful, threatening, defamatory, obscene, or otherwise objectionable material;</li>
+                  <li>Distribute viruses, malware, or other harmful computer code;</li>
+                  <li>Interfere with or disrupt the integrity or performance of the Website;</li>
+                  <li>Attempt to gain unauthorized access to any portion of the Website or its related systems;</li>
+                  <li>Engage in any fraudulent activity or misrepresent your identity or affiliation;</li>
+                  <li>Collect or harvest any information from the Website without authorization;</li>
+                  <li>Use the Website for any purpose that is competitive with the Company's business interests.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>7. Payment Terms</h2>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>7.1 Fees</h3>
+                <p>Fees for Services shall be set forth in a separate written agreement, proposal, or statement of work. All fees are quoted in United States Dollars (USD) unless otherwise specified.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>7.2 Payment</h3>
+                <p>Payment terms, including due dates, accepted payment methods, and billing cycles, shall be specified in the applicable service agreement. Unless otherwise agreed, invoices are due within thirty (30) days of the invoice date.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>7.3 Late Payments</h3>
+                <p>Overdue payments may be subject to late fees of one and one-half percent (1.5%) per month or the maximum rate permitted by law, whichever is less. The Company reserves the right to suspend Services until all outstanding balances are paid in full.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>7.4 Taxes</h3>
+                <p>Fees do not include applicable taxes. You are responsible for paying all taxes associated with your use of the Services, excluding taxes based on the Company's net income.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>8. Confidentiality</h2>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>8.1 Confidential Information</h3>
+                <p>Both parties acknowledge that they may receive confidential information from the other party during the course of the business relationship. "Confidential Information" includes, but is not limited to, business strategies, financial information, client lists, proprietary methodologies, and any information designated as confidential.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>8.2 Obligations</h3>
+                <p>Each party agrees to:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>Hold the other party's Confidential Information in strict confidence;</li>
+                  <li>Not disclose Confidential Information to third parties without prior written consent;</li>
+                  <li>Use Confidential Information only for purposes related to the Services;</li>
+                  <li>Return or destroy Confidential Information upon termination of the business relationship.</li>
+                </ul>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>8.3 Exceptions</h3>
+                <p>Confidentiality obligations do not apply to information that: (a) is or becomes publicly available through no fault of the receiving party; (b) was rightfully in the receiving party's possession prior to disclosure; (c) is independently developed by the receiving party; or (d) is required to be disclosed by law or court order.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>9. Disclaimers</h2>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>9.1 No Guarantee of Results</h3>
+                <p>While Black Orchid Business Group strives to provide high-quality consulting services, we do not guarantee that any particular government contract, subcontract, set-aside determination, bid, or proposal will be awarded to you. The outcome of government contracting processes depends on numerous factors beyond our control, including but not limited to government agency decisions, evaluation criteria, competition, responsibility determinations, protests, and funding availability. You acknowledge that the Company is not responsible for decisions made by any government entity or prime contractor.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>9.2 "As Is" Basis</h3>
+                <p>THE WEBSITE AND SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, THE COMPANY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>9.3 No Legal, Financial, or Professional Advice</h3>
+                <p>The information provided through the Website or Services is for general informational purposes only and does not constitute legal, financial, accounting, or other professional advice. You should consult with qualified professionals for advice specific to your situation.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>10. Limitation of Liability</h2>
+                <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-2">
+                  <li>IN NO EVENT SHALL BLACK ORCHID BUSINESS GROUP, ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, BUSINESS OPPORTUNITIES, OR GOODWILL, ARISING OUT OF OR RELATED TO THESE TERMS OR THE USE OF THE WEBSITE OR SERVICES.</li>
+                  <li>THE COMPANY'S TOTAL CUMULATIVE LIABILITY FOR ANY CLAIMS ARISING OUT OF OR RELATED TO THESE TERMS OR THE SERVICES SHALL NOT EXCEED THE AMOUNTS PAID BY YOU TO THE COMPANY DURING THE TWELVE (12) MONTHS PRECEDING THE CLAIM.</li>
+                  <li>THESE LIMITATIONS SHALL APPLY REGARDLESS OF THE THEORY OF LIABILITY AND EVEN IF THE COMPANY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>11. Indemnification</h2>
+                <p>You agree to indemnify, defend, and hold harmless Black Orchid Business Group and its officers, directors, employees, agents, and affiliates from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or related to:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>Your use of the Website or Services;</li>
+                  <li>Your violation of these Terms;</li>
+                  <li>Your violation of any applicable law or third-party rights;</li>
+                  <li>Any Client Materials you provide to us;</li>
+                  <li>Any misrepresentation made by you.</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>12. Term and Termination</h2>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>12.1 Term</h3>
+                <p>These Terms are effective upon your first access to the Website or use of the Services and remain in effect until terminated.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>12.2 Termination by You</h3>
+                <p>You may terminate these Terms at any time by discontinuing use of the Website and Services and providing written notice to the Company.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>12.3 Termination by Company</h3>
+                <p>We may terminate or suspend your access to the Website or Services at any time, with or without cause, and with or without notice, at our sole discretion.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>12.4 Effect of Termination</h3>
+                <p>Upon termination: (a) all rights and licenses granted to you under these Terms will immediately cease; (b) you must promptly pay any outstanding fees owed to the Company; and (c) provisions that by their nature should survive termination shall survive, including but not limited to Sections 5, 8, 9, 10, 11, and 14.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>13. Modifications to Terms</h2>
+                <p>We reserve the right to modify these Terms at any time at our sole discretion. Any changes will be effective immediately upon posting the revised Terms on the Website with an updated "Effective Date." Your continued use of the Website or Services following the posting of changes constitutes your acceptance of such changes. We encourage you to review these Terms periodically.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>14. Governing Law and Dispute Resolution</h2>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>14.1 Governing Law</h3>
+                <p>These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of laws principles.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>14.2 Dispute Resolution</h3>
+                <p>Any dispute arising out of or relating to these Terms or the Services shall first be attempted to be resolved through good-faith negotiation between the parties. If the dispute cannot be resolved through negotiation within thirty (30) days, either party may pursue resolution through binding arbitration administered by the American Arbitration Association in accordance with its Commercial Arbitration Rules. The arbitration shall take place in California, and the arbitrator's decision shall be final and binding.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>14.3 Class Action Waiver</h3>
+                <p>You agree that any dispute resolution proceedings will be conducted only on an individual basis and not in a class, consolidated, or representative action.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>15. General Provisions</h2>
+                
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.1 Entire Agreement</h3>
+                <p>These Terms, together with any separate service agreements, constitute the entire agreement between you and Black Orchid Business Group regarding the subject matter hereof and supersede all prior agreements and understandings.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.2 Severability</h3>
+                <p>If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.3 Waiver</h3>
+                <p>The failure of the Company to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.4 Assignment</h3>
+                <p>You may not assign or transfer these Terms or any rights hereunder without our prior written consent. We may assign these Terms without restriction.</p>
+
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.5 Force Majeure</h3>
+                <p>Neither party shall be liable for any failure or delay in performance due to circumstances beyond its reasonable control, including but not limited to acts of God, natural disasters, war, terrorism, labor disputes, or government actions.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>16. Contact Information</h2>
+                <p>If you have any questions, concerns, or requests regarding these Terms of Service, please contact us at:</p>
+                <p className="mt-4">
+                  <strong>Black Orchid Business Group</strong><br />
+                  Website: bobgllc.com
+                </p>
+                <p className="mt-4">By using the Website or Services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggleTheme }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
@@ -773,6 +1188,8 @@ export default function BlackOrchidWebsite() {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [showLibrary, setShowLibrary] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showTermsOfService, setShowTermsOfService] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [scrollY, setScrollY] = useState(0);
   const [articleSource, setArticleSource] = useState('home');
@@ -803,6 +1220,8 @@ export default function BlackOrchidWebsite() {
     setSelectedArticle(null);
     setActiveIntake(null);
     setShowLibrary(false);
+    setShowPrivacyPolicy(false);
+    setShowTermsOfService(false);
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -921,7 +1340,11 @@ export default function BlackOrchidWebsite() {
       </nav>
 
       {/* Conditional rendering */}
-      {activeIntake ? (
+      {showPrivacyPolicy ? (
+        <PrivacyPolicy onClose={() => setShowPrivacyPolicy(false)} isDark={isDark} />
+      ) : showTermsOfService ? (
+        <TermsOfService onClose={() => setShowTermsOfService(false)} isDark={isDark} />
+      ) : activeIntake ? (
         <IntakeForm 
           segment={activeIntake} 
           onClose={() => setActiveIntake(null)} 
@@ -1229,18 +1652,37 @@ export default function BlackOrchidWebsite() {
 
           {/* Footer */}
           <footer className={`${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'} border-t py-12 px-6`}>
-            <div className="max-w-7xl mx-auto text-center">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <img 
-                  src="/logo.png" 
-                  alt="Black Orchid Business Group" 
-                  className="h-10"
-                  style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
-                />
-                <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-col items-center mb-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <img 
+                    src="/logo.png" 
+                    alt="Black Orchid Business Group" 
+                    className="h-10"
+                    style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
+                  />
+                  <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+                </div>
+                <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4 text-center`}>Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.</p>
               </div>
-              <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.</p>
-              <p className={`${isDark ? 'text-zinc-500' : 'text-zinc-400'} text-sm`}>© 2026 Black Orchid Business Group LLC. All rights reserved.</p>
+              
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
+                <button 
+                  onClick={() => setShowPrivacyPolicy(true)}
+                  className={`${isDark ? 'text-zinc-400 hover:text-zinc-300' : 'text-zinc-600 hover:text-zinc-700'} transition-colors underline`}
+                >
+                  Privacy Policy
+                </button>
+                <span className={`hidden md:inline ${isDark ? 'text-zinc-600' : 'text-zinc-400'}`}>|</span>
+                <button 
+                  onClick={() => setShowTermsOfService(true)}
+                  className={`${isDark ? 'text-zinc-400 hover:text-zinc-300' : 'text-zinc-600 hover:text-zinc-700'} transition-colors underline`}
+                >
+                  Terms of Service
+                </button>
+              </div>
+              
+              <p className={`${isDark ? 'text-zinc-500' : 'text-zinc-400'} text-sm text-center`}>© 2026 Black Orchid Business Group LLC. All rights reserved.</p>
             </div>
           </footer>
         </>
