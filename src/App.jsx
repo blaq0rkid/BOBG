@@ -624,7 +624,7 @@ const ArticleView = ({ article, onClose, isDark }) => {
           className={`flex items-center gap-2 mb-6 ${isDark ? 'text-zinc-400' : 'text-zinc-600'} hover:opacity-70 transition-colors`}
         >
           <ChevronLeft size={20} />
-          Back to Intelligence
+          Back to Intelligence Library
         </button>
         
         <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg overflow-hidden`} style={{ borderColor: '#D4AF37' }}>
@@ -656,10 +656,122 @@ const ArticleView = ({ article, onClose, isDark }) => {
   );
 };
 
+const IntelligenceLibrary = ({ onArticleSelect, onClose, isDark, toggleTheme, scrollToSection }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className={`min-h-screen ${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'}`} style={{ fontFamily: 'Arial, sans-serif' }}>
+      {/* Navigation */}
+      <nav className={`fixed top-0 left-0 right-0 bg-opacity-95 border-b z-40 ${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'}`}>
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img 
+                src="/logo.png" 
+                alt="Black Orchid Business Group" 
+                className="h-12"
+                style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
+              />
+              <div>
+                <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+                <div className={`text-xs ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Intelligence. Strategy. Access.</div>
+              </div>
+            </div>
+
+            <div className="hidden md:flex items-center gap-8">
+              <button onClick={() => { onClose(); scrollToSection('home'); }} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Home</button>
+              <button onClick={() => { onClose(); scrollToSection('about'); }} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>About</button>
+              <button onClick={() => { onClose(); scrollToSection('services'); }} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Services</button>
+              <button onClick={onClose} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`} style={{ color: '#D4AF37' }}>Intelligence</button>
+              <button 
+                onClick={toggleTheme}
+                className={`p-2 ${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors hover:opacity-80`}
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <button onClick={() => { onClose(); scrollToSection('contact'); }} className="px-6 py-2 font-semibold rounded transition-colors hover:opacity-90" style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}>
+                Contact
+              </button>
+            </div>
+
+            <div className="md:hidden">
+              <button 
+                onClick={toggleTheme}
+                className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors`}
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Intelligence Library Content */}
+      <div className="pt-32 pb-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl mb-4" style={{ color: '#D4AF37' }}>Federal Intelligence Library</h1>
+            <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Strategic updates, thought leadership, and tactical insights for the federal marketplace</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {articles.map((article) => (
+              <div 
+                key={article.id}
+                onClick={() => onArticleSelect(article)}
+                className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:scale-105`}
+                style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+              >
+                <img 
+                  src={article.thumbnail} 
+                  alt={article.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <div className={`flex items-center gap-2 text-sm ${isDark ? 'text-zinc-500' : 'text-zinc-400'} mb-3`}>
+                    <span>{article.date}</span>
+                    <span>·</span>
+                    <span>{article.readTime}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3" style={{ color: '#D4AF37' }}>{article.title}</h3>
+                  <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>{article.excerpt}</p>
+                  <div className="font-semibold" style={{ color: '#D4AF37' }}>Read Article →</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className={`${isDark ? 'bg-[#020B13] border-[#262626]' : 'bg-white border-zinc-200'} border-t py-12 px-6`}>
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <img 
+              src="/logo.png" 
+              alt="Black Orchid Business Group" 
+              className="h-10"
+              style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
+            />
+            <div className="text-xl" style={{ color: '#D4AF37' }}>Black Orchid Business Group</div>
+          </div>
+          <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-4`}>Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.</p>
+          <p className={`${isDark ? 'text-zinc-500' : 'text-zinc-400'} text-sm`}>© 2026 Black Orchid Business Group LLC. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
 export default function BlackOrchidWebsite() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeIntake, setActiveIntake] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [showLibrary, setShowLibrary] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [scrollY, setScrollY] = useState(0);
@@ -689,6 +801,7 @@ export default function BlackOrchidWebsite() {
   const scrollToSection = (sectionId) => {
     setSelectedArticle(null);
     setActiveIntake(null);
+    setShowLibrary(false);
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -706,6 +819,11 @@ export default function BlackOrchidWebsite() {
   const handleThankYouClose = () => {
     setShowThankYou(false);
     scrollToSection('home');
+  };
+
+  const handleIntelligenceClick = () => {
+    setShowLibrary(true);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -731,7 +849,7 @@ export default function BlackOrchidWebsite() {
               <button onClick={() => scrollToSection('home')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Home</button>
               <button onClick={() => scrollToSection('about')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>About</button>
               <button onClick={() => scrollToSection('services')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Services</button>
-              <button onClick={() => scrollToSection('intelligence')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Intelligence</button>
+              <button onClick={handleIntelligenceClick} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors hover:opacity-80`}>Intelligence</button>
               <button 
                 onClick={toggleTheme}
                 className={`p-2 ${isDark ? 'text-zinc-400' : 'text-zinc-600'} transition-colors hover:opacity-80`}
@@ -767,7 +885,7 @@ export default function BlackOrchidWebsite() {
               <button onClick={() => scrollToSection('home')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors text-left hover:opacity-80`}>Home</button>
               <button onClick={() => scrollToSection('about')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors text-left hover:opacity-80`}>About</button>
               <button onClick={() => scrollToSection('services')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors text-left hover:opacity-80`}>Services</button>
-              <button onClick={() => scrollToSection('intelligence')} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors text-left hover:opacity-80`}>Intelligence</button>
+              <button onClick={handleIntelligenceClick} className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} transition-colors text-left hover:opacity-80`}>Intelligence</button>
               <button 
                 onClick={() => scrollToSection('contact')} 
                 className="px-6 py-2 font-semibold rounded transition-colors"
@@ -780,7 +898,7 @@ export default function BlackOrchidWebsite() {
         </div>
       </nav>
 
-      {/* Conditional rendering: show article view, intake form, or main content */}
+      {/* Conditional rendering */}
       {activeIntake ? (
         <IntakeForm 
           segment={activeIntake} 
@@ -789,6 +907,14 @@ export default function BlackOrchidWebsite() {
           isDark={isDark}
           scrollToSection={scrollToSection}
           toggleTheme={toggleTheme}
+        />
+      ) : showLibrary ? (
+        <IntelligenceLibrary 
+          onArticleSelect={setSelectedArticle}
+          onClose={() => setShowLibrary(false)}
+          isDark={isDark}
+          toggleTheme={toggleTheme}
+          scrollToSection={scrollToSection}
         />
       ) : selectedArticle ? (
         <ArticleView article={selectedArticle} onClose={() => setSelectedArticle(null)} isDark={isDark} />
@@ -862,7 +988,7 @@ export default function BlackOrchidWebsite() {
               {/* Paid Service Notice */}
               <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 mb-12 max-w-3xl mx-auto text-center`} style={{ borderColor: '#D4AF37' }}>
                 <p className={`text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>
-                  <strong style={{ color: '#D4AF37' }}>Note:</strong> Detailed results and written reports from any of the assessments are available, starting from <strong>$2,500 as a paid service</strong>.
+                  <strong style={{ color: '#D4AF37' }}>Note:</strong> Detailed results and written reports from the Federal Diagnostic assessment are available as a <strong>$2,500 paid service</strong>.
                 </p>
               </div>
               
@@ -938,7 +1064,7 @@ export default function BlackOrchidWebsite() {
 
                 {/* Federal Intelligence Card */}
                 <div 
-                  onClick={() => scrollToSection('intelligence')}
+                  onClick={handleIntelligenceClick}
                   className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8 transition-all hover:scale-105 cursor-pointer`} 
                   style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
                 >
@@ -955,23 +1081,23 @@ export default function BlackOrchidWebsite() {
                     Stay ahead of market shifts, policy changes, and emerging opportunities with strategic recommendations tailored to your federal objectives. Continuous market intelligence for the federal marketplace.
                   </p>
                   <div className="font-semibold" style={{ color: '#D4AF37' }}>
-                    Read Intelligence →
+                    View Intelligence Library →
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* Intelligence (Blog) Section */}
-          <section id="intelligence" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
+          {/* Featured Intelligence Section (3 articles) */}
+          <section id="featured-intelligence" className={`py-20 px-6 ${isDark ? 'bg-[#262626]' : 'bg-white'}`}>
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Federal Intelligence</h2>
-                <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Strategic updates, thought leadership, and tactical insights for the federal marketplace</p>
+                <h2 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Featured Intelligence</h2>
+                <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Latest strategic insights from the federal marketplace</p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
-                {articles.map((article) => (
+                {articles.slice(0, 3).map((article) => (
                   <div 
                     key={article.id}
                     onClick={() => setSelectedArticle(article)}
@@ -995,6 +1121,16 @@ export default function BlackOrchidWebsite() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="text-center mt-12">
+                <button 
+                  onClick={handleIntelligenceClick}
+                  className="px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90"
+                  style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+                >
+                  View Full Intelligence Library
+                </button>
               </div>
             </div>
           </section>
