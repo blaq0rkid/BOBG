@@ -365,12 +365,22 @@ export default function BlackOrchidWebsite() {
   const [activeIntake, setActiveIntake] = useState(null);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [isDark, setIsDark] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const saved = localStorage.getItem('theme');
     if (saved !== null) {
       setIsDark(saved === 'dark');
     }
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
@@ -454,17 +464,22 @@ export default function BlackOrchidWebsite() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section with Parallax */}
       <section 
         id="home" 
-        className="pt-32 pb-20 px-6 relative"
-        style={{
-          backgroundImage: 'url(/public/hero-patriotic.webp.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
+        className="pt-32 pb-20 px-6 relative overflow-hidden"
       >
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(/public/hero-patriotic.webp.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            transform: `translateY(${scrollY * 0.5}px)`,
+            willChange: 'transform'
+          }}
+        />
         <div className={`absolute inset-0 ${isDark ? 'bg-black bg-opacity-70' : 'bg-white bg-opacity-60'}`}></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center">
