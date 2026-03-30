@@ -31,10 +31,15 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const formConfigs = {
     prebidding: {
       title: "Pre-Bidding / New to Federal",
       description: "Assess basic readiness for companies that haven't started yet",
+      formName: "pre-bidding-assessment",
       blurb: "This assessment helps us understand where you are in your federal contracting journey. By mapping your current capabilities, compliance status, and readiness factors, we can provide targeted recommendations for building the foundation you need to compete successfully. Understanding your starting point is critical—it prevents costly missteps and ensures you're investing time and resources in the right infrastructure from day one.",
       steps: [
         {
@@ -116,6 +121,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     agencyAlignment: {
       title: "The Agency Alignment Map",
       description: "Strategic mapping for companies that are registered but lack a focused capture plan",
+      formName: "agency-alignment-assessment",
       blurb: "The Agency Alignment Map is our proprietary methodology for identifying where your capabilities create genuine competitive advantage in the federal marketplace. This assessment helps us reverse-engineer the specific agencies, contract vehicles, and decision-makers where you're most likely to win. Understanding your alignment isn't about casting a wide net—it's about precision targeting that converts your past performance into pipeline leverage.",
       steps: [
         {
@@ -194,6 +200,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     subToPrime: {
       title: "Sub-to-Prime Transition",
       description: "Readiness check for established subs ready to 'Stop Sharing Margin'",
+      formName: "sub-to-prime-assessment",
       blurb: "Transitioning from subcontractor to prime isn't just about capability—it's about infrastructure. This assessment evaluates whether you have the financial resilience, operational maturity, and relationship capital to successfully own the customer relationship. Understanding your readiness prevents the common trap of winning a prime contract you can't deliver, which destroys your reputation faster than staying a sub ever could.",
       steps: [
         {
@@ -275,9 +282,9 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     },
     federalDiagnostic: {
       title: "Federal Diagnostic",
-      description: "Comprehensive readiness assessment ($2,500 paid service)",
-      blurb: "The Federal Diagnostic is our most comprehensive evaluation—a deep-dive analysis of your governance structure, financial resilience, operational maturity, and competitive positioning. This is a $2,500 paid service that delivers a written report identifying critical vulnerabilities and high-leverage opportunities most consultants miss. Understanding your diagnostic results gives you a roadmap for building genuine competitive advantage, not just compliance checkboxes.",
-      isPaid: true,
+      description: "Comprehensive readiness assessment",
+      formName: "federal-diagnostic-assessment",
+      blurb: "The Federal Diagnostic is our most comprehensive evaluation—a deep-dive analysis of your governance structure, financial resilience, operational maturity, and competitive positioning. This delivers a written report identifying critical vulnerabilities and high-leverage opportunities most consultants miss. Understanding your diagnostic results gives you a roadmap for building genuine competitive advantage, not just compliance checkboxes.",
       steps: [
         {
           title: "Company Profile",
@@ -463,13 +470,6 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
             <div className="mb-8">
               <h1 className="text-3xl mb-2" style={{ color: '#D4AF37' }}>{config.title}</h1>
               <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-6`}>{config.description}</p>
-              {config.isPaid && (
-                <div className={`${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'} border-2 p-4 rounded mb-6`} style={{ borderColor: '#D4AF37' }}>
-                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} font-semibold`}>
-                    Please note: This is a comprehensive $2,500 paid service that includes a detailed written diagnostic report.
-                  </p>
-                </div>
-              )}
               <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed`}>{config.blurb}</p>
             </div>
 
@@ -497,7 +497,16 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
             </div>
 
             {/* Form fields */}
-            <form onSubmit={handleSubmit}>
+            <form 
+              name={config.formName}
+              method="POST" 
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+            >
+              <input type="hidden" name="form-name" value={config.formName} />
+              <input type="hidden" name="bot-field" />
+              
               <div className="min-h-[300px]">
                 <div className="flex flex-col gap-6">
                   {currentStepData.fields.map((field) => (
@@ -507,6 +516,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                       </label>
                       {field.type === 'textarea' ? (
                         <textarea
+                          name={field.name}
                           value={formData[field.name] || ''}
                           onChange={(e) => handleInputChange(field.name, e.target.value)}
                           required={field.required}
@@ -516,6 +526,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                         />
                       ) : field.type === 'select' ? (
                         <select
+                          name={field.name}
                           value={formData[field.name] || ''}
                           onChange={(e) => handleInputChange(field.name, e.target.value)}
                           required={field.required}
@@ -530,6 +541,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                       ) : (
                         <input
                           type={field.type}
+                          name={field.name}
                           value={formData[field.name] || ''}
                           onChange={(e) => handleInputChange(field.name, e.target.value)}
                           required={field.required}
@@ -845,7 +857,14 @@ export default function BlackOrchidWebsite() {
           {/* Services Section */}
           <section id="services" className="py-20 px-6">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-4xl mb-12 text-center" style={{ color: '#D4AF37' }}>Our Services</h2>
+              <h2 className="text-4xl mb-8 text-center" style={{ color: '#D4AF37' }}>Our Services</h2>
+              
+              {/* Paid Service Notice */}
+              <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 mb-12 max-w-3xl mx-auto text-center`} style={{ borderColor: '#D4AF37' }}>
+                <p className={`text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>
+                  <strong style={{ color: '#D4AF37' }}>Note:</strong> Detailed results and written reports from the Federal Diagnostic assessment are available as a <strong>$2,500 paid service</strong>.
+                </p>
+              </div>
               
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Agency Alignment Map Card */}
@@ -886,12 +905,9 @@ export default function BlackOrchidWebsite() {
                       <p className={`${isDark ? 'text-zinc-400' : 'text-zinc-600'} text-sm mb-4`}>Comprehensive readiness assessment</p>
                     </div>
                   </div>
-                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-4`}>
-                    Evaluate your governance structure, financial resilience, operational maturity, and technical architecture to identify vulnerabilities and opportunities others miss.
+                  <p className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} mb-6`}>
+                    Evaluate your governance structure, financial resilience, operational maturity, and technical architecture to identify vulnerabilities and opportunities others miss. Comprehensive readiness assessment for federal contracting infrastructure.
                   </p>
-                  <div className={`${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'} border p-3 rounded mb-4`} style={{ borderColor: '#D4AF37' }}>
-                    <p className={`text-sm ${isDark ? 'text-zinc-300' : 'text-zinc-700'} font-semibold`}>$2,500 Paid Service</p>
-                  </div>
                   <div className="font-semibold" style={{ color: '#D4AF37' }}>
                     Start Assessment →
                   </div>
@@ -991,32 +1007,42 @@ export default function BlackOrchidWebsite() {
                 <p className={`text-xl ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>Connect with a Black Orchid strategist for a discovery consultation</p>
               </div>
 
-              <form className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}>
+              <form 
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} 
+                style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
+                
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Company Name *</label>
-                    <input type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+                    <input name="companyName" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
                   </div>
                   <div>
                     <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Industry *</label>
-                    <input type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+                    <input name="industry" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Email Address *</label>
-                    <input type="email" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+                    <input name="email" type="email" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
                   </div>
                   <div>
                     <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Phone Number</label>
-                    <input type="tel" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+                    <input name="phone" type="tel" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
                   </div>
                 </div>
 
                 <div className="mb-6">
                   <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Current Revenue Tier</label>
-                  <select className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}>
+                  <select name="revenueTier" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}>
                     <option value="">Select a range</option>
                     <option value="under-1m">Under $1M</option>
                     <option value="1m-5m">$1M - $5M</option>
@@ -1028,7 +1054,7 @@ export default function BlackOrchidWebsite() {
 
                 <div className="mb-6">
                   <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Specific Contracting Challenges *</label>
-                  <textarea required rows={5} className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}></textarea>
+                  <textarea name="challenges" required rows={5} className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}></textarea>
                 </div>
 
                 <button type="submit" className="w-full px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90" style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}>
