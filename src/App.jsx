@@ -988,7 +988,7 @@ export default function BlackOrchidWebsite() {
               {/* Paid Service Notice */}
               <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-6 mb-12 max-w-3xl mx-auto text-center`} style={{ borderColor: '#D4AF37' }}>
                 <p className={`text-lg ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>
-                  <strong style={{ color: '#D4AF37' }}>Note:</strong> Detailed results and written reports from the Federal Diagnostic assessment are available as a <strong>$2,500 paid service</strong>.
+                  <strong style={{ color: '#D4AF37' }}>Note:</strong> Detailed results and written reports from any of the Diagnostic Assessments are available starting at $2,500 as a paid service. Consultancy services include the price, and results, of the diagnostic.
                 </p>
               </div>
               
