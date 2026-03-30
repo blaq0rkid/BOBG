@@ -611,7 +611,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
   );
 };
 
-const ArticleView = ({ article, onClose, isDark }) => {
+const ArticleView = ({ article, onClose, isDark, fromLibrary }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -624,7 +624,7 @@ const ArticleView = ({ article, onClose, isDark }) => {
           className={`flex items-center gap-2 mb-6 ${isDark ? 'text-zinc-400' : 'text-zinc-600'} hover:opacity-70 transition-colors`}
         >
           <ChevronLeft size={20} />
-          Back to Intelligence Library
+          {fromLibrary ? 'Back to Intelligence Library' : 'Back to Home'}
         </button>
         
         <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg overflow-hidden`} style={{ borderColor: '#D4AF37' }}>
@@ -775,6 +775,7 @@ export default function BlackOrchidWebsite() {
   const [showThankYou, setShowThankYou] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [scrollY, setScrollY] = useState(0);
+  const [articleSource, setArticleSource] = useState('home');
 
   useEffect(() => {
     const saved = localStorage.getItem('theme');
@@ -823,7 +824,28 @@ export default function BlackOrchidWebsite() {
 
   const handleIntelligenceClick = () => {
     setShowLibrary(true);
+    setSelectedArticle(null);
     window.scrollTo(0, 0);
+  };
+
+  const handleArticleSelectFromLibrary = (article) => {
+    setArticleSource('library');
+    setSelectedArticle(article);
+    setShowLibrary(false);
+  };
+
+  const handleArticleSelectFromHome = (article) => {
+    setArticleSource('home');
+    setSelectedArticle(article);
+  };
+
+  const handleArticleClose = () => {
+    if (articleSource === 'library') {
+      setSelectedArticle(null);
+      setShowLibrary(true);
+    } else {
+      setSelectedArticle(null);
+    }
   };
 
   return (
@@ -908,16 +930,21 @@ export default function BlackOrchidWebsite() {
           scrollToSection={scrollToSection}
           toggleTheme={toggleTheme}
         />
+      ) : selectedArticle ? (
+        <ArticleView 
+          article={selectedArticle} 
+          onClose={handleArticleClose} 
+          isDark={isDark}
+          fromLibrary={articleSource === 'library'}
+        />
       ) : showLibrary ? (
         <IntelligenceLibrary 
-          onArticleSelect={setSelectedArticle}
+          onArticleSelect={handleArticleSelectFromLibrary}
           onClose={() => setShowLibrary(false)}
           isDark={isDark}
           toggleTheme={toggleTheme}
           scrollToSection={scrollToSection}
         />
-      ) : selectedArticle ? (
-        <ArticleView article={selectedArticle} onClose={() => setSelectedArticle(null)} isDark={isDark} />
       ) : (
         <>
           {/* Hero Section with Parallax */}
@@ -1100,7 +1127,7 @@ export default function BlackOrchidWebsite() {
                 {articles.slice(0, 3).map((article) => (
                   <div 
                     key={article.id}
-                    onClick={() => setSelectedArticle(article)}
+                    onClick={() => handleArticleSelectFromHome(article)}
                     className={`${isDark ? 'bg-[#020B13]' : 'bg-zinc-50'} border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:scale-105`}
                     style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
                   >
