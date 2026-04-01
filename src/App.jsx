@@ -1,15 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
-import { useForm } from '@formspree/react';
 import { ChevronLeft, ChevronRight, Menu, X, BookOpen, Building2, TrendingUp, Shield, Sun, Moon, CheckCircle } from 'lucide-react';
 import { articles } from './data/articles';
-
-const FORMSPREE_IDS = {
-  contact: 'mojplnjr',
-  preBidding: 'xvzvqbze',
-  agencyAlignment: 'xwvwqnle',
-  subToPrime: 'xreolapg',
-  federalDiagnostic: 'mbdpkagl'
-};
 
 const ThankYouPage = ({ onClose, isDark }) => {
   return (
@@ -77,8 +69,7 @@ const PrivacyPolicy = ({ onClose, isDark }) => {
                 <p>When you access or use our website, we may collect certain information automatically, including through cookies and similar tracking technologies ("Usage Data").</p>
 
                 <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>C. Information Collected via Third-Party Services:</h3>
-                <p><strong>Formspree:</strong> We utilize Formspree to process our website contact forms. When you submit an inquiry, your data is transmitted to Formspree's servers for processing and delivery to our team. Formspree may use this data for anti-spam and security purposes. By using our forms, you acknowledge that the information you provide will be transferred to Formspree for processing in accordance with their Privacy Policy.</p>
-                <p className="mt-2"><strong>GitHub Pages:</strong> Our website is hosted using GitHub Pages. GitHub may collect certain log data from visitors, including IP addresses, to maintain the security and integrity of their hosting services. This processing is subject to the GitHub Privacy Statement.</p>
+                <p><strong>Netlify:</strong> Our website is hosted using Netlify. When you submit an inquiry through our forms, your data is processed by Netlify's form handling service. Netlify may collect certain log data from visitors, including IP addresses, to maintain the security and integrity of their hosting services. This processing is subject to Netlify's Privacy Policy.</p>
               </section>
 
               <section>
@@ -97,7 +88,7 @@ const PrivacyPolicy = ({ onClose, isDark }) => {
                 <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>3. Disclosure of Information</h2>
                 <p>We do not sell your Personal Information. We may share information with third parties only in the following circumstances:</p>
                 <ul className="list-disc ml-6 mt-2 space-y-2">
-                  <li><strong>Service Providers:</strong> We share information with trusted third-party providers, such as Formspree (for form processing) and GitHub (for hosting), strictly to the extent necessary for them to provide their services to us.</li>
+                  <li><strong>Service Providers:</strong> We share information with trusted third-party providers, such as Netlify (for form processing and hosting), strictly to the extent necessary for them to provide their services to us.</li>
                   <li><strong>Legal Requirements:</strong> We may disclose information if required to do so by law or in the good faith belief that such action is necessary to comply with legal obligations related to government contracting regulations.</li>
                   <li><strong>Professional Necessity:</strong> With your explicit consent, information may be shared with government agencies as part of the bid submission and management process.</li>
                 </ul>
@@ -202,17 +193,11 @@ const TermsOfService = ({ onClose, isDark }) => {
 const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggleTheme }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
-  const [state, handleSubmit] = useForm(FORMSPREE_IDS[segment]);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    if (state.succeeded) {
-      onSubmit();
-    }
-  }, [state.succeeded, onSubmit]);
 
   const formConfigs = {
     prebidding: {
@@ -583,10 +568,20 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     }
   };
 
-  const onFormSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (currentStep === totalSteps - 1) {
-      handleSubmit(e);
+      const form = e.target;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+        .then(() => {
+          setSubmitted(true);
+          onSubmit();
+        })
+        .catch((error) => console.error('Form submission error:', error));
     } else {
       handleNext();
     }
@@ -599,7 +594,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="/BOBG/logo.png" 
+                src="/logo.png" 
                 alt="Black Orchid Business Group" 
                 className="h-12"
                 style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -671,7 +666,16 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
               </div>
             </div>
 
-            <form onSubmit={onFormSubmit}>
+            <form 
+              name={`${segment}-form`}
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+            >
+              <input type="hidden" name="form-name" value={`${segment}-form`} />
+              <input type="hidden" name="bot-field" />
+              
               <div className="min-h-[300px]">
                 <div className="flex flex-col gap-6">
                   {currentStepData.fields.map((field) => (
@@ -743,11 +747,10 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                 ) : (
                   <button
                     type="submit"
-                    disabled={state.submitting}
-                    className="px-8 py-3 font-semibold rounded transition-colors hover:opacity-90 disabled:opacity-50"
+                    className="px-8 py-3 font-semibold rounded transition-colors hover:opacity-90"
                     style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
                   >
-                    {state.submitting ? 'Submitting...' : 'Submit Assessment'}
+                    Submit Assessment
                   </button>
                 )}
               </div>
@@ -760,7 +763,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <img 
-              src="/BOBG/logo.png" 
+              src="/logo.png" 
               alt="Black Orchid Business Group" 
               className="h-10"
               style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -832,7 +835,7 @@ const IntelligenceLibrary = ({ onArticleSelect, onClose, isDark, toggleTheme, sc
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="/BOBG/logo.png" 
+                src="/logo.png" 
                 alt="Black Orchid Business Group" 
                 className="h-12"
                 style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -913,7 +916,7 @@ const IntelligenceLibrary = ({ onArticleSelect, onClose, isDark, toggleTheme, sc
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <img 
-              src="/BOBG/logo.png" 
+              src="/logo.png" 
               alt="Black Orchid Business Group" 
               className="h-10"
               style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -939,8 +942,7 @@ export default function BlackOrchidWebsite() {
   const [isDark, setIsDark] = useState(true);
   const [scrollY, setScrollY] = useState(0);
   const [articleSource, setArticleSource] = useState('home');
-
-  const [contactState, handleContactSubmit] = useForm(FORMSPREE_IDS.contact);
+  const [contactSubmitted, setContactSubmitted] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('theme');
@@ -948,12 +950,6 @@ export default function BlackOrchidWebsite() {
       setIsDark(saved === 'dark');
     }
   }, []);
-
-  useEffect(() => {
-    if (contactState.succeeded) {
-      setShowThankYou(true);
-    }
-  }, [contactState.succeeded]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1021,6 +1017,21 @@ export default function BlackOrchidWebsite() {
     }
   };
 
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+      .then(() => {
+        setContactSubmitted(true);
+        setShowThankYou(true);
+      })
+      .catch((error) => console.error('Form submission error:', error));
+  };
+
   if (showPrivacyPolicy) {
     return <PrivacyPolicy onClose={() => setShowPrivacyPolicy(false)} isDark={isDark} />;
   }
@@ -1076,7 +1087,7 @@ export default function BlackOrchidWebsite() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="/BOBG/logo.png" 
+                src="/logo.png" 
                 alt="Black Orchid Business Group" 
                 className="h-12"
                 style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -1147,7 +1158,7 @@ export default function BlackOrchidWebsite() {
         <div 
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(/BOBG/hero-patriotic.png)',
+            backgroundImage: 'url(/hero-patriotic.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -1354,10 +1365,17 @@ export default function BlackOrchidWebsite() {
           </div>
 
           <form 
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
             onSubmit={handleContactSubmit}
             className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} 
             style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
           >
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="bot-field" />
+            
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Company Name *</label>
@@ -1398,12 +1416,11 @@ export default function BlackOrchidWebsite() {
             </div>
 
             <button 
-              type="submit" 
-              disabled={contactState.submitting}
-              className="w-full px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90 disabled:opacity-50" 
+              type="submit"
+              className="w-full px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90" 
               style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
             >
-              {contactState.submitting ? 'Submitting...' : 'Request Discovery Consultation'}
+              Request Discovery Consultation
             </button>
           </form>
         </div>
@@ -1414,7 +1431,7 @@ export default function BlackOrchidWebsite() {
           <div className="flex flex-col items-center mb-8">
             <div className="flex items-center gap-3 mb-4">
               <img 
-                src="/BOBG/logo.png" 
+                src="/logo.png" 
                 alt="Black Orchid Business Group" 
                 className="h-10"
                 style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
