@@ -1,7 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Black Orchid Business Group - Professional business consulting and development services.">
+  <meta name="keywords" content="business consulting, business development, professional services">
+  <meta name="author" content="Black Orchid Business Group">
+  
+  <link rel="icon" type="image/png" href="/logo.png">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Black Orchid Business Group">
+  <meta property="og:description" content="Professional business consulting and development services">
+  <meta property="og:url" content="https://bobgllc.com">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Black Orchid Business Group">
+  <meta name="twitter:description" content="Professional business consulting and development services">
+  
+  <title>Black Orchid Business Group</title>
+  
+  <script>
     (function() {
       var redirect = sessionStorage.redirect;
       delete sessionStorage.redirect;
       if (redirect && redirect != location.href) {
         history.replaceState(null, null, redirect);
       }
-    })(); /script> /head> body> div id="root"> /div> script type="module" src="/src/main.jsx"> /script> /body> /html>
+    })();
+  </script>
+  
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #1f2937;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #9333ea;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this application.</noscript>
+  
+  <div id="root">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
