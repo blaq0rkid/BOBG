@@ -4,24 +4,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Black Orchid Business Group - Professional business consulting and development services.">
-  <meta name="keywords" content="business consulting, business development, professional services">
-  <meta name="author" content="Black Orchid Business Group">
+  <meta name="description" content="Black Orchid Business Group - Premier boutique consultancy for government contracting. Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.">
+  <meta name="keywords" content="government contracting, federal contracting consulting, proposal writing, bid management, small business contracting, Agency Alignment Map">
+  <meta name="author" content="Black Orchid Business Group LLC">
   
   <link rel="icon" type="image/png" href="/logo.png">
   
+  <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Black Orchid Business Group">
-  <meta property="og:description" content="Professional business consulting and development services">
+  <meta property="og:title" content="Black Orchid Business Group - Premier Government Contracting Consultancy">
+  <meta property="og:description" content="Boutique scale consulting with sovereign results. Strategic intelligence for federal marketplace dominance.">
   <meta property="og:url" content="https://bobgllc.com">
+  <meta property="og:image" content="https://bobgllc.com/og-image.png">
   
+  <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Black Orchid Business Group">
-  <meta name="twitter:description" content="Professional business consulting and development services">
+  <meta name="twitter:description" content="Intelligence. Strategy. Access. Boutique Scale. Sovereign Results.">
+  <meta name="twitter:image" content="https://bobgllc.com/og-image.png">
   
-  <title>Black Orchid Business Group</title>
+  <title>Black Orchid Business Group | Premier Government Contracting Consultancy</title>
+  
+  <!-- Google Fonts - Modern Serif + Sans-Serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <script>
+    // SPA routing handler for GitHub Pages
     (function() {
       var redirect = sessionStorage.redirect;
       delete sessionStorage.redirect;
@@ -32,32 +42,56 @@
   </script>
   
   <style>
+    :root {
+      --obsidian: #1a1a1a;
+      --charcoal: #2d2d2d;
+      --gold: #d4af37;
+      --amber: #ffbf00;
+      --light-gold: #f5e6c8;
+      --text-primary: #ffffff;
+      --text-secondary: #c0c0c0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     html {
       scroll-behavior: smooth;
     }
     
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      background-color: var(--obsidian);
+      color: var(--text-primary);
+      line-height: 1.6;
     }
     
-    .loading-spinner {
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    
+    /* Loading Spinner */
+    .loading-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background-color: #1f2937;
+      min-height: 100vh;
+      background-color: var(--obsidian);
     }
     
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid #9333ea;
-      border-top-color: transparent;
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid var(--charcoal);
+      border-top-color: var(--gold);
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
@@ -65,16 +99,114 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
+    
+    .loading-text {
+      margin-top: 20px;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+    }
+    
+    /* Skip Link for Accessibility */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      background: var(--gold);
+      color: var(--obsidian);
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: 600;
+      z-index: 10000;
+      transition: top 0.3s;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid var(--amber);
+      outline-offset: 2px;
+    }
+    
+    /* High Contrast for Accessibility */
+    @media (prefers-contrast: high) {
+      :root {
+        --gold: #ffcc00;
+        --text-secondary: #ffffff;
+      }
+    }
+    
+    /* Reduced Motion for Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      html {
+        scroll-behavior: auto;
+      }
+    }
+    
+    /* Focus Visible for Keyboard Navigation */
+    *:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+    
+    /* Screen Reader Only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
+    /* Gold Accent Line */
+    .gold-accent {
+      height: 2px;
+      width: 80px;
+      background: linear-gradient(90deg, var(--gold), var(--amber));
+      margin: 20px 0;
+    }
+    
+    /* Hide root content initially */
+    #root:empty + .loading-container {
+      display: flex;
+    }
+    
+    #root:not(:empty) ~ .loading-container {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <noscript>You need to enable JavaScript to run this application.</noscript>
+  <noscript>
+    <div style="padding: 40px; text-align: center; background-color: var(--charcoal); color: var(--gold);">
+      <h1 style="font-family: 'Cormorant Garamond', serif; margin-bottom: 20px;">JavaScript Required</h1>
+      <p>You need to enable JavaScript to experience the full Black Orchid Business Group website.</p>
+    </div>
+  </noscript>
   
-  <div id="root">
-    <div class="loading-spinner">
-      <div class="spinner"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <div id="root" role="main"></div>
+  
+  <div class="loading-container" aria-live="polite" aria-label="Loading">
+    <div style="text-align: center;">
+      <div class="loading-spinner" role="status" aria-hidden="true"></div>
+      <div class="loading-text">LOADING INTELLIGENCE</div>
+      <span class="sr-only">Loading Black Orchid Business Group website</span>
     </div>
   </div>
+  
+  <div id="main-content"></div>
   
   <script type="module" src="/src/main.jsx"></script>
 </body>
