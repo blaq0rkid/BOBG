@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Menu, X, BookOpen, Building2, TrendingUp, Shield, Sun, Moon, CheckCircle } from 'lucide-react';
 import { articles } from './data/articles';
 
-// Helper function to encode form data
-const encode = (data) => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
+// Formspree Form IDs - REPLACE THESE WITH YOUR ACTUAL FORMSPREE FORM IDs
+const FORMSPREE_IDS = {
+  contact: 'https://formspree.io/f/mojplnjr',
+  preBidding: 'https://formspree.io/f/xvzvqbze',
+  agencyAlignment: 'https://formspree.io/f/xwvwqnle',
+  subToPrime: 'https://formspree.io/f/xreolapg',
+  federalDiagnostic: 'https://formspree.io/f/mbdpkagl'
 };
 
 const ThankYouPage = ({ onClose, isDark }) => {
@@ -452,6 +454,7 @@ const TermsOfService = ({ onClose, isDark }) => {
 const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggleTheme }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -461,7 +464,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     prebidding: {
       title: "Pre-Bidding / New to Federal",
       description: "Assess basic readiness for companies that haven't started yet",
-      formName: "pre-bidding-assessment",
+      formspreeId: FORMSPREE_IDS.preBidding,
       blurb: "This assessment helps us understand where you are in your federal contracting journey. By mapping your current capabilities, compliance status, and readiness factors, we can provide targeted recommendations for building the foundation you need to compete successfully. Understanding your starting point is critical—it prevents costly missteps and ensures you're investing time and resources in the right infrastructure from day one.",
       steps: [
         {
@@ -543,7 +546,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     agencyAlignment: {
       title: "The Agency Alignment Map",
       description: "Strategic mapping for companies that are registered but lack a focused capture plan",
-      formName: "agency-alignment-assessment",
+      formspreeId: FORMSPREE_IDS.agencyAlignment,
       blurb: "The Agency Alignment Map is our proprietary methodology for identifying where your capabilities create genuine competitive advantage in the federal marketplace. This assessment helps us reverse-engineer the specific agencies, contract vehicles, and decision-makers where you're most likely to win. Understanding your alignment isn't about casting a wide net—it's about precision targeting that converts your past performance into pipeline leverage.",
       steps: [
         {
@@ -622,7 +625,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     subToPrime: {
       title: "Sub-to-Prime Transition",
       description: "Readiness check for established subs ready to 'Stop Sharing Margin'",
-      formName: "sub-to-prime-assessment",
+      formspreeId: FORMSPREE_IDS.subToPrime,
       blurb: "Transitioning from subcontractor to prime isn't just about capability—it's about infrastructure. This assessment evaluates whether you have the financial resilience, operational maturity, and relationship capital to successfully own the customer relationship. Understanding your readiness prevents the common trap of winning a prime contract you can't deliver, which destroys your reputation faster than staying a sub ever could.",
       steps: [
         {
@@ -705,7 +708,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     federalDiagnostic: {
       title: "Federal Diagnostic",
       description: "Comprehensive readiness assessment",
-      formName: "federal-diagnostic-assessment",
+      formspreeId: FORMSPREE_IDS.federalDiagnostic,
       blurb: "The Federal Diagnostic is our most comprehensive evaluation—a deep-dive analysis of your governance structure, financial resilience, operational maturity, and competitive positioning. This delivers a written report identifying critical vulnerabilities and high-leverage opportunities most consultants miss. Understanding your diagnostic results gives you a roadmap for building genuine competitive advantage, not just compliance checkboxes.",
       steps: [
         {
@@ -830,24 +833,30 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": config.formName,
-        ...formData
-      })
-    })
-      .then(() => {
-        onSubmit();
-      })
-      .catch(error => {
-        console.error("Form submission error:", error);
-        alert("There was an error submitting the form. Please try again.");
+    try {
+      const response = await fetch(`https://formspree.io/f/${config.formspreeId}`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
+
+      if (response.ok) {
+        onSubmit();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("There was an error submitting the form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -930,8 +939,6 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
             </div>
 
             <form onSubmit={handleSubmit}>
-              <input type="hidden" name="form-name" value={config.formName} />
-              
               <div className="min-h-[300px]">
                 <div className="flex flex-col gap-6">
                   {currentStepData.fields.map((field) => (
@@ -1004,10 +1011,11 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                 ) : (
                   <button
                     type="submit"
-                    className="px-8 py-3 font-semibold rounded transition-colors hover:opacity-90"
+                    disabled={isSubmitting}
+                    className="px-8 py-3 font-semibold rounded transition-colors hover:opacity-90 disabled:opacity-50"
                     style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
                   >
-                    Submit Assessment
+                    {isSubmitting ? 'Submitting...' : 'Submit Assessment'}
                   </button>
                 )}
               </div>
@@ -1606,32 +1614,33 @@ export default function BlackOrchidWebsite() {
           </div>
 
           <form 
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
               const formData = new FormData(e.target);
               
-              fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: encode({
-                  "form-name": "contact",
-                  ...Object.fromEntries(formData)
-                })
-              })
-                .then(() => {
+              try {
+                const response = await fetch(`https://formspree.io/f/${FORMSPREE_IDS.contact}`, {
+                  method: "POST",
+                  body: formData,
+                  headers: {
+                    'Accept': 'application/json'
+                  }
+                });
+
+                if (response.ok) {
                   setShowThankYou(true);
                   e.target.reset();
-                })
-                .catch(error => {
-                  console.error("Form submission error:", error);
-                  alert("There was an error submitting the form. Please try again.");
-                });
+                } else {
+                  throw new Error('Form submission failed');
+                }
+              } catch (error) {
+                console.error("Form submission error:", error);
+                alert("There was an error submitting the form. Please try again.");
+              }
             }}
             className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} 
             style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
           >
-            <input type="hidden" name="form-name" value="contact" />
-            
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Company Name *</label>
