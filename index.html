@@ -1,72 +1,7 @@
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Black Orchid Business Group</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="companyName" />
-      <input type="text" name="industry" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <select name="revenueTier"><option value=""></option></select>
-      <textarea name="challenges"></textarea>
-    </form>
-    
-    <form name="pre-bidding-assessment" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="samStatus" />
-      <input type="text" name="cageStatus" />
-      <input type="text" name="cybersecurity" />
-      <input type="text" name="accountingSystem" />
-      <input type="text" name="bondingCapacity" />
-      <input type="text" name="pastPerformance" />
-      <textarea name="industry"></textarea>
-      <textarea name="mainChallenge"></textarea>
-    </form>
-    
-    <form name="agency-alignment-assessment" netlify netlify-honeypot="bot-field" hidden>
-      <textarea name="naicsCodes"></textarea>
-      <textarea name="primaryCapabilities"></textarea>
-      <textarea name="federalPastPerformance"></textarea>
-      <textarea name="targetAgencies"></textarea>
-      <input type="text" name="annualRevenue" />
-      <input type="text" name="geographicFocus" />
-      <input type="text" name="bidHistory" />
-      <textarea name="desiredResult"></textarea>
-    </form>
-    
-    <form name="sub-to-prime-assessment" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="yearsAsSubcontractor" />
-      <input type="text" name="subcontractingRevenue" />
-      <input type="text" name="primeRelationships" />
-      <input type="text" name="cparsHistory" />
-      <input type="text" name="govRelationships" />
-      <input type="text" name="workingCapital" />
-      <input type="text" name="proposalCapability" />
-      <textarea name="strategicIntent"></textarea>
-    </form>
-    
-    <form name="federal-diagnostic-assessment" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="companyName" />
-      <input type="number" name="yearsInBusiness" />
-      <input type="text" name="annualRevenue" />
-      <input type="text" name="federalExperience" />
-      <input type="text" name="contractValue" />
-      <textarea name="targetAgencies"></textarea>
-      <input type="text" name="accountingSystem" />
-      <input type="text" name="cybersecurity" />
-      <input type="text" name="qualitySystem" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <textarea name="goals"></textarea>
-    </form>
-    
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+(function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })(); /script> /head> body> div id="root"> /div> script type="module" src="/src/main.jsx"> /script> /body> /html>
