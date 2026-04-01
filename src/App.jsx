@@ -5,13 +5,12 @@ import { articles } from './data/articles';
 
 // Formspree Form IDs - REPLACE THESE WITH YOUR ACTUAL FORMSPREE FORM IDs
 const FORMSPREE_IDS = {
-  contact: 'YOUR_CONTACT_FORM_ID',
-  preBidding: 'YOUR_PREBIDDING_FORM_ID',
-  agencyAlignment: 'YOUR_AGENCY_ALIGNMENT_FORM_ID',
-  subToPrime: 'YOUR_SUB_TO_PRIME_FORM_ID',
-  federalDiagnostic: 'YOUR_FEDERAL_DIAGNOSTIC_FORM_ID'
+  contact: 'mojplnjr',
+  preBidding: 'xvzvqbze',
+  agencyAlignment: 'xwvwqnle',
+  subToPrime: 'xreolapg',
+  federalDiagnostic: 'mbdpkagl'
 };
-
 const ThankYouPage = ({ onClose, isDark }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4" style={{ fontFamily: 'Arial, sans-serif' }}>
