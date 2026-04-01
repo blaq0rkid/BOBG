@@ -5,11 +5,11 @@ import { articles } from './data/articles';
 
 // Formspree Form IDs - REPLACE THESE WITH YOUR ACTUAL FORMSPREE FORM IDs
 const FORMSPREE_IDS = {
-  contact: 'https://formspree.io/f/mojplnjr',
-  preBidding: 'https://formspree.io/f/xvzvqbze',
-  agencyAlignment: 'https://formspree.io/f/xwvwqnle',
-  subToPrime: 'https://formspree.io/f/xreolapg',
-  federalDiagnostic: 'https://formspree.io/f/mbdpkagl'
+  contact: 'YOUR_CONTACT_FORM_ID',
+  preBidding: 'YOUR_PREBIDDING_FORM_ID',
+  agencyAlignment: 'YOUR_AGENCY_ALIGNMENT_FORM_ID',
+  subToPrime: 'YOUR_SUB_TO_PRIME_FORM_ID',
+  federalDiagnostic: 'YOUR_FEDERAL_DIAGNOSTIC_FORM_ID'
 };
 
 const ThankYouPage = ({ onClose, isDark }) => {
@@ -55,149 +55,95 @@ const PrivacyPolicy = ({ onClose, isDark }) => {
           
           <div className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} style={{ borderColor: '#D4AF37' }}>
             <h1 className="text-4xl mb-4" style={{ color: '#D4AF37' }}>Privacy Policy</h1>
-            <p className={`text-sm ${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-8`}>Black Orchid Business Group - Effective Date: January 26, 2024</p>
+            <p className={`text-sm ${isDark ? 'text-zinc-400' : 'text-zinc-600'} mb-8`}>Black Orchid Business Group - Effective Date: April 1, 2026</p>
             
             <div className={`${isDark ? 'text-zinc-300' : 'text-zinc-700'} leading-relaxed space-y-6`}>
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>1. Introduction</h2>
-                <p>Black Orchid Business Group ("Company," "we," "us," or "our") is committed to protecting the privacy of individuals who visit our website at bobgllc.com (the "Site") and who use our business consulting services. This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you visit our Site or engage our services.</p>
-                <p className="mt-4">By accessing or using our Site, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not access the Site or use our services.</p>
-              </section>
+              <p>
+                Black Orchid Business Group ("the Company," "we," "us," or "our") is committed to protecting the privacy and security of the information provided by our clients and website visitors. This Privacy Policy outlines our practices regarding the collection, use, and disclosure of information through our website, bobgllc.com, and our business consulting services.
+              </p>
 
               <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>2. Information We Collect</h2>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>1. Information We Collect</h2>
+                <p>We collect information that identifies, relates to, or could reasonably be linked, directly or indirectly, with a particular consumer or device ("Personal Information").</p>
                 
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>2.1 Personal Information</h3>
-                <p>We may collect personally identifiable information that you voluntarily provide to us when you:</p>
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>A. Information Provided Voluntarily:</h3>
+                <p>When you engage with our website or contact us regarding our government contracting services (including market research, proposal writing, and bid management), we may collect:</p>
                 <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>Complete contact forms or inquiry submissions on our Site</li>
-                  <li>Request information about our government contracting services</li>
-                  <li>Subscribe to our newsletter or marketing communications</li>
-                  <li>Engage our services for market research, proposal writing, or bid management</li>
-                  <li>Communicate with us via email, phone, or other means</li>
-                </ul>
-                
-                <p className="mt-4">This information may include:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>Full name</li>
-                  <li>Business name and title</li>
-                  <li>Email address</li>
-                  <li>Phone number</li>
-                  <li>Mailing address</li>
-                  <li>Business industry and size</li>
-                  <li>Government contracting goals and history</li>
-                  <li>Payment and billing information</li>
+                  <li>Contact information (e.g., first name and last name, email address, phone number).</li>
+                  <li>Business information (e.g., business name, industry details).</li>
+                  <li>Project-specific details relevant to federal, state, county, or city government bidding opportunities.</li>
                 </ul>
 
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>2.2 Non-Personal Information</h3>
-                <p>When you visit our Site, we may automatically collect certain non-personally identifiable information, including:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>Browser type and version</li>
-                  <li>Operating system</li>
-                  <li>IP address</li>
-                  <li>Pages visited and time spent on pages</li>
-                  <li>Referring website addresses</li>
-                  <li>Date and time of access</li>
-                  <li>Device identifiers</li>
-                </ul>
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>B. Information Collected Automatically:</h3>
+                <p>When you access or use our website, we may collect certain information automatically, including through cookies and similar tracking technologies ("Usage Data").</p>
 
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>2.3 Cookies and Tracking Technologies</h3>
-                <p>We may use cookies, web beacons, pixels, and similar tracking technologies to collect information about your browsing activities on our Site. For more information, please see Section 6 of this Privacy Policy.</p>
+                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>C. Information Collected via Third-Party Services:</h3>
+                <p><strong>Formspree:</strong> We utilize Formspree to process our website contact forms. When you submit an inquiry, your data is transmitted to Formspree's servers for processing and delivery to our team. Formspree may use this data for anti-spam and security purposes. By using our forms, you acknowledge that the information you provide will be transferred to Formspree for processing in accordance with their Privacy Policy.</p>
+                <p className="mt-2"><strong>GitHub Pages:</strong> Our website is hosted using GitHub Pages. GitHub may collect certain log data from visitors, including IP addresses, to maintain the security and integrity of their hosting services. This processing is subject to the GitHub Privacy Statement.</p>
               </section>
 
               <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>3. How We Use Your Information</h2>
-                <p>We may use the information we collect for various purposes, including to:</p>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>2. How We Use Your Information</h2>
+                <p>We use the collected information for the following professional purposes:</p>
                 <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>Provide, operate, and maintain our Site and services</li>
-                  <li>Respond to your inquiries and fulfill your requests for information</li>
-                  <li>Deliver market research, proposal writing, and bid management services</li>
-                  <li>Process transactions and send related information, including confirmations and invoices</li>
-                  <li>Send administrative information, such as updates to our terms, conditions, and policies</li>
-                  <li>Communicate with you about services, promotions, and events that may be of interest to you</li>
-                  <li>Analyze usage patterns to improve our Site, services, and user experience</li>
-                  <li>Protect against fraudulent, unauthorized, or illegal activity</li>
-                  <li>Comply with legal obligations and enforce our agreements</li>
+                  <li><strong>Service Delivery:</strong> To provide and maintain our services, including specialized guidance through the complexities of government contracting and to manage bid submissions.</li>
+                  <li><strong>Communication:</strong> To respond to inquiries submitted via our forms and to notify you about changes to our services.</li>
+                  <li><strong>Customer Support:</strong> To provide customer support.</li>
+                  <li><strong>Analysis and Improvement:</strong> To gather analysis or valuable information so that we can improve our services, including improving our personalized approach to client consulting.</li>
+                  <li><strong>Compliance:</strong> To ensure all bid management services meet specific government regulatory and compliance requirements.</li>
                 </ul>
               </section>
 
               <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>4. How We Share Your Information</h2>
-                <p>We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:</p>
-                
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>4.1 Service Providers</h3>
-                <p>We may share your information with third-party vendors, contractors, and service providers who perform services on our behalf, such as payment processing, data analysis, email delivery, hosting services, and customer service. These parties are obligated to maintain the confidentiality of your information.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>4.2 Legal Requirements</h3>
-                <p>We may disclose your information if required to do so by law or in response to valid requests by public authorities, including to meet national security or law enforcement requirements.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>4.3 Business Transfers</h3>
-                <p>In the event of a merger, acquisition, reorganization, bankruptcy, or sale of all or a portion of our assets, your information may be transferred as part of that transaction.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>4.4 With Your Consent</h3>
-                <p>We may share your information for other purposes with your express consent.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>5. Data Security</h2>
-                <p>We implement reasonable administrative, technical, and physical security measures designed to protect the personal information we collect from unauthorized access, use, alteration, and disclosure. However, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
-                <p className="mt-4">You are responsible for maintaining the confidentiality of any account credentials and for restricting access to your devices. Please notify us immediately if you believe your information has been compromised.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>6. Cookies and Tracking Technologies</h2>
-                
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>6.1 What Are Cookies?</h3>
-                <p>Cookies are small data files placed on your device when you visit a website. They help us recognize your browser, remember your preferences, and understand how you use our Site.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>6.2 Types of Cookies We Use</h3>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li><strong>Essential Cookies:</strong> Necessary for the Site to function properly.</li>
-                  <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our Site by collecting and reporting information anonymously.</li>
-                  <li><strong>Functional Cookies:</strong> Enable enhanced functionality and personalization.</li>
-                  <li><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements and track campaign performance.</li>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>3. Disclosure of Information</h2>
+                <p>We do not sell your Personal Information. We may share information with third parties only in the following circumstances:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-2">
+                  <li><strong>Service Providers:</strong> We share information with trusted third-party providers, such as Formspree (for form processing) and GitHub (for hosting), strictly to the extent necessary for them to provide their services to us.</li>
+                  <li><strong>Legal Requirements:</strong> We may disclose information if required to do so by law or in the good faith belief that such action is necessary to comply with legal obligations related to government contracting regulations.</li>
+                  <li><strong>Professional Necessity:</strong> With your explicit consent, information may be shared with government agencies as part of the bid submission and management process.</li>
                 </ul>
+              </section>
 
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>6.3 Your Cookie Choices</h3>
-                <p>Most web browsers are set to accept cookies by default. You can modify your browser settings to decline cookies or alert you when cookies are being sent. Please note that disabling cookies may affect the functionality of our Site.</p>
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>4. Data Security</h2>
+                <p>We implement industry-standard security measures to protect the confidentiality and integrity of your data. However, please be aware that no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your Personal Information, we cannot guarantee its absolute security.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>5. Data Retention</h2>
+                <p>We retain Personal Information only for as long as is necessary to fulfill the purposes for which it was collected, including for the purposes of satisfying any legal, accounting, or reporting requirements associated with government bidding cycles.</p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>6. Your Rights and Choices</h2>
+                <p>Depending on your location and applicable law (including the GDPR, CCPA, or other data protection laws), you may have rights regarding your Personal Information, including:</p>
+                <ul className="list-disc ml-6 mt-2 space-y-1">
+                  <li>The right to access the Personal Information we hold about you.</li>
+                  <li>The right to request the correction of inaccurate information.</li>
+                  <li>The right to request the deletion of your data, subject to legal and contractual obligations related to ongoing government contract bids.</li>
+                </ul>
+                <p className="mt-4">To exercise these rights, please contact us at the details provided below.</p>
               </section>
 
               <section>
                 <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>7. Third-Party Links</h2>
-                <p>Our Site may contain links to third-party websites, applications, or services that are not operated by us. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+                <p>Our website may contain links to government portals or third-party sites. This Privacy Policy does not apply to those external sites, and we encourage you to review the privacy policies of any third-party service you visit.</p>
               </section>
 
               <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>8. Children's Privacy</h2>
-                <p>Our Site and services are not directed to individuals under the age of eighteen (18). We do not knowingly collect personal information from children under 18. If we become aware that we have inadvertently collected personal information from a child under 18, we will take steps to delete such information promptly. If you believe we have collected information from a child under 18, please contact us immediately.</p>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>8. Changes to This Privacy Policy</h2>
+                <p>We reserve the right to update this Privacy Policy at any time to reflect changes in our practices or legal obligations. We will notify you of any material changes by posting the new Privacy Policy on bobgllc.com and updating the "Effective Date."</p>
               </section>
 
               <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>9. Your Privacy Rights</h2>
-                <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li><strong>Access:</strong> The right to request copies of your personal information.</li>
-                  <li><strong>Correction:</strong> The right to request correction of inaccurate or incomplete information.</li>
-                  <li><strong>Deletion:</strong> The right to request deletion of your personal information, subject to certain exceptions.</li>
-                  <li><strong>Opt-Out:</strong> The right to opt out of receiving marketing communications from us.</li>
-                </ul>
-                <p className="mt-4">To exercise any of these rights, please contact us using the information provided in Section 11 below. We will respond to your request in accordance with applicable law.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>10. Changes to This Privacy Policy</h2>
-                <p>We reserve the right to update or modify this Privacy Policy at any time. When we make changes, we will revise the "Effective Date" at the top of this page. We encourage you to review this Privacy Policy periodically to stay informed about how we are protecting your information. Your continued use of the Site following the posting of changes constitutes your acceptance of such changes.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>11. Contact Us</h2>
-                <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, or if you would like to submit a request to access, correct, delete, or otherwise inquire about your personal information, please contact us at:</p>
+                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>9. Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy or our data practices, please contact:</p>
                 <p className="mt-4">
                   <strong>Black Orchid Business Group</strong><br />
                   Website: bobgllc.com<br />
-                  Email: privacy@bobgllc.com
+                  Via our website: bobgllc.com/contact<br />
+                  Attn: Legal Department / Privacy Officer
                 </p>
-                <p className="mt-4">This Privacy Policy was last updated on January 26, 2026.</p>
               </section>
             </div>
           </div>
