@@ -1,103 +1,25 @@
-
-import React, { useState } from 'react';
-
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const form = e.target;
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    })
-      .then(() => {
-        setSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
-      })
-      .catch((error) => console.error('Form submission error:', error));
-  };
-
-  return (
-    <div>
-      {submitted ? (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-          Thank you! Your message has been sent.
-        </div>
-      ) : (
-        <form
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <input type="hidden" name="bot-field" />
-          
-          <div className="mb-4">
-            <label htmlFor="name" className="block mb-2">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded"
-            />
-          </div>
-          
-          <div className="mb-4">
-            <label htmlFor="email" className="block mb-2">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-3 py-2 border rounded"
-            />
-          </div>
-          
-          <div className="mb-4">
-            <label htmlFor="message" className="block mb-2">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows="4"
-              className="w-full px-3 py-2 border rounded"
-            ></textarea>
-          </div>
-          
-          <button
-            type="submit"
-            className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-          >
-            Send Message
-          </button>
-        </form>
-      )}
-    </div>
-  );
-};
-
-export default ContactForm;
+{
+  "name": "bobg-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^0.263.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.8"
+  }
+}
