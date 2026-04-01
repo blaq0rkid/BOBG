@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
+import { useForm } from '@formspree/react';
 import { ChevronLeft, ChevronRight, Menu, X, BookOpen, Building2, TrendingUp, Shield, Sun, Moon, CheckCircle } from 'lucide-react';
 import { articles } from './data/articles';
 
-// Formspree Form IDs - REPLACE THESE WITH YOUR ACTUAL FORMSPREE FORM IDs
 const FORMSPREE_IDS = {
   contact: 'mojplnjr',
   preBidding: 'xvzvqbze',
@@ -11,6 +11,7 @@ const FORMSPREE_IDS = {
   subToPrime: 'xreolapg',
   federalDiagnostic: 'mbdpkagl'
 };
+
 const ThankYouPage = ({ onClose, isDark }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4" style={{ fontFamily: 'Arial, sans-serif' }}>
@@ -191,203 +192,6 @@ const TermsOfService = ({ onClose, isDark }) => {
                 </ul>
                 <p className="mt-4">The scope of any specific engagement shall be governed by a separate written agreement or statement of work executed between the Company and Client.</p>
               </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>3. Eligibility</h2>
-                <p>By using the Website or Services, you represent and warrant that:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>You are at least eighteen (18) years of age;</li>
-                  <li>You have the legal authority to enter into these Terms;</li>
-                  <li>If you are acting on behalf of a business entity, you have the authority to bind such entity to these Terms;</li>
-                  <li>You will comply with all applicable local, state, national, and international laws and regulations in connection with your use of the Website and Services.</li>
-                </ul>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>4. User Accounts</h2>
-                <p>Certain features of our Website or Services may require you to create an account. You agree to:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>Provide accurate, current, and complete information during registration;</li>
-                  <li>Maintain and promptly update your account information;</li>
-                  <li>Maintain the security and confidentiality of your login credentials;</li>
-                  <li>Accept responsibility for all activities that occur under your account;</li>
-                  <li>Notify us immediately of any unauthorized use of your account.</li>
-                </ul>
-                <p className="mt-4">You further agree to provide accurate, current, and complete information and documentation reasonably requested by the Company in connection with the Services, including without limitation information required for market research, proposal development, bid submissions, and communications with government agencies. You are solely responsible for the completeness and accuracy of all information you provide, and you acknowledge that inaccurate, incomplete, or late information may impact the quality, compliance, or timeliness of deliverables.</p>
-                <p className="mt-4">We reserve the right to suspend or terminate your account at our sole discretion if we suspect any breach of these Terms.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>5. Intellectual Property Rights</h2>
-                
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>5.1 Company Intellectual Property</h3>
-                <p>All content, materials, features, and functionality on the Website, including but not limited to text, graphics, logos, icons, images, audio clips, software, and the compilation thereof, are the exclusive property of Black Orchid Business Group or its licensors and are protected by United States and international copyright, trademark, and other intellectual property laws.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>5.2 Limited License</h3>
-                <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, and revocable license to access and use the Website for your personal or internal business purposes. This license does not include the right to:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>Modify, copy, or distribute any content from the Website;</li>
-                  <li>Use any data mining, robots, or similar data gathering methods;</li>
-                  <li>Reverse engineer any portion of the Website;</li>
-                  <li>Remove any copyright or proprietary notices from any content.</li>
-                </ul>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>5.3 Client Materials</h3>
-                <p>You retain ownership of any materials, data, or information you provide to us in connection with the Services ("Client Materials"). By providing Client Materials, you grant us a non-exclusive license to use such materials solely for the purpose of performing the Services.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>5.4 Work Product and Deliverables</h3>
-                <p>Unless otherwise agreed in a separate written agreement, the Company retains all right, title, and interest in and to any templates, frameworks, methodologies, processes, know-how, tools, and pre-existing materials used to perform the Services, and any generalized learnings (collectively, "Company Materials").</p>
-                <p className="mt-4">Subject to your payment of all applicable fees, you are granted a non-exclusive, non-transferable license to use the specific deliverables created for you as part of the Services (such as written proposal drafts, compliance matrices, schedules, or bid tracking artifacts) for your internal business purposes in connection with pursuing the applicable opportunities (the "Work Product"). This license does not permit resale, public distribution, or use to provide services to third parties.</p>
-                <p className="mt-4">To the extent any Work Product incorporates Company Materials, the Company Materials remain the Company's property and are licensed (not sold) to you solely as part of the Work Product.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>6. Acceptable Use Policy</h2>
-                <p>You agree not to use the Website or Services to:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>Violate any applicable law, regulation, or third-party rights;</li>
-                  <li>Transmit any unlawful, threatening, defamatory, obscene, or otherwise objectionable material;</li>
-                  <li>Distribute viruses, malware, or other harmful computer code;</li>
-                  <li>Interfere with or disrupt the integrity or performance of the Website;</li>
-                  <li>Attempt to gain unauthorized access to any portion of the Website or its related systems;</li>
-                  <li>Engage in any fraudulent activity or misrepresent your identity or affiliation;</li>
-                  <li>Collect or harvest any information from the Website without authorization;</li>
-                  <li>Use the Website for any purpose that is competitive with the Company's business interests.</li>
-                </ul>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>7. Payment Terms</h2>
-                
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>7.1 Fees</h3>
-                <p>Fees for Services shall be set forth in a separate written agreement, proposal, or statement of work. All fees are quoted in United States Dollars (USD) unless otherwise specified.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>7.2 Payment</h3>
-                <p>Payment terms, including due dates, accepted payment methods, and billing cycles, shall be specified in the applicable service agreement. Unless otherwise agreed, invoices are due within thirty (30) days of the invoice date.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>7.3 Late Payments</h3>
-                <p>Overdue payments may be subject to late fees of one and one-half percent (1.5%) per month or the maximum rate permitted by law, whichever is less. The Company reserves the right to suspend Services until all outstanding balances are paid in full.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>7.4 Taxes</h3>
-                <p>Fees do not include applicable taxes. You are responsible for paying all taxes associated with your use of the Services, excluding taxes based on the Company's net income.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>8. Confidentiality</h2>
-                
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>8.1 Confidential Information</h3>
-                <p>Both parties acknowledge that they may receive confidential information from the other party during the course of the business relationship. "Confidential Information" includes, but is not limited to, business strategies, financial information, client lists, proprietary methodologies, and any information designated as confidential.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>8.2 Obligations</h3>
-                <p>Each party agrees to:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>Hold the other party's Confidential Information in strict confidence;</li>
-                  <li>Not disclose Confidential Information to third parties without prior written consent;</li>
-                  <li>Use Confidential Information only for purposes related to the Services;</li>
-                  <li>Return or destroy Confidential Information upon termination of the business relationship.</li>
-                </ul>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>8.3 Exceptions</h3>
-                <p>Confidentiality obligations do not apply to information that: (a) is or becomes publicly available through no fault of the receiving party; (b) was rightfully in the receiving party's possession prior to disclosure; (c) is independently developed by the receiving party; or (d) is required to be disclosed by law or court order.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>9. Disclaimers</h2>
-                
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>9.1 No Guarantee of Results</h3>
-                <p>While Black Orchid Business Group strives to provide high-quality consulting services, we do not guarantee that any particular government contract, subcontract, set-aside determination, bid, or proposal will be awarded to you. The outcome of government contracting processes depends on numerous factors beyond our control, including but not limited to government agency decisions, evaluation criteria, competition, responsibility determinations, protests, and funding availability. You acknowledge that the Company is not responsible for decisions made by any government entity or prime contractor.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>9.2 "As Is" Basis</h3>
-                <p>THE WEBSITE AND SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, THE COMPANY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>9.3 No Legal, Financial, or Professional Advice</h3>
-                <p>The information provided through the Website or Services is for general informational purposes only and does not constitute legal, financial, accounting, or other professional advice. You should consult with qualified professionals for advice specific to your situation.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>10. Limitation of Liability</h2>
-                <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-2">
-                  <li>IN NO EVENT SHALL BLACK ORCHID BUSINESS GROUP, ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, BUSINESS OPPORTUNITIES, OR GOODWILL, ARISING OUT OF OR RELATED TO THESE TERMS OR THE USE OF THE WEBSITE OR SERVICES.</li>
-                  <li>THE COMPANY'S TOTAL CUMULATIVE LIABILITY FOR ANY CLAIMS ARISING OUT OF OR RELATED TO THESE TERMS OR THE SERVICES SHALL NOT EXCEED THE AMOUNTS PAID BY YOU TO THE COMPANY DURING THE TWELVE (12) MONTHS PRECEDING THE CLAIM.</li>
-                  <li>THESE LIMITATIONS SHALL APPLY REGARDLESS OF THE THEORY OF LIABILITY AND EVEN IF THE COMPANY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</li>
-                </ul>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>11. Indemnification</h2>
-                <p>You agree to indemnify, defend, and hold harmless Black Orchid Business Group and its officers, directors, employees, agents, and affiliates from and against any and all claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or related to:</p>
-                <ul className="list-disc ml-6 mt-2 space-y-1">
-                  <li>Your use of the Website or Services;</li>
-                  <li>Your violation of these Terms;</li>
-                  <li>Your violation of any applicable law or third-party rights;</li>
-                  <li>Any Client Materials you provide to us;</li>
-                  <li>Any misrepresentation made by you.</li>
-                </ul>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>12. Term and Termination</h2>
-                
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>12.1 Term</h3>
-                <p>These Terms are effective upon your first access to the Website or use of the Services and remain in effect until terminated.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>12.2 Termination by You</h3>
-                <p>You may terminate these Terms at any time by discontinuing use of the Website and Services and providing written notice to the Company.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>12.3 Termination by Company</h3>
-                <p>We may terminate or suspend your access to the Website or Services at any time, with or without cause, and with or without notice, at our sole discretion.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>12.4 Effect of Termination</h3>
-                <p>Upon termination: (a) all rights and licenses granted to you under these Terms will immediately cease; (b) you must promptly pay any outstanding fees owed to the Company; and (c) provisions that by their nature should survive termination shall survive, including but not limited to Sections 5, 8, 9, 10, 11, and 14.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>13. Modifications to Terms</h2>
-                <p>We reserve the right to modify these Terms at any time at our sole discretion. Any changes will be effective immediately upon posting the revised Terms on the Website with an updated "Effective Date." Your continued use of the Website or Services following the posting of changes constitutes your acceptance of such changes. We encourage you to review these Terms periodically.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>14. Governing Law and Dispute Resolution</h2>
-                
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>14.1 Governing Law</h3>
-                <p>These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of laws principles.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>14.2 Dispute Resolution</h3>
-                <p>Any dispute arising out of or relating to these Terms or the Services shall first be attempted to be resolved through good-faith negotiation between the parties. If the dispute cannot be resolved through negotiation within thirty (30) days, either party may pursue resolution through binding arbitration administered by the American Arbitration Association in accordance with its Commercial Arbitration Rules. The arbitration shall take place in California, and the arbitrator's decision shall be final and binding.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>14.3 Class Action Waiver</h3>
-                <p>You agree that any dispute resolution proceedings will be conducted only on an individual basis and not in a class, consolidated, or representative action.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>15. General Provisions</h2>
-                
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.1 Entire Agreement</h3>
-                <p>These Terms, together with any separate service agreements, constitute the entire agreement between you and Black Orchid Business Group regarding the subject matter hereof and supersede all prior agreements and understandings.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.2 Severability</h3>
-                <p>If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.3 Waiver</h3>
-                <p>The failure of the Company to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.4 Assignment</h3>
-                <p>You may not assign or transfer these Terms or any rights hereunder without our prior written consent. We may assign these Terms without restriction.</p>
-
-                <h3 className="text-xl mb-2 mt-4" style={{ color: '#D4AF37' }}>15.5 Force Majeure</h3>
-                <p>Neither party shall be liable for any failure or delay in performance due to circumstances beyond its reasonable control, including but not limited to acts of God, natural disasters, war, terrorism, labor disputes, or government actions.</p>
-              </section>
-
-              <section>
-                <h2 className="text-2xl mb-3" style={{ color: '#D4AF37' }}>16. Contact Information</h2>
-                <p>If you have any questions, concerns, or requests regarding these Terms of Service, please contact us at:</p>
-                <p className="mt-4">
-                  <strong>Black Orchid Business Group</strong><br />
-                  Website: bobgllc.com
-                </p>
-                <p className="mt-4">By using the Website or Services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p>
-              </section>
             </div>
           </div>
         </div>
@@ -399,17 +203,22 @@ const TermsOfService = ({ onClose, isDark }) => {
 const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggleTheme }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [state, handleSubmit] = useForm(FORMSPREE_IDS[segment]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    if (state.succeeded) {
+      onSubmit();
+    }
+  }, [state.succeeded, onSubmit]);
+
   const formConfigs = {
     prebidding: {
       title: "Pre-Bidding / New to Federal",
       description: "Assess basic readiness for companies that haven't started yet",
-      formspreeId: FORMSPREE_IDS.preBidding,
       blurb: "This assessment helps us understand where you are in your federal contracting journey. By mapping your current capabilities, compliance status, and readiness factors, we can provide targeted recommendations for building the foundation you need to compete successfully. Understanding your starting point is critical—it prevents costly missteps and ensures you're investing time and resources in the right infrastructure from day one.",
       steps: [
         {
@@ -491,7 +300,6 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     agencyAlignment: {
       title: "The Agency Alignment Map",
       description: "Strategic mapping for companies that are registered but lack a focused capture plan",
-      formspreeId: FORMSPREE_IDS.agencyAlignment,
       blurb: "The Agency Alignment Map is our proprietary methodology for identifying where your capabilities create genuine competitive advantage in the federal marketplace. This assessment helps us reverse-engineer the specific agencies, contract vehicles, and decision-makers where you're most likely to win. Understanding your alignment isn't about casting a wide net—it's about precision targeting that converts your past performance into pipeline leverage.",
       steps: [
         {
@@ -570,7 +378,6 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     subToPrime: {
       title: "Sub-to-Prime Transition",
       description: "Readiness check for established subs ready to 'Stop Sharing Margin'",
-      formspreeId: FORMSPREE_IDS.subToPrime,
       blurb: "Transitioning from subcontractor to prime isn't just about capability—it's about infrastructure. This assessment evaluates whether you have the financial resilience, operational maturity, and relationship capital to successfully own the customer relationship. Understanding your readiness prevents the common trap of winning a prime contract you can't deliver, which destroys your reputation faster than staying a sub ever could.",
       steps: [
         {
@@ -653,7 +460,6 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     federalDiagnostic: {
       title: "Federal Diagnostic",
       description: "Comprehensive readiness assessment",
-      formspreeId: FORMSPREE_IDS.federalDiagnostic,
       blurb: "The Federal Diagnostic is our most comprehensive evaluation—a deep-dive analysis of your governance structure, financial resilience, operational maturity, and competitive positioning. This delivers a written report identifying critical vulnerabilities and high-leverage opportunities most consultants miss. Understanding your diagnostic results gives you a roadmap for building genuine competitive advantage, not just compliance checkboxes.",
       steps: [
         {
@@ -778,29 +584,12 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     }
   };
 
-  const handleSubmit = async (e) => {
+  const onFormSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      const response = await fetch(`https://formspree.io/f/${config.formspreeId}`, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        onSubmit();
-      } else {
-        throw new Error('Form submission failed');
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      alert("There was an error submitting the form. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+    if (currentStep === totalSteps - 1) {
+      handleSubmit(e);
+    } else {
+      handleNext();
     }
   };
 
@@ -811,7 +600,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="/logo.png" 
+                src="/BOBG/logo.png" 
                 alt="Black Orchid Business Group" 
                 className="h-12"
                 style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -883,7 +672,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
               </div>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={onFormSubmit}>
               <div className="min-h-[300px]">
                 <div className="flex flex-col gap-6">
                   {currentStepData.fields.map((field) => (
@@ -945,8 +734,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                 
                 {currentStep < totalSteps - 1 ? (
                   <button
-                    type="button"
-                    onClick={handleNext}
+                    type="submit"
                     className="flex items-center gap-2 px-6 py-3 font-semibold rounded transition-colors hover:opacity-90"
                     style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
                   >
@@ -956,11 +744,11 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                 ) : (
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={state.submitting}
                     className="px-8 py-3 font-semibold rounded transition-colors hover:opacity-90 disabled:opacity-50"
                     style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
                   >
-                    {isSubmitting ? 'Submitting...' : 'Submit Assessment'}
+                    {state.submitting ? 'Submitting...' : 'Submit Assessment'}
                   </button>
                 )}
               </div>
@@ -973,7 +761,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <img 
-              src="/logo.png" 
+              src="/BOBG/logo.png" 
               alt="Black Orchid Business Group" 
               className="h-10"
               style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -1045,7 +833,7 @@ const IntelligenceLibrary = ({ onArticleSelect, onClose, isDark, toggleTheme, sc
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="/logo.png" 
+                src="/BOBG/logo.png" 
                 alt="Black Orchid Business Group" 
                 className="h-12"
                 style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -1126,7 +914,7 @@ const IntelligenceLibrary = ({ onArticleSelect, onClose, isDark, toggleTheme, sc
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <img 
-              src="/logo.png" 
+              src="/BOBG/logo.png" 
               alt="Black Orchid Business Group" 
               className="h-10"
               style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -1153,12 +941,20 @@ export default function BlackOrchidWebsite() {
   const [scrollY, setScrollY] = useState(0);
   const [articleSource, setArticleSource] = useState('home');
 
+  const [contactState, handleContactSubmit] = useForm(FORMSPREE_IDS.contact);
+
   useEffect(() => {
     const saved = localStorage.getItem('theme');
     if (saved !== null) {
       setIsDark(saved === 'dark');
     }
   }, []);
+
+  useEffect(() => {
+    if (contactState.succeeded) {
+      setShowThankYou(true);
+    }
+  }, [contactState.succeeded]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1281,7 +1077,7 @@ export default function BlackOrchidWebsite() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="/logo.png" 
+                src="/BOBG/logo.png" 
                 alt="Black Orchid Business Group" 
                 className="h-12"
                 style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
@@ -1352,7 +1148,7 @@ export default function BlackOrchidWebsite() {
         <div 
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(/hero-patriotic.png)',
+            backgroundImage: 'url(/BOBG/hero-patriotic.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -1559,30 +1355,7 @@ export default function BlackOrchidWebsite() {
           </div>
 
           <form 
-            onSubmit={async (e) => {
-              e.preventDefault();
-              const formData = new FormData(e.target);
-              
-              try {
-                const response = await fetch(`https://formspree.io/f/${FORMSPREE_IDS.contact}`, {
-                  method: "POST",
-                  body: formData,
-                  headers: {
-                    'Accept': 'application/json'
-                  }
-                });
-
-                if (response.ok) {
-                  setShowThankYou(true);
-                  e.target.reset();
-                } else {
-                  throw new Error('Form submission failed');
-                }
-              } catch (error) {
-                console.error("Form submission error:", error);
-                alert("There was an error submitting the form. Please try again.");
-              }
-            }}
+            onSubmit={handleContactSubmit}
             className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} 
             style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
           >
@@ -1625,8 +1398,13 @@ export default function BlackOrchidWebsite() {
               <textarea name="challenges" required rows={5} className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}></textarea>
             </div>
 
-            <button type="submit" className="w-full px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90" style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}>
-              Request Discovery Consultation
+            <button 
+              type="submit" 
+              disabled={contactState.submitting}
+              className="w-full px-8 py-4 font-semibold text-lg rounded transition-colors hover:opacity-90 disabled:opacity-50" 
+              style={{ backgroundColor: '#D4AF37', color: '#ffffff' }}
+            >
+              {contactState.submitting ? 'Submitting...' : 'Request Discovery Consultation'}
             </button>
           </form>
         </div>
@@ -1637,7 +1415,7 @@ export default function BlackOrchidWebsite() {
           <div className="flex flex-col items-center mb-8">
             <div className="flex items-center gap-3 mb-4">
               <img 
-                src="/logo.png" 
+                src="/BOBG/logo.png" 
                 alt="Black Orchid Business Group" 
                 className="h-10"
                 style={{ filter: isDark ? 'invert(1)' : 'invert(0)' }}
