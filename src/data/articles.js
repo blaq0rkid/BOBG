@@ -287,14 +287,6 @@ export const articles = [
   "content": "<h2>Proposal Management as Execution Discipline</h2><p>Agencies don’t buy effort; they buy outcomes they can measure and defend. Proposal management is an execution discipline, not a writing function. If your narrative cannot be turned into a strength statement tied to Section M, it is filler.</p><h2>Agile Production Control</h2><p>Use 48–96 hour sprints. Weekly is too slow for amendments and Q&A drift. Convert Section L and M into citable work items with acceptance criteria. If it's not traceable, it's not shippable.</p><h2>GAO-Grade Cost Credibility</h2><p>Most firms price by adjusting templates. That fails realism. Use <strong>GAO-20-195G</strong> as a subsystem for roles, artifacts, and review gates. Every cost step must produce an owner and a review gate to avoid protest-grade weakness.</p><h2>Actionable Intelligence: FAR Part 12 vs 15 Watchlist</h2><p><strong>Create two saved searches on SAM.gov. Search A for FAR 15 signals (tradeoff, discussions). Search B for FAR 12 (commercial services). Stop guessing the evaluation model; build the right architecture on day one.</strong></p>"  
 },  
 {  
-  "id": "8386a3b0-5ee3-4b83-8623-4f217114c227",  
-  "title": "GovCon Market Intelligence: Messy Data Is the Edge",  
-  "excerpt": "GAO says procurement data quality is uneven. Contractors who validate FPDS and forecasts first see ghost opportunities and prime earlier.",  
-  "date": "2026-03-30",  
-  "readTime": "9 min read",  
-  "thumbnail": "https://cdn.marblism.com/G5zCtR0_uaE.webp",\n  \"content\": \"<h2>Procurement Data Inconsistency</h2><p>GAO-25-107469 concludes procurement data controls are inconsistent across agencies. Compliance with the 95% accuracy threshold is uneven. Treat FPDS as a lead generator, not the truth—truth comes from validation.</p><h2>The Edge of Messy Data</h2><p>Automated competitors miss opportunities when signals are distorted. <strong>Ghost opportunities</strong>—real requirements that don't surface in typical searches—exist due to NAICS miscoding or modification stacking. Triangulate history, forecasts, and Rule of Two signals.</p><h2>Market Intelligence Audit</h2><p>Audit goal: fewer targets, higher certainty. Reconstruct opportunities using PIID lineage across mods and confirm timing with triangulation. Stop running capture off a false map.</p><h2>Actionable Intelligence: Office Drift Search</h2><p><strong>On SAM.gov, run a search for your NAICS + Contracting Office for one priority agency. Save the search for Presolicitation and Sources Sought notices. This forces visibility into office shifts before the solicitation posts.</strong></p>"  
-},  
-{  
   "id": "7ea8ccd3-ffc5-4cc1-84bf-f0a0e11c2808",  
   "title": "Why OMB Memorandum M-24-18 Redefines 'Best Value' for AI",  
   "excerpt": "March 2026 is the line: AI vendors must prove defensible governance, audit-ready evidence, and incident readiness to stay awardable.",  
