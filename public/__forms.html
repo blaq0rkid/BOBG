@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forms</title>
+</head>
+<body>
+  <!-- Contact Form -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="companyName" />
+    <input type="text" name="industry" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <select name="revenueTier">
+      <option value="under-1m">Under $1M</option>
+      <option value="1m-5m">$1M - $5M</option>
+      <option value="5m-10m">$5M - $10M</option>
+      <option value="10m-25m">$10M - $25M</option>
+      <option value="over-25m">Over $25M</option>
+    </select>
+    <textarea name="challenges"></textarea>
+  </form>
+
+  <!-- Pre-Bidding Form -->
+  <form name="prebidding-form" netlify netlify-honeypot="bot-field" hidden>
+    <select name="samStatus"></select>
+    <select name="cageStatus"></select>
+    <select name="cybersecurity"></select>
+    <select name="accountingSystem"></select>
+    <select name="bondingCapacity"></select>
+    <select name="pastPerformance"></select>
+    <textarea name="industry"></textarea>
+    <textarea name="mainChallenge"></textarea>
+  </form>
+
+  <!-- Agency Alignment Form -->
+  <form name="agencyAlignment-form" netlify netlify-honeypot="bot-field" hidden>
+    <textarea name="naicsCodes"></textarea>
+    <textarea name="primaryCapabilities"></textarea>
+    <textarea name="federalPastPerformance"></textarea>
+    <textarea name="targetAgencies"></textarea>
+    <select name="annualRevenue"></select>
+    <select name="geographicFocus"></select>
+    <select name="bidHistory"></select>
+    <textarea name="desiredResult"></textarea>
+  </form>
+
+  <!-- Sub-to-Prime Form -->
+  <form name="subToPrime-form" netlify netlify-honeypot="bot-field" hidden>
+    <select name="yearsAsSubcontractor"></select>
+    <select name="subcontractingRevenue"></select>
+    <select name="primeRelationships"></select>
+    <select name="cparsHistory"></select>
+    <select name="govRelationships"></select>
+    <select name="workingCapital"></select>
+    <select name="proposalCapability"></select>
+    <textarea name="strategicIntent"></textarea>
+  </form>
+
+  <!-- Federal Diagnostic Form -->
+  <form name="federalDiagnostic-form" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="companyName" />
+    <input type="number" name="yearsInBusiness" />
+    <select name="annualRevenue"></select>
+    <select name="federalExperience"></select>
+    <select name="contractValue"></select>
+    <textarea name="targetAgencies"></textarea>
+    <select name="accountingSystem"></select>
+    <select name="cybersecurity"></select>
+    <select name="qualitySystem"></select>
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <textarea name="goals"></textarea>
+  </form>
+</body>
+</html>
