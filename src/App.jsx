@@ -571,7 +571,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
     e.preventDefault();
     if (currentStep === totalSteps - 1) {
       const form = e.target;
-      fetch('/index.html', {
+      fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(form)).toString()
@@ -1021,7 +1021,7 @@ export default function BlackOrchidWebsite() {
   const handleContactSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    fetch('/index.html', {
+    fetch('/__forms.html', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(new FormData(form)).toString()
