@@ -570,7 +570,16 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentStep === totalSteps - 1) {
-      onSubmit();
+      const form = e.target;
+      fetch('/index.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+        .then(() => {
+          onSubmit();
+        })
+        .catch((error) => console.error('Form submission error:', error));
     } else {
       handleNext();
     }
@@ -683,7 +692,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                           onChange={(e) => handleInputChange(field.name, e.target.value)}
                           required={field.required}
                           rows={4}
-                          className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
+                          className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border rounded px-4 py-3 focus:outline-none focus:border-2`}
                           style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }}
                         />
                       ) : field.type === 'select' ? (
@@ -1007,6 +1016,20 @@ export default function BlackOrchidWebsite() {
     } else {
       setSelectedArticle(null);
     }
+  };
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    fetch('/index.html', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+      .then(() => {
+        setShowThankYou(true);
+      })
+      .catch((error) => console.error('Form submission error:', error));
   };
 
   if (showPrivacyPolicy) {
@@ -1346,6 +1369,7 @@ export default function BlackOrchidWebsite() {
             method="POST"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
+            onSubmit={handleContactSubmit}
             className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} 
             style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
           >
