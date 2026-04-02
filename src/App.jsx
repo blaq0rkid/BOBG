@@ -193,7 +193,6 @@ const TermsOfService = ({ onClose, isDark }) => {
 const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggleTheme }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
-  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -571,17 +570,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentStep === totalSteps - 1) {
-      const form = e.target;
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
-      })
-        .then(() => {
-          setSubmitted(true);
-          onSubmit();
-        })
-        .catch((error) => console.error('Form submission error:', error));
+      onSubmit();
     } else {
       handleNext();
     }
@@ -670,11 +659,15 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
               name={`${segment}-form`}
               method="POST"
               data-netlify="true"
-              netlify-honeypot="bot-field"
+              data-netlify-honeypot="bot-field"
               onSubmit={handleSubmit}
             >
               <input type="hidden" name="form-name" value={`${segment}-form`} />
-              <input type="hidden" name="bot-field" />
+              <p style={{ display: 'none' }}>
+                <label>
+                  Don't fill this out if you're human: <input name="bot-field" />
+                </label>
+              </p>
               
               <div className="min-h-[300px]">
                 <div className="flex flex-col gap-6">
@@ -691,7 +684,7 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                           required={field.required}
                           rows={4}
                           className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
-                          style={{ focusBorderColor: '#D4AF37' }}
+                          style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }}
                         />
                       ) : field.type === 'select' ? (
                         <select
@@ -699,8 +692,8 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                           value={formData[field.name] || ''}
                           onChange={(e) => handleInputChange(field.name, e.target.value)}
                           required={field.required}
-                          className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
-                          style={{ focusBorderColor: '#D4AF37' }}
+                          className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border rounded px-4 py-3 focus:outline-none focus:border-2`}
+                          style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }}
                         >
                           <option value="">Select an option</option>
                           {field.options.map((option) => (
@@ -714,8 +707,8 @@ const IntakeForm = ({ segment, onClose, onSubmit, isDark, scrollToSection, toggl
                           value={formData[field.name] || ''}
                           onChange={(e) => handleInputChange(field.name, e.target.value)}
                           required={field.required}
-                          className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`}
-                          style={{ focusBorderColor: '#D4AF37' }}
+                          className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border rounded px-4 py-3 focus:outline-none focus:border-2`}
+                          style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }}
                         />
                       )}
                     </div>
@@ -942,7 +935,6 @@ export default function BlackOrchidWebsite() {
   const [isDark, setIsDark] = useState(true);
   const [scrollY, setScrollY] = useState(0);
   const [articleSource, setArticleSource] = useState('home');
-  const [contactSubmitted, setContactSubmitted] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('theme');
@@ -1015,21 +1007,6 @@ export default function BlackOrchidWebsite() {
     } else {
       setSelectedArticle(null);
     }
-  };
-
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    })
-      .then(() => {
-        setContactSubmitted(true);
-        setShowThankYou(true);
-      })
-      .catch((error) => console.error('Form submission error:', error));
   };
 
   if (showPrivacyPolicy) {
@@ -1368,39 +1345,42 @@ export default function BlackOrchidWebsite() {
             name="contact"
             method="POST"
             data-netlify="true"
-            netlify-honeypot="bot-field"
-            onSubmit={handleContactSubmit}
+            data-netlify-honeypot="bot-field"
             className={`${isDark ? 'bg-[#262626]' : 'bg-white'} border-2 rounded-lg p-8`} 
             style={{ borderColor: isDark ? '#3f3f46' : '#e4e4e7' }}
           >
             <input type="hidden" name="form-name" value="contact" />
-            <input type="hidden" name="bot-field" />
+            <p style={{ display: 'none' }}>
+              <label>
+                Don't fill this out if you're human: <input name="bot-field" />
+              </label>
+            </p>
             
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Company Name *</label>
-                <input name="companyName" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+                <input name="companyName" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }} />
               </div>
               <div>
                 <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Industry *</label>
-                <input name="industry" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+                <input name="industry" type="text" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }} />
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Email Address *</label>
-                <input name="email" type="email" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+                <input name="email" type="email" required className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }} />
               </div>
               <div>
                 <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Phone Number</label>
-                <input name="phone" type="tel" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }} />
+                <input name="phone" type="tel" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }} />
               </div>
             </div>
 
             <div className="mb-6">
               <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Current Revenue Tier</label>
-              <select name="revenueTier" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}>
+              <select name="revenueTier" className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }}>
                 <option value="">Select a range</option>
                 <option value="under-1m">Under $1M</option>
                 <option value="1m-5m">$1M - $5M</option>
@@ -1412,7 +1392,7 @@ export default function BlackOrchidWebsite() {
 
             <div className="mb-6">
               <label className="block mb-2 font-medium" style={{ color: '#D4AF37' }}>Specific Contracting Challenges *</label>
-              <textarea name="challenges" required rows={5} className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border border-zinc-700 rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ focusBorderColor: '#D4AF37' }}></textarea>
+              <textarea name="challenges" required rows={5} className={`w-full ${isDark ? 'bg-[#020B13] text-zinc-100' : 'bg-zinc-50 text-zinc-900'} border rounded px-4 py-3 focus:outline-none focus:border-2`} style={{ borderColor: isDark ? '#3f3f46' : '#d4d4d8' }}></textarea>
             </div>
 
             <button 
