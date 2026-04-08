@@ -1,12 +1,12 @@
 export const articles = [
    {  
-  "id": "beyond-compliance-writing-proposals-mission",  
-  "title": "Beyond Compliance: Writing Proposals That Sell the Mission",  
-  "excerpt": "Compliance is the baseline; mission outcome is the win. Engineer your proposals as decision artifacts that make selecting you the lowest risk for evaluators.",  
-  "date": "2026-03-30",  
-  "readTime": "12 min",  
-  "thumbnail": "https://cdn.marblism.com/ZP-_7xd1KV_.webp",  
-  "content": "<p class=\"lead-paragraph\">Compliance is the baseline. It is the price of admission. It is not the reason you win.</p>\\n<p>Compliance keeps you in the competitive range. Mission outcome moves you to the top of it. Winning proposals are engineered, not just assembled.</p>\\n\\n<h2>Executive Brief</h2>\\n<p>Most contractors treat an RFP like a scavenger hunt. Winning firms pre-build a mission outcome library. Here’s the shift: stop saying “We meet the requirement” and start showing “Here is the operational outcome and how we de-risk it.”</p>"  
+     "id": "beyond-compliance-writing-proposals-mission",  
+     "title": "Beyond Compliance: Writing Proposals That Sell the Mission",  
+     "excerpt": "Compliance is the baseline; mission outcome is the win. Engineer your proposals as decision artifacts that make selecting you the lowest risk for evaluators.",  
+     "date": "2026-03-30",  
+     "readTime": "12 min",  
+     "thumbnail": "https://cdn.marblism.com/ZP-_7xd1KV_.webp",  
+     "content": "<p class=\"lead-paragraph\">Compliance is the baseline. It is the price of admission. It is not the reason you win.</p>\\n<p>Compliance keeps you in the competitive range. Mission outcome moves you to the top of it. Winning proposals are engineered, not just assembled.</p>\\n\\n<h2>Executive Brief</h2>\\n<p>Most contractors treat an RFP like a scavenger hunt. Winning firms pre-build a mission outcome library. Here’s the shift: stop saying “We meet the requirement” and start showing “Here is the operational outcome and how we de-risk it.”</p>"  
 },  
 {  
   "id": "2026-federal-market-trends-ai-supply-chain",  
@@ -753,5 +753,14 @@ export const articles = [
   "readTime": "11 min",  
   "thumbnail": "https://cdn.marblism.com/kJjuNdEUXYa.webp",  
   "content": "<p class=\"lead-paragraph\">Winning federal contracts is not a game of chance. It is a matter of engineering. For SMBs, the difference between a 5% win rate and a 40% win rate lies in the rigor of your Federal Proposal Management system.</p>\n<p>Most firms fail because they treat every RFP as a surprise. At Black Orchid Business Group, we help firms move from subcontractor dependency to prime contractor authority by professionalizing their operations.</p>\n\n<h2>1. Qualify Opportunities with the Agency Matching Matrix</h2>\n<p>Stop bidding on everything that hits your inbox. Volume does not equal victory; it equals burnout. To win more, you must bid less: but bid with higher precision. If an opportunity scores below a 70% match, it is an automatic 'No-Bid.'</p>\n\n<h2>2. Eliminate the 'Middleman Tax'</h2>\n<p>To boost your win rate as a Prime, you must demonstrate that you can manage the complexity of a federal contract, not just the technical tasks. Your proposals must shift from 'we can do the work' to 'we can manage the mission.'</p>\n\n<h2>3. Centralize and Engineer Past Performance</h2>\n<p>In a Tier 5 framework, past performance is engineered, not just recorded. Create a 'library of excellence' where every project is mapped to specific NAICS codes and agency missions for high-quality, compliant responses.</p>"  
+},
+   {  
+  "id": "ultimate-guide-federal-capture-management",  
+  "title": "The Ultimate Guide to Federal Capture Management: Everything You Need to Succeed",  
+  "excerpt": "Stop reacting to RFPs and start shaping them. Learn why Capture Management is the Tier 6 strategy that moves you from subcontractor to prime.",  
+  "date": "2026-04-07",  
+  "readTime": "12 min",  
+  "thumbnail": "https://cdn.marblism.com/nJo9kW581VO.webp",  
+  "content": "<p class=\"lead-paragraph\">If the first time you see a federal solicitation is when it hits SAM.gov, you have already lost. In the high-stakes world of government contracting, winning is not about writing faster; it is about knowing more and acting sooner.</p>\n<p>At Black Orchid Business Group, we categorize Federal Capture Management as a <strong>Tier 6 Strategic Activity</strong>. It is the bridge between basic business development and high-level prime contractor operations. Without a disciplined capture process, your firm is merely a 'SAM.gov stalker,' reacting to scraps while your competitors feast on the requirements they helped shape.</p>\n\n<h2>The Definition of Tier 6 Capture Strategy</h2>\n<p>Capture management is the proactive process of identifying, qualifying, and winning a specific procurement before the Request for Proposal (RFP) is even a draft. It involves intelligence gathering, customer intimacy, and competitive positioning. While Tier 1 through 5 focus on the mechanics of compliance and pricing, Tier 6 is about <strong>influence</strong>.</p>\n\n<h2>Moving from Reactive Bidding to Proactive Capture</h2>\n<p>The definitive stance of Black Orchid Business Group is this: <strong>Proposals are won in the capture phase, not the writing phase.</strong> If you aren't shaping the SOW (Statement of Work) to highlight your unique capabilities, you are bidding on a playing field designed by your competitors.</p>\n\n<h2>The Power of the Agency Matching Matrix</h2>\n<p>One of our proprietary tools at Black Orchid is the <strong>Agency Matching Matrix</strong>. This isn't a simple spreadsheet; it is a data-driven filter that aligns your firm's technical DNA with an agency's historical buying patterns and future needs. It identifies the top 3-5 agencies where your expertise creates a natural 'fit.'</p>\n\n<h2>Avoiding the 'Middleman Tax'</h2>\n<p>True Federal Capture Management is the roadmap to becoming a Prime. It requires you to stop thinking like a technical specialist and start thinking like a Mission Partner. This positioning allows you to bid as a Prime, capturing the full margin and building direct relationships with Contracting Officers, effectively eliminating the <strong>Middleman Tax</strong>.</p>\n\n<h2>Pre-RFP Engagement Strategies</h2>\n<p>Capture management thrives in the 'Pre-RFP' zone. This is the period between the Sources Sought notice and the formal solicitation. Your goal here is simple: <strong>Shape the requirement.</strong> Use Sources Sought and RFIs as your opportunity to advocate for set-asides and demonstrate your mastery of the mission challenges.</p>"  
 }
 ];
