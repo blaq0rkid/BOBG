@@ -785,7 +785,6 @@
             const formData = new FormData(event.target);
             const service = formData.get('service');
             
-            // Route logic based on service tier selection
             let message = 'Thank you for your interest! ';
             if (service === 'diagnostic') {
                 message += 'We will contact you to schedule your Federal Diagnostic consultation.';
@@ -799,7 +798,6 @@
             event.target.reset();
         }
 
-        // Smooth scrolling for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
