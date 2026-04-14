@@ -17,6 +17,69 @@
         body.light-mode .hero-subtitle {
             color: #2a2a2a !important;
         }
+
+        /* Article card specific styles */
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
+        }
+
+        .article-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-meta {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .article-title {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--accent);
+            gap: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -140,8 +203,8 @@
             </div>
         </section>
 
-        <!-- Intelligence Section - Blog Articles will be inserted here -->
-        <section id="intelligence-section" class="intelligence-preview" style="display: none;">
+        <!-- Intelligence Section - Blog Articles -->
+        <section id="intelligence-section" class="intelligence-preview">
             <div class="container">
                 <h2 class="section-title">Intelligence</h2>
                 <p class="section-intro">Strategic insights for federal market dominance</p>
@@ -171,6 +234,9 @@
     </footer>
 
     <script type="module">
+        // Import articles from articles.js
+        import { articles } from './src/data/articles.js';
+
         // Dark mode toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
@@ -210,38 +276,29 @@
             mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
         });
 
-        // Load articles dynamically
-        async function loadArticles() {
-            try {
-                const articlesModule = await import('./src/data/articles.js');
-                const articles = articlesModule.articles || articlesModule.default;
-                
-                if (articles && articles.length > 0) {
-                    const intelligenceSection = document.getElementById('intelligence-section');
-                    const articlesGrid = document.getElementById('articles-grid');
-                    
-                    // Display first 3 articles
-                    const displayArticles = articles.slice(0, 3);
-                    
-                    articlesGrid.innerHTML = displayArticles.map(article => `
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h3>${article.title}</h3>
-                            <p class="article-meta" style="color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem;">
-                                ${article.date} • ${article.readTime || '5 min read'}
-                            </p>
-                            <p>${article.excerpt || article.summary || ''}</p>
-                            <a href="${article.link || '#'}" class="service-link">Read More <i class="fas fa-arrow-right"></i></a>
+        // Load and display first 3 articles
+        function loadArticles() {
+            const articlesGrid = document.getElementById('articles-grid');
+            
+            // Get first 3 articles
+            const displayArticles = articles.slice(0, 3);
+            
+            articlesGrid.innerHTML = displayArticles.map(article => `
+                <div class="article-card">
+                    <img src="${article.thumbnail}" alt="${article.title}" class="article-thumbnail" loading="lazy">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span><i class="fas fa-calendar"></i> ${article.date}</span>
+                            <span><i class="fas fa-clock"></i> ${article.readTime}</span>
                         </div>
-                    `).join('');
-                    
-                    intelligenceSection.style.display = 'block';
-                }
-            } catch (error) {
-                console.log('Articles not available:', error);
-            }
+                        <h3 class="article-title">${article.title}</h3>
+                        <p class="article-excerpt">${article.excerpt}</p>
+                        <a href="article.html?id=${article.id}" class="read-more">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
         }
 
         // Load articles when page loads
