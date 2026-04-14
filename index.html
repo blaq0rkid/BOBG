@@ -4,806 +4,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Orchid Business Group | Direct Federal Growth & Agency Alignment</title>
-    <meta name="description" content="Black Orchid Business Group specializes in Direct Federal Growth and Agency Alignment for small to mid-sized businesses. Expert federal contracting consultancy services.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1a1a2e;
-            --secondary: #4a4a6a;
-            --accent: #8b4789;
-            --light: #f8f9fa;
-            --gold: #d4af37;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-placeholder {
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-
-        .company-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--gold);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        main {
-            margin-top: 80px;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(74, 74, 106, 0.85)), 
-                        url('/api/placeholder/1200/600');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 8rem 2rem;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--primary);
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 700;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
-        }
-
-        .section {
-            padding: 5rem 2rem;
-        }
-
-        .section-alt {
-            background: var(--light);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--gold);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .service-price {
-            display: inline-block;
-            background: var(--gold);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-weight: 700;
-            margin-top: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 400px;
-            background: url('/api/placeholder/600/400');
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .federal-partners {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .partner-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-        }
-
-        .partner-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: contain;
-            margin-bottom: 1rem;
-        }
-
-        .value-prop {
-            background: white;
-            padding: 2rem;
-            border-left: 4px solid var(--gold);
-            margin: 2rem 0;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-        }
-
-        .value-prop h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .blog-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            background: url('/api/placeholder/400/200');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-        }
-
-        .blog-date {
-            color: var(--secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .blog-excerpt {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .read-more {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--accent);
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: #6d3667;
-        }
-
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 3rem 2rem 1rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #ccc;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary);
-                flex-direction: column;
-                padding: 1rem 0;
-                gap: 0;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            nav ul li {
-                padding: 1rem 2rem;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <meta name="description" content="Black Orchid Business Group - Direct Federal Growth Consulting. Intelligence. Strategy. Access.">
+    <title>Black Orchid Business Group | Direct Federal Growth Consulting</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo-container">
-                <div class="logo-placeholder">LOGO</div>
-                <span class="company-name">Black Orchid Business Group</span>
-            </div>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
-            <ul id="navMenu">
-                <li><a href="#home" onclick="navigate('home')">Home</a></li>
-                <li><a href="#services" onclick="navigate('services')">Services</a></li>
-                <li><a href="#about" onclick="navigate('about')">About</a></li>
-                <li><a href="#blog" onclick="navigate('blog')">Blog</a></li>
-                <li><a href="#contact" onclick="navigate('contact')">Contact</a></li>
-            </ul>
-        </nav>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="logo-container">
+            <img src="logo.png" alt="Black Orchid Business Group Logo">
+            <span class="logo-text">Black Orchid Business Group</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="federal-diagnostic.html" class="nav-link">Federal Diagnostic</a></li>
+            <li>
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle light mode">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </li>
+        </ul>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navLinks">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <header class="hero" role="banner" style="background-image: url('hero-patriotic.png');">
+        <div class="hero-content">
+            <h1 class="hero-title">Direct Federal Growth</h1>
+            <p class="hero-subtitle">Intelligence. Strategy. Access.</p>
+            <a href="services.html" class="cta-button">Explore Our Services</a>
+        </div>
     </header>
 
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>High-Precision Federal Growth Through Direct Agency Alignment</h1>
-                <p>Stop navigating indirect paths. Black Orchid Business Group delivers precision-aligned federal contracting strategies that connect established businesses directly with the right agencies.</p>
-                <a href="#contact" class="cta-button" onclick="navigate('contact')">Start Your Federal Diagnostic</a>
+    <main id="main-content">
+        <section class="mission-section">
+            <div class="container">
+                <h2 class="section-title">The Problem with Indirect Paths</h2>
+                <p class="section-intro">Most companies trying to enter the federal market waste years navigating through intermediaries, losing revenue to unnecessary layers, and never building the direct agency relationships that drive sustainable growth.</p>
+                <p class="section-intro">Black Orchid Business Group eliminates indirect path inefficiencies and provides precision alignment with federal agencies—enabling you to compete directly for high-value contracts.</p>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="section">
+        <section class="services-preview">
             <div class="container">
                 <h2 class="section-title">Our Service Tiers</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--secondary); font-size: 1.1rem;">
-                    Three distinct pathways to federal contracting success. Each tier builds upon precision alignment, compliance excellence, and direct agency relationship development.
-                </p>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🔍</div>
-                        <h3>Federal Diagnostic</h3>
-                        <p>Comprehensive market readiness and gap analysis. We assess your current capabilities, identify agency alignment opportunities, and provide a clear roadmap for federal market entry.</p>
-                        <ul style="margin: 1.5rem 0; padding-left: 1.5rem; color: var(--secondary);">
-                            <li>Capability Assessment</li>
-                            <li>Agency Fit Analysis</li>
-                            <li>Compliance Gap Review</li>
-                            <li>Strategic Roadmap</li>
-                        </ul>
-                        <div class="service-price">Starting at $2,500</div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🎯</div>
-                        <h3>Agency Alignment Blueprint</h3>
-                        <p>Targeted agency strategy and positioning. We develop a customized plan to align your business with specific federal agencies, complete with certification guidance and positioning strategy.</p>
-                        <ul style="margin: 1.5rem 0; padding-left: 1.5rem; color: var(--secondary);">
-                            <li>Targeted Agency Identification</li>
-                            <li>Certification Strategy</li>
-                            <li>Positioning & Messaging</li>
-                            <li>Relationship Development Plan</li>
-                        </ul>
-                        <div class="service-price">Starting at $7,500</div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🚀</div>
-                        <h3>Agency Alignment Map</h3>
-                        <p>Full execution and capture management. Our most comprehensive service delivers end-to-end support from agency introduction through contract award, with ongoing compliance and growth management.</p>
-                        <ul style="margin: 1.5rem 0; padding-left: 1.5rem; color: var(--secondary);">
-                            <li>Direct Agency Introductions</li>
-                            <li>Full Proposal Development</li>
-                            <li>Capture Management</li>
-                            <li>Ongoing Compliance Support</li>
-                            <li>Growth Strategy Execution</li>
-                        </ul>
-                        <div class="service-price">$15,000 - $25,000</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- The Problem/Solution Section -->
-        <section class="section section-alt">
-            <div class="container">
-                <h2 class="section-title">Why Precision Alignment Matters</h2>
-                <div class="value-prop">
-                    <h4>The Problem: Indirect Path Inefficiencies</h4>
-                    <p>Many businesses waste years and resources pursuing federal opportunities through misaligned agency relationships, unfocused strategies, and inefficient indirect paths. This results in low win rates, wasted bid costs, and missed revenue opportunities.</p>
-                </div>
-                <div class="value-prop">
-                    <h4>The Solution: Direct Agency Relationship Development</h4>
-                    <p>Black Orchid Business Group eliminates guesswork through precision agency alignment. We identify the exact agencies seeking your capabilities, position you for direct engagement, and guide you through compliant, strategic growth that maximizes federal revenue.</p>
-                </div>
-                <div style="margin-top: 3rem; text-align: center;">
-                    <h3 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 2rem;">Our Approach</h3>
-                    <div class="services-grid">
-                        <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.08);">
-                            <h4 style="color: var(--accent); margin-bottom: 1rem;">Precision</h4>
-                            <p>Data-driven agency matching based on your unique capabilities and federal spending patterns</p>
-                        </div>
-                        <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.08);">
-                            <h4 style="color: var(--accent); margin-bottom: 1rem;">Direct Growth</h4>
-                            <p>Build direct relationships with decision-makers at aligned federal agencies</p>
-                        </div>
-                        <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.08);">
-                            <h4 style="color: var(--accent); margin-bottom: 1rem;">Compliance</h4>
-                            <p>Navigate complex regulations with expert guidance on certifications and requirements</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title">About Black Orchid Business Group</h2>
-                <div class="about-content">
-                    <div>
-                        <h3 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 1rem;">Your Partner in Direct Federal Growth</h3>
-                        <p style="margin-bottom: 1rem;">Black Orchid Business Group is a premier federal contracting consultancy specializing in precision agency alignment and direct growth strategies. We empower established small to mid-sized businesses to compete effectively in the federal marketplace through strategic positioning and expert guidance.</p>
-                        <p style="margin-bottom: 1rem;">Our team consists of former government contracting officers, procurement specialists, and federal business development experts who understand both sides of the procurement equation. We leverage this unique perspective to deliver actionable strategies that produce measurable results.</p>
-                        <p><strong>Our Mission:</strong> To eliminate inefficient indirect paths by connecting qualified businesses directly with aligned federal agencies through precision strategy, compliance excellence, and relationship development.</p>
-                    </div>
-                    <div class="about-image"></div>
-                </div>
+                <p class="section-intro">Three distinct levels of engagement designed to meet you where you are and take you where you need to be.</p>
                 
-                <div style="margin-top: 4rem;">
-                    <h3 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 2rem; text-align: center;">Federal Agency Expertise</h3>
-                    <div class="federal-partners">
-                        <div class="partner-card">
-                            <img src="/api/placeholder/200/100" alt="Department of Defense">
-                            <h4>Department of Defense</h4>
-                            <p>Defense agency alignment strategies</p>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-check"></i>
                         </div>
-                        <div class="partner-card">
-                            <img src="/api/placeholder/200/100" alt="General Services Administration">
-                            <h4>GSA & Civilian Agencies</h4>
-                            <p>Civilian market positioning</p>
+                        <h3>Federal Diagnostic</h3>
+                        <p class="price">Starting at $2,500</p>
+                        <p>Know where you stand before you compete. A rigorous P-Win assessment to evaluate your federal readiness, identify infrastructure gaps, and provide a prioritized remediation plan.</p>
+                        <a href="federal-diagnostic-intake.html" class="service-link">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="service-card featured">
+                        <div class="featured-badge">Most Popular</div>
+                        <div class="service-icon">
+                            <i class="fas fa-map-marked-alt"></i>
                         </div>
-                        <div class="partner-card">
-                            <img src="/api/placeholder/200/100" alt="Department of Homeland Security">
-                            <h4>DHS & Security</h4>
-                            <p>Homeland security opportunities</p>
+                        <h3>Agency Alignment Blueprint</h3>
+                        <p class="price">Starting at $7,500</p>
+                        <p>Precision mapping for tactical entry. A strategic alignment phase that maps your unique capabilities to specific high-value federal opportunities and identifies the direct path to agency decision-makers.</p>
+                        <a href="agency-alignment-blueprint-intake.html" class="service-link">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-trophy"></i>
                         </div>
-                        <div class="partner-card">
-                            <img src="/api/placeholder/200/100" alt="Small Business Administration">
-                            <h4>SBA Programs</h4>
-                            <p>8(a), HUBZone, WOSB certification</p>
-                        </div>
+                        <h3>Agency Alignment Map</h3>
+                        <p class="price">$15,000 - $25,000</p>
+                        <p>Your definitive architecture for federal dominance. A high-touch consulting engagement delivering a tactical 12-month execution plan, deep intelligence-driven market analysis, and a custom relationship mapping framework.</p>
+                        <a href="agency-alignment-map-intake.html" class="service-link">Get Started <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Blog Section -->
-        <section id="blog" class="section section-alt">
+        <section class="why-choose">
             <div class="container">
-                <h2 class="section-title">Latest Insights</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--secondary);">
-                    Stay informed with expert insights on federal contracting, agency alignment strategies, and direct growth tactics. Content powered by Marblism Blog Writer.
-                </p>
-                <div class="blog-grid">
-                    <div class="blog-card">
-                        <div class="blog-image"></div>
-                        <div class="blog-content">
-                            <div class="blog-date">April 2026</div>
-                            <h3>Strategic Briefing: High-Precision Federal Growth</h3>
-                            <p class="blog-excerpt">Discover how precision agency alignment transforms federal market entry. Learn the data-driven approach to identifying and engaging with the right agencies for your business.</p>
-                            <a href="#" class="read-more">Read More →</a>
+                <h2 class="section-title">Why Direct Federal Growth?</h2>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bullseye"></i>
                         </div>
+                        <h3>Precision Alignment</h3>
+                        <p>We don't believe in generic "federal readiness" programs. Every engagement is customized to your specific capabilities, target agencies, and competitive position.</p>
                     </div>
-                    <div class="blog-card">
-                        <div class="blog-image"></div>
-                        <div class="blog-content">
-                            <div class="blog-date">April 2026</div>
-                            <h3>Why an Agency Alignment Blueprint Will Change the Way You Scale</h3>
-                            <p class="blog-excerpt">Stop wasting resources on misaligned opportunities. Learn how targeted agency strategy accelerates growth and maximizes win rates in federal contracting.</p>
-                            <a href="#" class="read-more">Read More →</a>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
                         </div>
+                        <h3>Direct Agency Relationships</h3>
+                        <p>We help you build direct connections with agency decision-makers, program managers, and contracting officers—eliminating dependence on intermediaries.</p>
                     </div>
-                    <div class="blog-card">
-                        <div class="blog-image"></div>
-                        <div class="blog-content">
-                            <div class="blog-date">April 2026</div>
-                            <h3>Maximized Federal Revenue: Precision Alignment Over Indirect Paths</h3>
-                            <p class="blog-excerpt">Indirect paths cost businesses millions in lost revenue. Discover how direct agency relationships and precision alignment deliver superior ROI.</p>
-                            <a href="#" class="read-more">Read More →</a>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-line"></i>
                         </div>
+                        <h3>Sustainable Growth</h3>
+                        <p>Our approach focuses on long-term federal market dominance, not one-off contract wins. We build the infrastructure and relationships that compound over time.</p>
                     </div>
-                </div>
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="#blog" class="cta-button">View All Articles</a>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Compliance First</h3>
+                        <p>Federal contracting is unforgiving of compliance gaps. We ensure you have the cybersecurity, accounting, and regulatory infrastructure before you compete.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
+        <section class="cta-section">
             <div class="container">
-                <h2 class="section-title">Start Your Federal Diagnostic</h2>
-                <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem; color: var(--secondary);">
-                    Ready to align your business with the right federal agencies? Begin with our Federal Diagnostic to assess your readiness and identify your optimal path forward.
-                </p>
-                <form class="contact-form" onsubmit="handleSubmit(event)">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Company Name *</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Tier of Interest *</label>
-                        <select id="service" name="service" required>
-                            <option value="">Select a service tier</option>
-                            <option value="diagnostic">Federal Diagnostic ($2,500)</option>
-                            <option value="blueprint">Agency Alignment Blueprint ($7,500)</option>
-                            <option value="map">Agency Alignment Map ($15,000-$25,000)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Tell Us About Your Federal Contracting Goals *</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Request Consultation</button>
-                </form>
+                <h2>Ready to Build Direct Agency Relationships?</h2>
+                <p>Start with a Federal Diagnostic to understand your current position and the precise path forward.</p>
+                <a href="federal-diagnostic-intake.html" class="cta-button">Begin Your Diagnostic</a>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Black Orchid Business Group</h3>
-                <p>Delivering high-precision federal growth through direct agency alignment and strategic compliance excellence.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home" onclick="navigate('home')">Home</a></li>
-                    <li><a href="#services" onclick="navigate('services')">Services</a></li>
-                    <li><a href="#about" onclick="navigate('about')">About</a></li>
-                    <li><a href="#blog" onclick="navigate('blog')">Blog</a></li>
-                    <li><a href="#contact" onclick="navigate('contact')">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="#services">Federal Diagnostic</a></li>
-                    <li><a href="#services">Agency Alignment Blueprint</a></li>
-                    <li><a href="#services">Agency Alignment Map</a></li>
-                    <li><a href="#services">Compliance Guidance</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <ul>
-                    <li>Email: info@bobgllc.com</li>
-                    <li>Phone: (555) 123-4567</li>
-                    <li>Website: bobgllc.com</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Black Orchid Business Group. All rights reserved.</p>
-        </div>
+    <footer role="contentinfo">
+        <p>&copy; 2026 Black Orchid Business Group. All Rights Reserved.</p>
+        <nav aria-label="Footer navigation">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="contact.html">Contact</a>
+        </nav>
     </footer>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
         }
 
-        function navigate(section) {
-            const menu = document.getElementById('navMenu');
-            if (menu.classList.contains('active')) {
-                menu.classList.remove('active');
-            }
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
             
-            const element = document.getElementById(section);
-            if (element) {
-                const headerOffset = 80;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+            if (body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                darkModeToggle.setAttribute('aria-label', 'Toggle light mode');
+                localStorage.setItem('theme', 'dark');
             }
-        }
+        });
 
-        function handleSubmit(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const service = formData.get('service');
-            
-            let message = 'Thank you for your interest! ';
-            if (service === 'diagnostic') {
-                message += 'We will contact you to schedule your Federal Diagnostic consultation.';
-            } else if (service === 'blueprint') {
-                message += 'A strategist will reach out to discuss your Agency Alignment Blueprint.';
-            } else if (service === 'map') {
-                message += 'Our team will contact you to create a custom quote for your Agency Alignment Map.';
-            }
-            
-            alert(message);
-            event.target.reset();
-        }
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = this.getAttribute('href').substring(1);
-                navigate(target);
-            });
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
         });
     </script>
 </body>
