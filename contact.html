@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Black Orchid Business Group - Direct Federal Growth Consulting">
+    <title>Contact | Black Orchid Business Group</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="logo-container">
+            <img src="logo.png" alt="Black Orchid Business Group Logo">
+            <span class="logo-text">Black Orchid Business Group</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="federal-diagnostic.html" class="nav-link">Federal Diagnostic</a></li>
+            <li>
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle light mode">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </li>
+        </ul>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navLinks">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <header class="page-header" role="banner">
+        <div class="container">
+            <h1 style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;">Contact Us</h1>
+            <p style="font-size: 1.3rem; color: var(--text); max-width: 800px; margin: 0 auto;">Ready to begin your federal market journey? Let's start the conversation.</p>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="contact-intro">
+            <div class="container">
+                <p class="section-intro" style="font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">Black Orchid Business Group works with a limited number of clients to ensure we can provide the high-touch, personalized consulting that drives results. If you're an established business ready for systematic federal market entry, we'd like to hear from you.</p>
+            </div>
+        </section>
+
+        <section class="contact-methods">
+            <div class="container">
+                <h2 class="section-title">Get Started</h2>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Federal Diagnostic</h3>
+                        <p>Not sure where you stand? Start with a comprehensive federal readiness assessment.</p>
+                        <a href="federal-diagnostic-intake.html" class="cta-button">Begin Diagnostic</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Agency Alignment Blueprint</h3>
+                        <p>Ready for strategic alignment with target agencies? Request a blueprint engagement.</p>
+                        <a href="agency-alignment-blueprint-intake.html" class="cta-button">Request Blueprint</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Agency Alignment Map</h3>
+                        <p>Committed to federal market dominance? Explore our elite engagement.</p>
+                        <a href="agency-alignment-map-intake.html" class="cta-button">Explore Elite Engagement</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="direct-contact">
+            <div class="container">
+                <h2 class="section-title">Direct Contact</h2>
+                
+                <div class="contact-info-grid">
+                    <div class="contact-info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@bobgllc.com">info@bobgllc.com</a></p>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+1234567890">(123) 456-7890</a></p>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Location</h3>
+                        <p>Serving clients nationwide</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="general-inquiry">
+            <div class="container">
+                <h2 class="section-title">General Inquiry</h2>
+                <p class="section-intro">Have questions about our services or want to discuss your federal market objectives? Send us a message.</p>
+                
+                <div class="form-container" style="max-width: 700px; margin: 0 auto;">
+                    <form name="general-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+                        <input type="hidden" name="form-name" value="general-contact">
+                        <p style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                        </p>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name<span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name<span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address<span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject<span class="required">*</span></label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="service-inquiry">Service Inquiry</option>
+                                <option value="general-question">General Question</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message<span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Tell us about your federal market objectives or ask us a question..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-preview">
+            <div class="container">
+                <h2 class="section-title">Common Questions</h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-card">
+                        <h3>What types of companies do you work with?</h3>
+                        <p>We work with established businesses ($1M+ annual revenue) that have proven commercial success and are ready for systematic federal market entry. Our clients span IT, engineering, professional services, construction, and other industries.</p>
+                    </div>
+
+                    <div class="faq-card">
+                        <h3>How long does federal market entry typically take?</h3>
+                        <p>Realistic timelines range from 6-24 months depending on your current readiness, target agencies, and resource commitment. We provide honest assessments—not false promises.</p>
+                    </div>
+
+                    <div class="faq-card">
+                        <h3>Do you guarantee contract wins?</h3>
+                        <p>No. Federal contracting is competitive, and anyone who guarantees wins is lying. We guarantee a systematic, intelligence-driven approach that maximizes your probability of success.</p>
+                    </div>
+
+                    <div class="faq-card">
+                        <h3>What makes you different from other federal consultants?</h3>
+                        <p>We're boutique, not factory. We work with a limited number of clients and provide high-touch, personalized consulting. We focus on direct agency relationships, not intermediary dependence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Start Your Federal Market Journey?</h2>
+                <p>Begin with a Federal Diagnostic to understand your current position and the precise path forward.</p>
+                <a href="federal-diagnostic-intake.html" class="cta-button">Begin Your Diagnostic</a>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 Black Orchid Business Group. All Rights Reserved.</p>
+        <nav aria-label="Footer navigation">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                darkModeToggle.setAttribute('aria-label', 'Toggle light mode');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+    </script>
+</body>
+</html>
