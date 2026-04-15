@@ -96,6 +96,7 @@
             <li><a href="index.html" class="nav-link active">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="intelligence.html" class="nav-link">Intelligence</a></li>
             <li><a href="federal-diagnostic.html" class="nav-link">Federal Diagnostic</a></li>
             <li>
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle light mode">
@@ -210,7 +211,9 @@
             <div class="container">
                 <h2 class="section-title">Intelligence</h2>
                 <p class="section-intro">Strategic insights for federal market dominance</p>
-                <div id="articles-grid" class="service-grid"></div>
+                <div id="articles-grid" class="service-grid">
+                    <p style="color: var(--text); text-align: center;">Loading articles...</p>
+                </div>
                 <div style="text-align: center; margin-top: 2rem;">
                     <a href="intelligence.html" class="text-link">View All Articles <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -282,25 +285,35 @@
         function loadArticles() {
             const articlesGrid = document.getElementById('articles-grid');
             
-            // Get first 3 articles
-            const displayArticles = articles.slice(0, 3);
-            
-            articlesGrid.innerHTML = displayArticles.map(article => `
-                <div class="article-card">
-                    <img src="${article.thumbnail}" alt="${article.title}" class="article-thumbnail" loading="lazy">
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span><i class="fas fa-calendar"></i> ${article.date}</span>
-                            <span><i class="fas fa-clock"></i> ${article.readTime}</span>
+            try {
+                if (!articles || articles.length === 0) {
+                    articlesGrid.innerHTML = '<p style="color: var(--text); text-align: center;">No articles available yet.</p>';
+                    return;
+                }
+                
+                // Get first 3 articles
+                const displayArticles = articles.slice(0, 3);
+                
+                articlesGrid.innerHTML = displayArticles.map(article => `
+                    <div class="article-card">
+                        ${article.thumbnail ? `<img src="${article.thumbnail}" alt="${article.title}" class="article-thumbnail" loading="lazy">` : ''}
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span><i class="fas fa-calendar"></i> ${article.date || 'Recent'}</span>
+                                <span><i class="fas fa-clock"></i> ${article.readTime || '5 min read'}</span>
+                            </div>
+                            <h3 class="article-title">${article.title}</h3>
+                            <p class="article-excerpt">${article.excerpt || article.summary || ''}</p>
+                            <a href="article.html?id=${article.id}" class="read-more">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <h3 class="article-title">${article.title}</h3>
-                        <p class="article-excerpt">${article.excerpt}</p>
-                        <a href="article.html?id=${article.id}" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
                     </div>
-                </div>
-            `).join('');
+                `).join('');
+            } catch (error) {
+                console.error('Error loading articles:', error);
+                articlesGrid.innerHTML = '<p style="color: var(--text); text-align: center;">Unable to load articles. Please check back later.</p>';
+            }
         }
 
         // Load articles when page loads
