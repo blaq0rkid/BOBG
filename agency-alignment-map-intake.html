@@ -8,238 +8,6 @@
     <title>Agency Alignment Map Intake | Black Orchid Business Group</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .intake-hero {
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(212, 175, 55, 0.1) 50%, rgba(10, 10, 10, 0.95) 100%);
-            padding: 4rem 2rem;
-            text-align: center;
-            border-bottom: 2px solid var(--gold);
-        }
-
-        .form-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .tier-overview {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
-            border: 2px solid var(--gold);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .tier-overview h3 {
-            color: var(--gold);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .tier-overview p {
-            color: var(--text);
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-
-        .pricing-badge {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--obsidian);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .elite-notice {
-            background: rgba(212, 175, 55, 0.15);
-            border-left: 4px solid var(--gold);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-        }
-
-        .elite-notice p {
-            color: var(--text);
-            margin: 0;
-            line-height: 1.7;
-        }
-
-        .form-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .form-section {
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--gold);
-        }
-
-        .section-number {
-            width: 40px;
-            height: 40px;
-            background: var(--gold);
-            color: var(--obsidian);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .section-title h2 {
-            color: var(--gold);
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"],
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(212, 175, 55, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .form-group select {
-            cursor: pointer;
-            color: var(--text);
-            background-color: #1a1a1a;
-        }
-
-        .form-group select option {
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-            padding: 0.5rem;
-        }
-
-        body.light-mode .form-group select {
-            background-color: #ffffff;
-            color: #2a2a2a;
-        }
-
-        body.light-mode .form-group select option {
-            background-color: #ffffff;
-            color: #2a2a2a;
-        }
-
-        .form-group input[type="text"]:focus,
-        .form-group input[type="email"]:focus,
-        .form-group input[type="tel"]:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: var(--gold);
-        }
-
-        .checkbox-item label {
-            margin: 0;
-            font-weight: 400;
-            color: var(--text);
-            cursor: pointer;
-        }
-
-        .submit-button {
-            width: 100%;
-            padding: 1.25rem;
-            background: var(--gold);
-            color: var(--obsidian);
-            border: 2px solid var(--gold);
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-button:hover {
-            background: transparent;
-            color: var(--gold);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
-        }
-
-        .required {
-            color: var(--gold);
-            margin-left: 0.25rem;
-        }
-
-        .helper-text {
-            color: var(--text);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            font-style: italic;
-            opacity: 0.8;
-        }
-
-        body.light-mode .form-group input[type="text"],
-        body.light-mode .form-group input[type="email"],
-        body.light-mode .form-group input[type="tel"],
-        body.light-mode .form-group textarea {
-            background: rgba(212, 175, 55, 0.08);
-        }
-    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -252,7 +20,8 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html" class="nav-link">Home</a></li>
             <li><a href="about.html" class="nav-link">About</a></li>
-            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="services.html" class="nav-link active">Services</a></li>
+            <li><a href="intelligence.html" class="nav-link">Intelligence</a></li>
             <li><a href="federal-diagnostic.html" class="nav-link">Federal Diagnostic</a></li>
             <li>
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle light mode">
@@ -265,411 +34,242 @@
         </button>
     </nav>
 
-    <header class="intake-hero" role="banner">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h1 style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;">Agency Alignment Map</h1>
-            <p style="font-size: 1.3rem; color: var(--text);">Your Definitive Architecture for Federal Dominance</p>
+    <header class="page-header" role="banner">
+        <div class="container">
+            <h1 style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;">Agency Alignment Map Intake</h1>
+            <p style="font-size: 1.3rem; color: var(--text); max-width: 800px; margin: 0 auto;">Your definitive architecture for federal market dominance.</p>
         </div>
     </header>
 
     <main id="main-content">
-        <div class="form-container">
-            
-            <div class="tier-overview">
-                <h3><i class="fas fa-trophy"></i> Tier 3: Agency Alignment Map</h3>
-                <p>Your definitive architecture for federal dominance. A high-touch consulting engagement delivering a tactical 12-month execution plan, deep intelligence-driven market analysis, and a custom relationship mapping framework.</p>
-                <div class="pricing-badge">$15,000 - $25,000</div>
-            </div>
-
-            <div class="elite-notice">
-                <p><strong>Elite Engagement Notice:</strong> The Agency Alignment Map is our most comprehensive offering, designed for established companies ready for systematic federal market penetration. This engagement includes executive-level strategic planning, direct intelligence support, and ongoing tactical guidance throughout your first 12 months of federal market execution.</p>
-            </div>
-
-            <form name="agency-alignment-map-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form-card">
-                <input type="hidden" name="form-name" value="agency-alignment-map-intake">
-                <p style="display: none;">
-                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
-                </p>
-
-                <!-- Executive Contact Information -->
-                <div class="form-section">
-                    <div class="section-title">
-                        <div class="section-number">1</div>
-                        <h2>Executive Contact Information</h2>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fullName">Full Name<span class="required">*</span></label>
-                        <input type="text" id="fullName" name="fullName" required>
+        <section>
+            <div class="container">
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div style="background: var(--card-bg); border: 2px solid var(--gold); border-radius: 16px; padding: 3rem; margin-bottom: 3rem;">
+                        <h2 style="color: var(--gold); font-size: 2rem; margin-bottom: 1.5rem;">Service Overview</h2>
+                        <p style="color: var(--text); line-height: 1.8; margin-bottom: 1rem;">
+                            <strong style="color: var(--gold);">Investment:</strong> $15,000 - $25,000
+                        </p>
+                        <p style="color: var(--text); line-height: 1.8; margin-bottom: 1rem;">
+                            <strong style="color: var(--gold);">Timeline:</strong> 8-12 weeks
+                        </p>
+                        <p style="color: var(--text); line-height: 1.8;">
+                            Our most comprehensive service delivers a tactical 12-month execution plan, deep intelligence-driven market analysis, and a custom relationship mapping framework for sustained federal market dominance.
+                        </p>
                     </div>
 
-                    <div class="form-group">
-                        <label for="title">Title / Position<span class="required">*</span></label>
-                        <input type="text" id="title" name="title" required placeholder="e.g., CEO, President, VP of Business Development">
-                    </div>
+                    <form name="agency-alignment-map" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="contact-form">
+                        <input type="hidden" name="form-name" value="agency-alignment-map">
+                        
+                        <p style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                        </p>
 
-                    <div class="form-group">
-                        <label for="email">Email Address<span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
+                        <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 2rem;">Company Information</h2>
 
-                    <div class="form-group">
-                        <label for="phone">Phone Number<span class="required">*</span></label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="company">Company Name<span class="required">*</span></label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="website">Company Website</label>
-                        <input type="text" id="website" name="website" placeholder="https://yourcompany.com">
-                    </div>
-                </div>
-
-                <!-- Company Profile & Market Position -->
-                <div class="form-section">
-                    <div class="section-title">
-                        <div class="section-number">2</div>
-                        <h2>Company Profile & Market Position</h2>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="companyAge">Years in Business<span class="required">*</span></label>
-                        <select id="companyAge" name="companyAge" required>
-                            <option value="">Select timeframe</option>
-                            <option value="5-10">5-10 years</option>
-                            <option value="10-15">10-15 years</option>
-                            <option value="15-20">15-20 years</option>
-                            <option value="20-plus">20+ years</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="annualRevenue">Current Annual Revenue<span class="required">*</span></label>
-                        <select id="annualRevenue" name="annualRevenue" required>
-                            <option value="">Select revenue range</option>
-                            <option value="5m-10m">$5M - $10M</option>
-                            <option value="10m-25m">$10M - $25M</option>
-                            <option value="25m-50m">$25M - $50M</option>
-                            <option value="50m-100m">$50M - $100M</option>
-                            <option value="100m-plus">$100M+</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="employeeCount">Number of Employees<span class="required">*</span></label>
-                        <select id="employeeCount" name="employeeCount" required>
-                            <option value="">Select range</option>
-                            <option value="10-25">10-25</option>
-                            <option value="25-50">25-50</option>
-                            <option value="50-100">50-100</option>
-                            <option value="100-250">100-250</option>
-                            <option value="250-plus">250+</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="industryVertical">Primary Industry Vertical<span class="required">*</span></label>
-                        <select id="industryVertical" name="industryVertical" required>
-                            <option value="">Select industry</option>
-                            <option value="it-cybersecurity">IT / Cybersecurity</option>
-                            <option value="engineering">Engineering</option>
-                            <option value="construction">Construction</option>
-                            <option value="professional-services">Professional Services</option>
-                            <option value="logistics">Logistics / Supply Chain</option>
-                            <option value="healthcare">Healthcare Services</option>
-                            <option value="consulting">Management Consulting</option>
-                            <option value="r-and-d">Research & Development</option>
-                            <option value="other">Other (specify below)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="otherIndustry">Other Industry (if applicable)</label>
-                        <input type="text" id="otherIndustry" name="otherIndustry" placeholder="Specify your industry">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="competitivePosition">Describe your competitive position in your commercial market<span class="required">*</span></label>
-                        <p class="helper-text">What makes you a dominant or differentiated player commercially?</p>
-                        <textarea id="competitivePosition" name="competitivePosition" required placeholder="Detail your market position, competitive advantages, unique capabilities, and proven track record..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Federal Market Experience & Strategic Vision -->
-                <div class="form-section">
-                    <div class="section-title">
-                        <div class="section-number">3</div>
-                        <h2>Federal Market Experience & Strategic Vision</h2>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="federalExperience">Current Federal Market Experience<span class="required">*</span></label>
-                        <select id="federalExperience" name="federalExperience" required>
-                            <option value="">Select experience level</option>
-                            <option value="none">No federal experience</option>
-                            <option value="subcontractor">Operating as federal subcontractor</option>
-                            <option value="small-prime">Small-scale prime contractor</option>
-                            <option value="moderate-prime">Moderate federal presence</option>
-                            <option value="exploring">Exploring federal market systematically</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="federalRevenue">Current Federal Revenue (if any)</label>
-                        <select id="federalRevenue" name="federalRevenue">
-                            <option value="">Select range</option>
-                            <option value="none">No current federal revenue</option>
-                            <option value="under-1m">Under $1M</option>
-                            <option value="1m-3m">$1M - $3M</option>
-                            <option value="3m-5m">$3M - $5M</option>
-                            <option value="5m-10m">$5M - $10M</option>
-                            <option value="10m-plus">$10M+</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="strategicVision">Strategic Vision: What does federal market dominance look like for your company in 3-5 years?<span class="required">*</span></label>
-                        <p class="helper-text">Be specific about revenue targets, agency relationships, and market position</p>
-                        <textarea id="strategicVision" name="strategicVision" required placeholder="Detail your long-term federal market vision, revenue goals, target market share, and strategic objectives..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="whyNow">Why is now the right time for systematic federal market entry?<span class="required">*</span></label>
-                        <textarea id="whyNow" name="whyNow" required placeholder="What strategic imperatives, market conditions, or organizational readiness factors make this the optimal time for federal expansion?"></textarea>
-                    </div>
-                </div>
-
-                <!-- Target Agency Strategy -->
-                <div class="form-section">
-                    <div class="section-title">
-                        <div class="section-number">4</div>
-                        <h2>Target Agency Strategy</h2>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Priority Target Agencies<span class="required">*</span></label>
-                        <p class="helper-text">Select your top 3-5 target agencies for initial market penetration</p>
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-dod" name="targetAgencies" value="DoD">
-                                <label for="agency-dod">Department of Defense (DoD)</label>
+                        <div class="form-row">
+                            <div style="flex: 1;">
+                                <label for="company-name" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Company Name *</label>
+                                <input type="text" id="company-name" name="company-name" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
                             </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-va" name="targetAgencies" value="VA">
-                                <label for="agency-va">Department of Veterans Affairs (VA)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-hhs" name="targetAgencies" value="HHS">
-                                <label for="agency-hhs">Health and Human Services (HHS)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-dhs" name="targetAgencies" value="DHS">
-                                <label for="agency-dhs">Department of Homeland Security (DHS)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-gsa" name="targetAgencies" value="GSA">
-                                <label for="agency-gsa">General Services Administration (GSA)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-doe" name="targetAgencies" value="DOE">
-                                <label for="agency-doe">Department of Energy (DOE)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-nasa" name="targetAgencies" value="NASA">
-                                <label for="agency-nasa">NASA</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-doi" name="targetAgencies" value="DOI">
-                                <label for="agency-doi">Department of Interior (DOI)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-dot" name="targetAgencies" value="DOT">
-                                <label for="agency-dot">Department of Transportation (DOT)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="agency-other" name="targetAgencies" value="Other">
-                                <label for="agency-other">Other (specify below)</label>
+                            <div style="flex: 1;">
+                                <label for="website" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Website *</label>
+                                <input type="url" id="website" name="website" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="otherAgencies">Other Target Agencies</label>
-                        <input type="text" id="otherAgencies" name="otherAgencies" placeholder="Specify other agencies">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="agencyAlignment">Detail the strategic alignment between your capabilities and these agencies<span class="required">*</span></label>
-                        <p class="helper-text">Why these specific agencies? What mission problems do you solve for them?</p>
-                        <textarea id="agencyAlignment" name="agencyAlignment" required placeholder="Explain the mission-to-capability alignment for each target agency and the specific problems you're uniquely positioned to solve..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="existingRelationships">Existing Agency Relationships or Past Performance</label>
-                        <p class="helper-text">Any current relationships, past contracts, or relevant connections?</p>
-                        <textarea id="existingRelationships" name="existingRelationships" placeholder="Describe any existing federal relationships, subcontractor work, program manager contacts, or relevant past performance..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Infrastructure & Compliance Readiness -->
-                <div class="form-section">
-                    <div class="section-title">
-                        <div class="section-number">5</div>
-                        <h2>Infrastructure & Compliance Readiness</h2>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="samStatus">SAM.gov Registration Status<span class="required">*</span></label>
-                        <select id="samStatus" name="samStatus" required>
-                            <option value="">Select status</option>
-                            <option value="active-current">Active and current</option>
-                            <option value="active-needs-update">Active but needs optimization</option>
-                            <option value="in-progress">In progress</option>
-                            <option value="not-started">Not started</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="accountingSystem">DCAA-Compliant Accounting System<span class="required">*</span></label>
-                        <select id="accountingSystem" name="accountingSystem" required>
-                            <option value="">Select status</option>
-                            <option value="dcaa-approved">DCAA approved</option>
-                            <option value="ready">System ready for DCAA compliance</option>
-                            <option value="in-progress">Working toward compliance</option>
-                            <option value="needs-development">Needs development</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cybersecurity">Cybersecurity Compliance (CMMC/NIST 800-171)<span class="required">*</span></label>
-                        <select id="cybersecurity" name="cybersecurity" required>
-                            <option value="">Select status</option>
-                            <option value="cmmc-certified">CMMC certified</option>
-                            <option value="nist-compliant">NIST 800-171 compliant</option>
-                            <option value="in-progress">Compliance in progress</option>
-                            <option value="needs-implementation">Needs implementation</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Set-Aside Certifications & Eligibility</label>
-                        <p class="helper-text">Select all applicable certifications</p>
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cert-8a" name="certifications" value="8(a)">
-                                <label for="cert-8a">8(a) Business Development Program</label>
+                        <div class="form-row">
+                            <div style="flex: 1;">
+                                <label for="industry" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Industry/Sector *</label>
+                                <input type="text" id="industry" name="industry" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
                             </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cert-wosb" name="certifications" value="WOSB">
-                                <label for="cert-wosb">Women-Owned Small Business (WOSB)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cert-sdvosb" name="certifications" value="SDVOSB">
-                                <label for="cert-sdvosb">Service-Disabled Veteran-Owned Small Business (SDVOSB)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cert-hubzone" name="certifications" value="HUBZone">
-                                <label for="cert-hubzone">HUBZone</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cert-small" name="certifications" value="Small Business">
-                                <label for="cert-small">Small Business (SBA certified)</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cert-none" name="certifications" value="None">
-                                <label for="cert-none">None currently / Not eligible</label>
+                            <div style="flex: 1;">
+                                <label for="annual-revenue" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Annual Revenue *</label>
+                                <select id="annual-revenue" name="annual-revenue" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                                    <option value="">Select range</option>
+                                    <option value="5m-10m">$5M - $10M</option>
+                                    <option value="10m-25m">$10M - $25M</option>
+                                    <option value="25m-50m">$25M - $50M</option>
+                                    <option value="50m-100m">$50M - $100M</option>
+                                    <option value="over-100m">Over $100M</option>
+                                </select>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="proposalCapability">Internal Proposal/Capture Capability<span class="required">*</span></label>
-                        <select id="proposalCapability" name="proposalCapability" required>
-                            <option value="">Select capability level</option>
-                            <option value="dedicated-team">Dedicated proposal/capture team</option>
-                            <option value="some-capability">Some internal capability</option>
-                            <option value="limited">Limited capability</option>
-                            <option value="none">No internal capability (fully outsourced)</option>
-                        </select>
-                    </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="federal-revenue" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Current Federal Revenue (Annual) *</label>
+                            <select id="federal-revenue" name="federal-revenue" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                                <option value="">Select range</option>
+                                <option value="none">No federal revenue yet</option>
+                                <option value="under-1m">Under $1M</option>
+                                <option value="1m-5m">$1M - $5M</option>
+                                <option value="5m-10m">$5M - $10M</option>
+                                <option value="10m-25m">$10M - $25M</option>
+                                <option value="over-25m">Over $25M</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="financialCapacity">Working Capital & Financial Capacity<span class="required">*</span></label>
-                        <p class="helper-text">Can you sustain 90-120 day payment cycles?</p>
-                        <select id="financialCapacity" name="financialCapacity" required>
-                            <option value="">Select capacity</option>
-                            <option value="12-months">12+ months operating reserves</option>
-                            <option value="6-12-months">6-12 months operating reserves</option>
-                            <option value="90-180-days">90-180 days operating reserves</option>
-                            <option value="less-90-days">Less than 90 days reserves</option>
-                        </select>
-                    </div>
+                        <h2 style="color: var(--gold); font-size: 1.8rem; margin: 3rem 0 2rem;">Executive Contact Information</h2>
+
+                        <div class="form-row">
+                            <div style="flex: 1;">
+                                <label for="first-name" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">First Name *</label>
+                                <input type="text" id="first-name" name="first-name" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="last-name" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Last Name *</label>
+                                <input type="text" id="last-name" name="last-name" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div style="flex: 1;">
+                                <label for="email" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Email Address *</label>
+                                <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                            </div>
+                            <div style="flex: 1;">
+                                <label for="phone" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="title" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Executive Title *</label>
+                            <input type="text" id="title" name="title" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;" placeholder="e.g., CEO, President, VP of Federal Business Development">
+                        </div>
+
+                        <h2 style="color: var(--gold); font-size: 1.8rem; margin: 3rem 0 2rem;">Federal Market Position & Strategy</h2>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="federal-maturity" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Federal Market Maturity Level *</label>
+                            <select id="federal-maturity" name="federal-maturity" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                                <option value="">Select maturity level</option>
+                                <option value="established-sub">Established subcontractor transitioning to prime</option>
+                                <option value="early-prime">Early-stage prime contractor (1-3 years)</option>
+                                <option value="growing-prime">Growing prime contractor expanding market share</option>
+                                <option value="mature-prime">Mature prime contractor seeking strategic expansion</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="primary-agencies" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Primary Target Agencies *</label>
+                            <textarea id="primary-agencies" name="primary-agencies" rows="3" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="List your top 3-5 target agencies and why they're strategic priorities"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="core-capabilities" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Core Capabilities Statement *</label>
+                            <textarea id="core-capabilities" name="core-capabilities" rows="5" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="Provide a detailed description of your company's core capabilities, unique value proposition, and competitive differentiators"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="past-performance" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Key Past Performance *</label>
+                            <textarea id="past-performance" name="past-performance" rows="5" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="List 3-5 significant federal or relevant commercial contracts that demonstrate your capabilities"></textarea>
+                        </div>
+
+                        <h2 style="color: var(--gold); font-size: 1.8rem; margin: 3rem 0 2rem;">Growth Objectives & Timeline</h2>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="12-month-goal" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">12-Month Federal Revenue Goal *</label>
+                            <select id="12-month-goal" name="12-month-goal" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                                <option value="">Select goal</option>
+                                <option value="5m-10m">$5M - $10M</option>
+                                <option value="10m-25m">$10M - $25M</option>
+                                <option value="25m-50m">$25M - $50M</option>
+                                <option value="50m-100m">$50M - $100M</option>
+                                <option value="over-100m">Over $100M</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="3-year-vision" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">3-Year Federal Market Vision *</label>
+                            <textarea id="3-year-vision" name="3-year-vision" rows="4" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="Describe your long-term vision for federal market position and revenue targets"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="strategic-priorities" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Strategic Priorities *</label>
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
+                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
+                                    <input type="checkbox" name="strategic-priorities" value="new-agencies" style="margin-right: 0.75rem; width: 18px; height: 18px;">
+                                    Expand into new agencies
+                                </label>
+                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
+                                    <input type="checkbox" name="strategic-priorities" value="larger-contracts" style="margin-right: 0.75rem; width: 18px; height: 18px;">
+                                    Win larger contract values
+                                </label>
+                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
+                                    <input type="checkbox" name="strategic-priorities" value="idiq-gwac" style="margin-right: 0.75rem; width: 18px; height: 18px;">
+                                    Secure IDIQ/GWAC positions
+                                </label>
+                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
+                                    <input type="checkbox" name="strategic-priorities" value="program-offices" style="margin-right: 0.75rem; width: 18px; height: 18px;">
+                                    Build program office relationships
+                                </label>
+                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
+                                    <input type="checkbox" name="strategic-priorities" value="reduce-sub-reliance" style="margin-right: 0.75rem; width: 18px; height: 18px;">
+                                    Reduce reliance on subcontracting
+                                </label>
+                            </div>
+                        </div>
+
+                        <h2 style="color: var(--gold); font-size: 1.8rem; margin: 3rem 0 2rem;">Current Infrastructure & Resources</h2>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="bd-team" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Business Development Team Structure *</label>
+                            <textarea id="bd-team" name="bd-team" rows="3" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="Describe your BD team size, roles, and federal market experience"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="existing-relationships" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Key Existing Relationships *</label>
+                            <textarea id="existing-relationships" name="existing-relationships" rows="4" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="Detail your current relationships with agency personnel, contracting officers, program managers, etc."></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="competitive-intel" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Competitive Intelligence Capabilities</label>
+                            <textarea id="competitive-intel" name="competitive-intel" rows="3" style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="Describe your current competitive intelligence gathering and analysis processes"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="capture-process" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Current Capture Process Maturity *</label>
+                            <select id="capture-process" name="capture-process" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
+                                <option value="">Select maturity level</option>
+                                <option value="ad-hoc">Ad-hoc/reactive approach</option>
+                                <option value="basic-formal">Basic formal process</option>
+                                <option value="structured">Structured capture methodology</option>
+                                <option value="advanced">Advanced capture with analytics</option>
+                            </select>
+                        </div>
+
+                        <h2 style="color: var(--gold); font-size: 1.8rem; margin: 3rem 0 2rem;">Specific Requirements & Expectations</h2>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="priority-deliverables" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Priority Deliverables *</label>
+                            <textarea id="priority-deliverables" name="priority-deliverables" rows="4" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="What specific outcomes are most critical to your success? (e.g., specific agency introductions, contract vehicle recommendations, competitive positioning strategy)"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="challenges" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Current Challenges *</label>
+                            <textarea id="challenges" name="challenges" rows="4" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="What obstacles are currently preventing you from achieving your federal growth objectives?"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="success-metrics" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Success Metrics *</label>
+                            <textarea id="success-metrics" name="success-metrics" rows="3" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="How will you measure the success of this engagement?"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="additional-info" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Additional Strategic Context</label>
+                            <textarea id="additional-info" name="additional-info" rows="4" style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="Any other strategic context, priorities, or requirements we should consider?"></textarea>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 3rem;">
+                            <button type="submit" class="cta-button" style="font-size: 1.1rem; padding: 1.25rem 3rem;">
+                                Submit Application
+                            </button>
+                        </div>
+                    </form>
                 </div>
-
-                <!-- Execution Timeline & Investment Commitment -->
-                <div class="form-section">
-                    <div class="section-title">
-                        <div class="section-number">6</div>
-                        <h2>Execution Timeline & Investment Commitment</h2>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="executionTimeline">Target Timeline for First Major Federal Award<span class="required">*</span></label>
-                        <select id="executionTimeline" name="executionTimeline" required>
-                            <option value="">Select timeline</option>
-                            <option value="12-months">12 months</option>
-                            <option value="12-18-months">12-18 months</option>
-                            <option value="18-24-months">18-24 months</option>
-                            <option value="24-plus-months">24+ months (strategic positioning)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="investmentCommitment">What level of organizational investment are you prepared to commit to federal market development?<span class="required">*</span></label>
-                        <p class="helper-text">Consider financial resources, dedicated personnel, and leadership time</p>
-                        <textarea id="investmentCommitment" name="investmentCommitment" required placeholder="Detail your commitment to federal market development including budget allocation, staffing plans, and executive involvement..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="targetContractValue">Target Contract Value Range (First 12-24 Months)<span class="required">*</span></label>
-                        <select id="targetContractValue" name="targetContractValue" required>
-                            <option value="">Select target range</option>
-                            <option value="1m-5m">$1M - $5M</option>
-                            <option value="5m-10m">$5M - $10M</option>
-                            <option value="10m-25m">$10M - $25M</option>
-                            <option value="25m-50m">$25M - $50M</option>
-                            <option value="50m-plus">$50M+</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="specificOpportunities">Specific Opportunities or Contract Vehicles You're Tracking</label>
-                        <p class="helper-text">Any specific RFPs, IDIQs, GSA Schedules, or programs of interest?</p>
-                        <textarea id="specificOpportunities" name="specificOpportunities" placeholder="List specific opportunities, contract vehicles, or programs you're monitoring or pursuing..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="criticalChallenges">What are your 3 most critical challenges in achieving federal market dominance?<span class="required">*</span></label>
-                        <textarea id="criticalChallenges" name="criticalChallenges" required placeholder="Detail the specific obstacles, gaps, or constraints preventing you from systematically penetrating the federal market..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="additionalInfo">Additional Strategic Context</label>
-                        <p class="helper-text">Any additional information about your organization, strategic objectives, or specific needs</p>
-                        <textarea id="additionalInfo" name="additionalInfo" placeholder="Provide any additional context that would help us develop your customized Agency Alignment Map..."></textarea>
-                    </div>
-                </div>
-
-                <button type="submit" class="submit-button">
-                    <i class="fas fa-paper-plane"></i> Submit Elite Engagement Request
-                </button>
-
-            </form>
-        </div>
+            </div>
+        </section>
     </main>
 
     <footer role="contentinfo">
