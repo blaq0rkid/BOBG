@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for contacting Black Orchid Business Group">
+    <title>Thank You | Black Orchid Business Group</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .thank-you-container {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+        }
+
+        .thank-you-content {
+            max-width: 700px;
+            text-align: center;
+            background: var(--card-bg);
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            animation: checkmark 0.6s ease-in-out;
+        }
+
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .thank-you-title {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .thank-you-message {
+            color: var(--text);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .next-steps {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .next-steps ul {
+            color: var(--text);
+            line-height: 1.8;
+            padding-left: 1.5rem;
+        }
+
+        .next-steps li {
+            margin-bottom: 0.75rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background: var(--gold);
+            color: var(--obsidian);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="logo-container">
+            <img src="logo.png" alt="Black Orchid Business Group Logo">
+            <span class="logo-text">Black Orchid Business Group</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="federal-diagnostic.html" class="nav-link">Federal Diagnostic</a></li>
+            <li>
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle light mode">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </li>
+        </ul>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navLinks">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <main id="main-content">
+        <div class="thank-you-container">
+            <div class="thank-you-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+
+                <h1 class="thank-you-title">Thank You!</h1>
+                
+                <p class="thank-you-message">
+                    We've received your submission and appreciate your interest in Black Orchid Business Group's federal growth consulting services.
+                </p>
+
+                <div class="next-steps">
+                    <h3>What Happens Next?</h3>
+                    <ul>
+                        <li><strong>Review:</strong> Our team will carefully review your submission within 1-2 business days.</li>
+                        <li><strong>Assessment:</strong> We'll evaluate your federal market readiness and alignment with our service offerings.</li>
+                        <li><strong>Response:</strong> You'll receive a personalized response via email with next steps or scheduling options for a consultation.</li>
+                        <li><strong>Timeline:</strong> Initial response typically within 48 hours during business days.</li>
+                    </ul>
+                </div>
+
+                <p class="thank-you-message" style="font-size: 1rem; margin-bottom: 0.5rem;">
+                    <strong>Confirmation email sent to your provided address.</strong>
+                </p>
+                <p style="color: var(--text); font-size: 0.9rem; margin-bottom: 2rem;">
+                    Please check your spam folder if you don't see it in your inbox.
+                </p>
+
+                <div class="action-buttons">
+                    <a href="index.html" class="cta-button">Return Home</a>
+                    <a href="services.html" class="secondary-button">Explore Services</a>
+                    <a href="intelligence.html" class="secondary-button">Read Intelligence</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 Black Orchid Business Group. All Rights Reserved.</p>
+        <nav aria-label="Footer navigation">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                darkModeToggle.setAttribute('aria-label', 'Toggle light mode');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+    </script>
+</body>
+</html>
