@@ -1005,5 +1005,32 @@ export const articles = [
   "readTime": "8 min",  
   "thumbnail": "https://cdn.marblism.com/kwLr6QwtB0h.webp",  
   "content": "<p class=\"lead-paragraph\">Winning a recompete at DHS CISA requires more than a clean CPARS rating. It requires the Tier 4 level of competitive intelligence: Incumbent Whispering.</p>\n\n<h2>Detecting Incumbent Fatigue</h2>\n<p>Incumbents often lose their grip long before the RFP hits the street. Watch for the modification trail, personnel churn, and lost buyer access—all signals that the <strong>Middleman Tax</strong> is making the incumbent vulnerable.</p>\n\n<h2>The Federal Telemetry Play</h2>\n<p>We move beyond basic research into telemetry. By analyzing FPDS data and bridge contract signals, we find the 'Delta' between what the incumbent is doing and what the agency actually needs.</p>"  
-}  
+},
+{  
+  "id": "usmc-agency-alignment-map-tactical-execution",  
+  "title": "[USMC] The Agency Alignment Map: Your 24-Month Tactical Execution Plan",  
+  "excerpt": "The USMC rewards the prepared. Move beyond the Middleman Tax with a Tier 3 tactical execution plan designed for direct federal growth.",  
+  "date": "2026-04-27",  
+  "readTime": "7 min",  
+  "thumbnail": "https://cdn.marblism.com/_f3m7RACxOE.webp",  
+  "content": "<p class=\"lead-paragraph\">Winning at the USMC requires more than technical capability; it requires tactical alignment with a 24-month procurement horizon. The Agency Alignment Map (Tier 3) is the definitive bridge to direct federal growth.</p><h2>The Reality of Force Design 2030</h2><p>The Marine Corps is restructuring. If you aren't mapping your solutions to <strong>Force Design 2030</strong>, you are invisible. Stop paying the <strong>Middleman Tax</strong> where primes take the strategic credit while you take the technical risk.</p><h2>Tactical Positioning</h2><p>Phase 1 involves the <strong>Black Orchid Agency Matching Matrix</strong> to score your business against MARCORSYSCOM requirements. Phase 2 moves into pre-solicitation shaping, influencing the evaluation criteria before the RFP hits SAM.gov.</p>"  
+},
+{  
+  "id": "hhs-eliminating-middleman-tax-health-it",  
+  "title": "[HHS] Eliminating the Middleman Tax in Health IT: A Direct Growth Strategy",  
+  "excerpt": "Stop being a footnote in a prime’s proposal. Learn how to reclaim your margins at HHS by moving from indirect positioning to direct agency alignment.",  
+  "date": "2026-04-29",  
+  "readTime": "6 min",  
+  "thumbnail": "https://cdn.marblism.com/HEdspx8sJ1Y.webp",  
+  "content": "<p class=\"lead-paragraph\">HHS IT spending exceeds $20 billion annually, yet much of it is lost to 'Super Primes.' Direct Growth is the only path to securing the enterprise value your firm deserves.</p><h2>The Cost of Indirect Positioning</h2><p>When you are buried in a secondary tier, you lose 'Agency Intimacy.' The <strong>Middleman Tax</strong> isn't just financial; it's the loss of brand recognition with HHS decision-makers.</p><h2>The BOBG Path</h2><p>Using the <strong>Federal Diagnostic</strong> and <strong>Agency Alignment Blueprint</strong>, we identify specific set-asides and mission leads at the CDC and FDA to position you as a prime, not a silent contributor.</p>"  
+},
+{  
+  "id": "space-force-federal-telemetry-defensive-capture",  
+  "title": "[Space Force] Federal Telemetry and the Future of Defensive Capture",  
+  "excerpt": "In the Space Force, data is the high ground. Use Federal Telemetry to practice Defensive Capture and solve mission gaps before the RFP.",  
+  "date": "2026-05-01",  
+  "readTime": "8 min",  
+  "thumbnail": "https://cdn.marblism.com/B8Bj1hbFRWh.webp",  
+  "content": "<p class=\"lead-paragraph\">The high ground is no longer static. At BOBG, we track <strong>Federal Telemetry</strong>—the data streams that dictate mission readiness in the space domain.</p><h2>The Art of Defensive Capture</h2><p>Waiting for an RFP is a reactive strategy that scales poorly. Defensive Capture uses telemetry-driven intelligence to predict mission failure points, like SCN capacity bottlenecks, and offers the solution first.</p><h2>Tier 4 Authority</h2><p>True market dominance in the USSF ecosystem requires moving beyond being a 'provider' to being an 'authority.' By solving bottlenecks before they are formally articulated, you eliminate the <strong>Middleman Tax</strong> and ensure mission resiliency.</p>"  
+}
 ];
