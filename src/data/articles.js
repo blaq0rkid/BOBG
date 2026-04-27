@@ -1059,5 +1059,32 @@ export const articles = [
 "readTime": "9 min",  
 "thumbnail": "https://cdn.marblism.com/9dfcIRxnYTq.webp",  
 "content": "<p class=\"lead-paragraph\">If you are relying on FPDS to build your capture strategy, you are already 90 days behind the market. Data lag is a silent killer of growth.</p><h2>The 90-Day Blind Spot</h2><p>Most firms treat FPDS as a crystal ball. It isn't; it's a rearview mirror. Proactive capture requires identifying 'Incumbent Fatigue' through telemetry signals—like modification burn and personnel churn—that never appear in a standard data export until it’s too late.</p><h2>The Bridge Contract Signal</h2><p>A bridge contract is a sign of agency desperation. It means they failed to plan the recompete. This is where the <strong>Federal Diagnostic</strong> identifying the 'Delta' allows you to step in as the efficient prime solution.</p>"  
+},
+{  
+"id": "doge-proofing-federal-contracts-mission-critical-audits",  
+"title": "DOGE-Proofing Your Federal Contracts: Surviving the Mission-Critical Audit Era",  
+"excerpt": "With AI-assisted audits and DOGE oversight, your $20M+ contract is under the microscope. Learn how to prove mission criticality and defend your performance.",  
+"date": "2026-04-27",  
+"readTime": "11 min",  
+"thumbnail": "https://cdn.marblism.com/HNIwPhLlcpG.webp",  
+"content": "<p class=\"lead-paragraph\">The era of 'business as usual' in federal contracting is over. Under the influence of the Department of Government Efficiency (DOGE), the DoD has launched rapid, AI-assisted reviews of all small-business awards exceeding $20M.</p><h2>The Mission-Critical Screen</h2><p>Agencies are now screening for 'non-essential' work. If you can't link your deliverables directly to a core mission mandate, you are at risk of termination for convenience. It’s not just about doing the work; it’s about proving the work is vital to national security.</p><h2>Defensive Documentation</h2><p>Survival requires proactive reconciliation. You must validate your subcontracting compliance (FAR 52.219-14) and ensure your market-rate pricing is bulletproof before the IG comes knocking.</p>"  
+},
+{  
+"id": "ndc-loophole-fy2026-ndaa-mid-tier-growth",  
+"title": "The NDC Loophole: How the FY2026 NDAA Is Leveling the Playing Field for Mid-Tier Firms",  
+"excerpt": "The FY2026 NDAA is a commercial reset. Learn how Nontraditional Defense Contractors (NDCs) can now bypass costly CAS and FAR Part 31 requirements.",  
+"date": "2026-04-27",  
+"readTime": "10 min",  
+"thumbnail": "https://cdn.marblism.com/wr26MKAthfW.webp",  
+"content": "<p class=\"lead-paragraph\">A fundamental shift has arrived. The FY2026 NDAA is relaxing defense contracting rules for Nontraditional Defense Contractors (NDCs), moving away from government-unique compliance and toward commercial norms.</p><h2>The $10M Threshold Shift</h2><p>Certified cost or pricing data thresholds have jumped to $10M, and many mid-tier firms are now exempt from full CAS coverage. This lowers the barrier to entry, allowing agile firms to compete with the Super Primes without the massive overhead of traditional defense accounting.</p><h2>The Commercial Reset</h2><p>Agencies must now provide a senior-level justification if they choose to bypass a commercial solution. This is a massive win for firms that lead with innovative, commercial-first tech.</p>"  
+},
+{  
+"id": "from-shalls-to-shoulds-discretionary-contracting-officers",  
+"title": "From ‘Shalls’ to ‘Shoulds’: How to Sell to the New Era of Discretionary Contracting Officers",  
+"excerpt": "The FAR is being rewritten into plain language, turning binding 'shalls' into discretionary 'mays.' Learn how to capitalize on this shift in CO power.",  
+"date": "2026-04-27",  
+"readTime": "9 min",  
+"thumbnail": "https://cdn.marblism.com/R1rVwj4APR4.webp",  
+"content": "<p class=\"lead-paragraph\">The Federal Acquisition Regulation (FAR) is losing its 'binding' weight. A massive plain-language rewrite is shifting substantial regulatory text into non-regulatory 'Buying Guides.'</p><h2>The Power of CO Discretion</h2><p>As 'shalls' become 'shoulds' and 'mays,' Contracting Officers have more room to experiment. This means the 'checklist' approach to bidding is dying. You must now sell your solution as the best *outcome* rather than just the most compliant bid.</p><h2>Navigating the Variance</h2><p>This shift creates interpretive variance across agencies. Success in 2026 requires understanding the specific 'Buying Guide' your target agency is following, giving you the ability to shape the acquisition strategy early.</p>"  
 }
 ];
