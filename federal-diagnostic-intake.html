@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Federal Diagnostic Service Intake - Black Orchid Business Group">
-    <title>Federal Diagnostic Intake | Black Orchid Business Group</title>
+    <meta name="description" content="Federal Market Snapshot Intake - Black Orchid Business Group">
+    <title>Federal Market Snapshot Intake | Black Orchid Business Group</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -22,7 +22,7 @@
             <li><a href="about.html" class="nav-link">About</a></li>
             <li><a href="services.html" class="nav-link">Services</a></li>
             <li><a href="intelligence.html" class="nav-link">Intelligence</a></li>
-            <li><a href="federal-diagnostic.html" class="nav-link active">Federal Diagnostic</a></li>
+            <li><a href="federal-market-snapshot-intake.html" class="nav-link active">Federal Market Snapshot</a></li>
             <li>
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle light mode">
                     <i class="fas fa-sun"></i>
@@ -34,197 +34,93 @@
         </button>
     </nav>
 
-    <header class="page-header" role="banner">
-        <div class="container">
-            <h1 style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;">Federal Diagnostic Intake</h1>
-            <p style="font-size: 1.3rem; color: var(--text); max-width: 800px; margin: 0 auto;">Begin your journey to federal market readiness with our comprehensive diagnostic assessment.</p>
-        </div>
-    </header>
-
     <main id="main-content">
-        <section>
+        <section class="page-header">
             <div class="container">
-                <div style="max-width: 900px; margin: 0 auto;">
-                    <div style="background: var(--card-bg); border: 2px solid var(--gold); border-radius: 16px; padding: 3rem; margin-bottom: 3rem;">
-                        <h2 style="color: var(--gold); font-size: 2rem; margin-bottom: 1.5rem;">Service Overview</h2>
-                        <p style="color: var(--text); line-height: 1.8; margin-bottom: 1rem;">
-                            <strong style="color: var(--gold);">Investment:</strong> Starting at $2,500
-                        </p>
-                        <p style="color: var(--text); line-height: 1.8; margin-bottom: 1rem;">
-                            <strong style="color: var(--gold);">Timeline:</strong> 2-3 weeks
-                        </p>
-                        <p style="color: var(--text); line-height: 1.8;">
-                            Our Federal Diagnostic provides a comprehensive P-Win assessment to evaluate your organization's federal readiness, identify infrastructure gaps, and deliver a prioritized remediation plan.
-                        </p>
+                <h1>Federal Market Snapshot</h1>
+                <p class="service-price">$997</p>
+                <p class="service-timeline">Timeline: 5–7 business days</p>
+                <p>A fast market scan identifying your top 3 target agencies, procurement contacts, and a quick-start action plan — plus a 30-minute strategy session.</p>
+            </div>
+        </section>
+
+        <section class="intake-form-section">
+            <div class="container">
+                <form name="federal-market-snapshot" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="intake-form">
+                    <input type="hidden" name="form-name" value="federal-market-snapshot">
+                    <input type="hidden" name="bot-field">
+
+                    <div class="form-group">
+                        <label for="company-name">Company Name *</label>
+                        <input type="text" id="company-name" name="company-name" required>
                     </div>
 
-                    <form name="federal-diagnostic" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="contact-form">
-                        <input type="hidden" name="form-name" value="federal-diagnostic">
-                        
-                        <p style="display: none;">
-                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
-                        </p>
+                    <div class="form-group">
+                        <label for="contact-name">Your Name *</label>
+                        <input type="text" id="contact-name" name="contact-name" required>
+                    </div>
 
-                        <h2 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 2rem;">Company Information</h2>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
 
-                        <div class="form-row">
-                            <div style="flex: 1;">
-                                <label for="company-name" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Company Name *</label>
-                                <input type="text" id="company-name" name="company-name" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                            </div>
-                            <div style="flex: 1;">
-                                <label for="website" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Website</label>
-                                <input type="text" id="website" name="website" placeholder="https://www.example.com" style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
 
-                        <div class="form-row">
-                            <div style="flex: 1;">
-                                <label for="industry" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Industry/Sector *</label>
-                                <input type="text" id="industry" name="industry" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                            </div>
-                            <div style="flex: 1;">
-                                <label for="annual-revenue" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Annual Revenue Range *</label>
-                                <select id="annual-revenue" name="annual-revenue" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                                    <option value="">Select range</option>
-                                    <option value="under-1m">Under $1M</option>
-                                    <option value="1m-5m">$1M - $5M</option>
-                                    <option value="5m-10m">$5M - $10M</option>
-                                    <option value="10m-25m">$10M - $25M</option>
-                                    <option value="25m-50m">$25M - $50M</option>
-                                    <option value="over-50m">Over $50M</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="website">Company Website</label>
+                        <input type="url" id="website" name="website">
+                    </div>
 
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="employee-count" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Number of Employees *</label>
-                            <select id="employee-count" name="employee-count" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                                <option value="">Select range</option>
-                                <option value="1-10">1-10</option>
-                                <option value="11-50">11-50</option>
-                                <option value="51-100">51-100</option>
-                                <option value="101-250">101-250</option>
-                                <option value="251-500">251-500</option>
-                                <option value="over-500">Over 500</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="industry">Industry/Sector *</label>
+                        <input type="text" id="industry" name="industry" required>
+                    </div>
 
-                        <h2 style="color: var(--gold); font-size: 1.8rem; margin: 3rem 0 2rem;">Contact Information</h2>
+                    <div class="form-group">
+                        <label for="services">Products/Services Offered *</label>
+                        <textarea id="services" name="services" rows="4" required></textarea>
+                    </div>
 
-                        <div class="form-row">
-                            <div style="flex: 1;">
-                                <label for="first-name" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">First Name *</label>
-                                <input type="text" id="first-name" name="first-name" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                            </div>
-                            <div style="flex: 1;">
-                                <label for="last-name" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Last Name *</label>
-                                <input type="text" id="last-name" name="last-name" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="naics">NAICS Codes (if known)</label>
+                        <input type="text" id="naics" name="naics">
+                    </div>
 
-                        <div class="form-row">
-                            <div style="flex: 1;">
-                                <label for="email" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Email Address *</label>
-                                <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                            </div>
-                            <div style="flex: 1;">
-                                <label for="phone" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="federal-experience">Do you have any federal contracting experience?</label>
+                        <select id="federal-experience" name="federal-experience">
+                            <option value="">Select...</option>
+                            <option value="none">No experience</option>
+                            <option value="some">Some experience</option>
+                            <option value="extensive">Extensive experience</option>
+                        </select>
+                    </div>
 
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="title" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Your Title/Role *</label>
-                            <input type="text" id="title" name="title" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                        </div>
+                    <div class="form-group">
+                        <label for="goals">What are your primary goals for entering the federal market? *</label>
+                        <textarea id="goals" name="goals" rows="4" required></textarea>
+                    </div>
 
-                        <h2 style="color: var(--gold); font-size: 1.8rem; margin: 3rem 0 2rem;">Federal Market Experience</h2>
+                    <div class="form-group">
+                        <label for="upgrade-interest">Are you interested in: *</label>
+                        <select id="upgrade-interest" name="upgrade-interest" required>
+                            <option value="">Select...</option>
+                            <option value="snapshot-only">Just the Snapshot ($997)</option>
+                            <option value="blueprint-interest">I'd like to discuss upgrading to the full Blueprint ($5,500)</option>
+                        </select>
+                    </div>
 
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="federal-experience" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Current Federal Market Experience *</label>
-                            <select id="federal-experience" name="federal-experience" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                                <option value="">Select your experience level</option>
-                                <option value="no-experience">No federal contracting experience</option>
-                                <option value="research-phase">Currently researching federal market</option>
-                                <option value="sam-registered">SAM registered but no contracts</option>
-                                <option value="subcontractor">Experience as subcontractor only</option>
-                                <option value="prime-contracts">Prime contractor with some federal contracts</option>
-                                <option value="established-prime">Established prime contractor</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="additional-info">Additional Information</label>
+                        <textarea id="additional-info" name="additional-info" rows="4"></textarea>
+                    </div>
 
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="target-agencies" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Target Federal Agencies (if known)</label>
-                            <textarea id="target-agencies" name="target-agencies" rows="3" style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;"></textarea>
-                        </div>
-
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="capabilities" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Core Capabilities/Services *</label>
-                            <textarea id="capabilities" name="capabilities" rows="4" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="Describe your company's core capabilities and services that could be relevant to federal agencies"></textarea>
-                        </div>
-
-                        <h2 style="color: var(--gold); font-size: 1.8rem; margin: 3rem 0 2rem;">Readiness Assessment</h2>
-
-                        <div style="margin-bottom: 1.5rem;">
-                            <label style="display: block; color: var(--gold); margin-bottom: 1rem; font-weight: 600;">Do you have the following in place? (Check all that apply)</label>
-                            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
-                                    <input type="checkbox" name="readiness" value="sam-registration" style="margin-right: 0.75rem; width: 18px; height: 18px;">
-                                    SAM.gov registration
-                                </label>
-                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
-                                    <input type="checkbox" name="readiness" value="cage-code" style="margin-right: 0.75rem; width: 18px; height: 18px;">
-                                    CAGE code
-                                </label>
-                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
-                                    <input type="checkbox" name="readiness" value="accounting-system" style="margin-right: 0.75rem; width: 18px; height: 18px;">
-                                    DCAA-compliant accounting system
-                                </label>
-                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
-                                    <input type="checkbox" name="readiness" value="cybersecurity" style="margin-right: 0.75rem; width: 18px; height: 18px;">
-                                    Cybersecurity compliance (CMMC/NIST)
-                                </label>
-                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
-                                    <input type="checkbox" name="readiness" value="past-performance" style="margin-right: 0.75rem; width: 18px; height: 18px;">
-                                    Documented past performance
-                                </label>
-                                <label style="display: flex; align-items: center; color: var(--text); cursor: pointer;">
-                                    <input type="checkbox" name="readiness" value="none" style="margin-right: 0.75rem; width: 18px; height: 18px;">
-                                    None of the above
-                                </label>
-                            </div>
-                        </div>
-
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="timeline" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Desired Timeline for Federal Market Entry *</label>
-                            <select id="timeline" name="timeline" required style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem;">
-                                <option value="">Select timeline</option>
-                                <option value="immediate">Immediate (0-3 months)</option>
-                                <option value="short-term">Short-term (3-6 months)</option>
-                                <option value="medium-term">Medium-term (6-12 months)</option>
-                                <option value="long-term">Long-term (12+ months)</option>
-                                <option value="exploring">Just exploring options</option>
-                            </select>
-                        </div>
-
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="challenges" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Primary Challenges or Concerns</label>
-                            <textarea id="challenges" name="challenges" rows="4" style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="What are your biggest challenges or concerns about entering the federal market?"></textarea>
-                        </div>
-
-                        <div style="margin-bottom: 1.5rem;">
-                            <label for="additional-info" style="display: block; color: var(--gold); margin-bottom: 0.5rem; font-weight: 600;">Additional Information</label>
-                            <textarea id="additional-info" name="additional-info" rows="4" style="width: 100%; padding: 0.75rem; background: var(--obsidian); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; resize: vertical;" placeholder="Any other information you'd like us to know?"></textarea>
-                        </div>
-
-                        <div style="text-align: center; margin-top: 3rem;">
-                            <button type="submit" class="cta-button" style="font-size: 1.1rem; padding: 1.25rem 3rem;">
-                                Submit Application
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    <button type="submit" class="cta-button">Submit Request</button>
+                </form>
             </div>
         </section>
     </main>
@@ -239,6 +135,7 @@
     </footer>
 
     <script>
+        // Dark mode toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
         const icon = darkModeToggle.querySelector('i');
@@ -267,6 +164,7 @@
             }
         });
 
+        // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
 
